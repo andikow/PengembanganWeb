@@ -4,9 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import $ from 'jquery';
-import Popper from 'popper.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import './assets/css/custom.css';
 
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
