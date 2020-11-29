@@ -4,7 +4,7 @@ import Header from './components/header.js';
 
 function App() {
   return (
-    <div className="container-fluid">
+    <div className="container-fluid p-0">
       <Header />
     </div>
   );
