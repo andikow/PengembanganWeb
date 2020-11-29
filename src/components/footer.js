@@ -40,19 +40,16 @@ export default class About extends React.Component{
       <hr className="clearfix w-100 d-md-none"/>
 
       <div className="col-md-2 mx-auto">
-        <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+        <h5 className="font-weight-bold text-white mt-3 mb-4">The Company</h5>
         <ul className="list-unstyled">
           <li>
-            <a href="#!">Link 1</a>
+            <a href="#!" className=" text-secondary">About Us</a>
           </li>
           <li>
-            <a href="#!">Link 2</a>
+            <a href="#!" className=" text-secondary">Privacy</a>
           </li>
           <li>
-            <a href="#!">Link 3</a>
-          </li>
-          <li>
-            <a href="#!">Link 4</a>
+            <a href="#!" className=" text-secondary">Terms & Condition</a>
           </li>
         </ul>
       </div>
@@ -60,19 +57,19 @@ export default class About extends React.Component{
       <hr className="clearfix w-100 d-md-none"/>
 
       <div className="col-md-2 mx-auto">
-        <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+        <h5 className="font-weight-bold text-white mt-3 mb-4">Follow Us</h5>
         <ul className="list-unstyled">
           <li>
-            <a href="#!">Link 1</a>
+            <a href="#!" className=" text-secondary fab fa-facebook"><span style={{paddingRight:8}}></span> Facebook</a>
           </li>
           <li>
-            <a href="#!">Link 2</a>
+            <a href="#!" className=" text-secondary fab fa-twitter"><span style={{paddingRight:8}}></span> Twitter</a>
           </li>
           <li>
-            <a href="#!">Link 3</a>
+            <a href="#!" className=" text-secondary fab fa-instagram"><span style={{paddingRight:12}}></span> Instagram</a>
           </li>
           <li>
-            <a href="#!">Link 4</a>
+            <a href="#!" className=" text-secondary fab fa-pinterest"><span style={{paddingRight:12}}></span> Pinterest</a>
           </li>
         </ul>
       </div>
@@ -81,47 +78,7 @@ export default class About extends React.Component{
 
   <hr />
 
-  <ul className="list-unstyled list-inline text-center py-2">
-    <li className="list-inline-item">
-      <h5 className="mb-1">Register for free</h5>
-    </li>
-    <li className="list-inline-item">
-      <a href="#!" className="btn btn-danger btn-rounded">Sign up!</a>
-    </li>
-  </ul>
-
-  <hr />
-
-  <ul className="list-unstyled list-inline text-center">
-    <li className="list-inline-item">
-      <a className="btn-floating btn-fb mx-1">
-        <i className="fab fa-facebook-f"> </i>
-      </a>
-    </li>
-    <li className="list-inline-item">
-      <a className="btn-floating btn-tw mx-1">
-        <i className="fab fa-twitter"> </i>
-      </a>
-    </li>
-    <li className="list-inline-item">
-      <a className="btn-floating btn-gplus mx-1">
-        <i className="fab fa-google-plus-g"> </i>
-      </a>
-    </li>
-    <li className="list-inline-item">
-      <a className="btn-floating btn-li mx-1">
-        <i className="fab fa-linkedin-in"> </i>
-      </a>
-    </li>
-    <li className="list-inline-item">
-      <a className="btn-floating btn-dribbble mx-1">
-        <i className="fab fa-dribbble"> </i>
-      </a>
-    </li>
-  </ul>
-
-  <div className="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+  <div className="footer-copyright text-center py-3 bg-secondary">Binco prints a huge variety of custom clothing like T-shirts, hoodies and more. Your order is handled daily with a lot of love  ❤️ from Indonesia and delivered worldwide!
   </div>
 
 </footer>
