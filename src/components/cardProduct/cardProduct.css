@@ -1,0 +1,11 @@
+.card-hover{
+    padding: 3px 3px;
+}
+.card-hover:hover{
+    border: 2px solid #63bcc9;
+	transition:.1s;
+}
+
+.span-fav i:hover{
+    color: #d9534f;
+}

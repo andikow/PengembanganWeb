@@ -1,4 +1,6 @@
 import React from 'react';
+import payment from './../assets/img/payment.png';
+import shipping from './../assets/img/shipping.png';
 
 export default class About extends React.Component{
 
@@ -7,6 +9,28 @@ export default class About extends React.Component{
     return(
     <>
 <footer className="page-footer font-small stylish-color-dark pt-4 btn-primary">
+    <div className="row">
+      <div class="col-lg-4 text-center text-white" style={{fontSize:20}}>
+        <i className="fa fa-lock"></i>
+        <p>All secure payment methods</p>
+        <img src={payment} alt="logo" width="300px" height="60px" />
+      </div>
+
+      <div class="col-lg-4 text-center text-white" style={{fontSize:20}}>
+        <i className="fa fa-smile"></i>
+        <p>Satisfaction guaranteed</p>
+        <p style={{fontSize:15}}>Easy returns within 30 days, no questions asked!</p>
+      </div>
+
+      <div class="col-lg-4 text-center text-white" style={{fontSize:20}}>
+        <i className="fa fa-truck"></i>
+        <p>Worldwide delivery</p>
+        <img src={shipping} alt="logo" width="300px" height="60px" />
+      </div>
+    </div>
+
+<hr/>
+
   <div className="container text-center text-md-left">
     <div className="row">
       <div className="col-md-4 mx-auto my-2 btn-secondary">
@@ -25,13 +49,13 @@ export default class About extends React.Component{
         <h5 className="font-weight-bold text-white mt-3 mb-4">Service</h5>
         <ul className="list-unstyled">
           <li>
-            <a href="#!" className=" text-secondary fas fa-tshirt"><span style={{paddingRight:8}}></span> Your Orders</a>
+            <a href="#" className="text-secondary"><i className="fas fa-fw mr-2 fa-tshirt"></i>Your Orders</a>
           </li>
           <li>
-            <a href="#!" className=" text-secondary fas fa-question"><span style={{paddingRight:15}}></span> Help</a>
+            <a href="#" className="text-secondary"><i className="fas fa-fw mr-2 fa-question"></i>Help</a>
           </li>
           <li>
-            <a href="#!" className=" text-secondary fas fa-envelope"><span style={{paddingRight:12}}></span> Contact</a>
+            <a href="#" className="text-secondary"><i className="fas fa-fw mr-2 fa-envelope"></i>Contact</a>
           </li>
 
         </ul>
@@ -60,27 +84,26 @@ export default class About extends React.Component{
         <h5 className="font-weight-bold text-white mt-3 mb-4">Follow Us</h5>
         <ul className="list-unstyled">
           <li>
-            <a href="#!" className=" text-secondary fab fa-facebook"><span style={{paddingRight:8}}></span> Facebook</a>
+            <a href="#" className="text-secondary"><i className="fab fa-fw mr-2 fa-facebook"></i>Facebook</a>
           </li>
           <li>
-            <a href="#!" className=" text-secondary fab fa-twitter"><span style={{paddingRight:8}}></span> Twitter</a>
+            <a href="#" className="text-secondary"><i className="fab fa-fw mr-2 fa-twitter"></i>Twitter</a>
           </li>
           <li>
-            <a href="#!" className=" text-secondary fab fa-instagram"><span style={{paddingRight:12}}></span> Instagram</a>
+            <a href="#" className="text-secondary"><i className="fab fa-fw mr-2 fa-instagram"></i>Instagram</a>
           </li>
           <li>
-            <a href="#!" className=" text-secondary fab fa-pinterest"><span style={{paddingRight:12}}></span> Pinterest</a>
+            <a href="#" className="text-secondary"><i className="fab fa-fw mr-2 fa-pinterest"></i>Pinterest</a>
           </li>
         </ul>
       </div>
     </div>
   </div>
 
-  <hr />
+<hr/>
 
-  <div className="footer-copyright text-center py-3 bg-secondary">Binco prints a huge variety of custom clothing like T-shirts, hoodies and more. Your order is handled daily with a lot of love  ❤️ from Indonesia and delivered worldwide!
+  <div className="footer-copyright text-center py-3">Binco prints a huge variety of custom clothing like T-shirts, hoodies and more. Your order is handled daily with a lot of love <i className=" text-danger fa fa-heart"></i> from Indonesia and delivered worldwide!
   </div>
-
 </footer>
 
     </>
