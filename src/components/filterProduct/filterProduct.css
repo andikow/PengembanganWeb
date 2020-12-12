@@ -1,0 +1,10 @@
+.filterBar{
+    padding : 10px 50px;
+}
+
+.subFilter-body li{
+    list-style: none;
+    font-size: large;
+    margin: 10px 0px;
+    cursor: pointer;
+}
