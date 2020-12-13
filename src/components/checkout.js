@@ -1,5 +1,7 @@
 import React from 'react';
 import './../assets/css/checkout.css';
+import paypal from './../assets/img/paypal.png';
+import Qtycheckout from './qtycheckout.js';
 
 export default class About extends React.Component{
 
@@ -365,15 +367,63 @@ export default class About extends React.Component{
               </div>
               </form>
 
+              <br/>
+              <hr/>
+              <br/>
+
+              <p style={{fontWeight:'bold'}}>Gift Wrap</p>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="" />
+                <label>Gift wrap your order and send it with a personalized greeting card. <span style={{paddingLeft:100}}> $3.99</span></label>
+              </div>
       </div>
 
 
                     <div className="box">
                         <h3 className="box-title">Payment</h3>
-
+                        <input type="radio"/>
+                        <img src={paypal} alt="paypal" width="150px"  /><br/><br/>
+                        <p>&emsp;Quick and easy payment with PayPal.</p>
+                        <i className="fa fa-info-circle"></i> Click on “buy” to get directed to PayPal. Please complete your purchase there within the next 3 hours. This is necessary to get your order processed and under way.<br/>
                     </div>
+
+
                     <div className="box">
                         <h3 className="box-title">Order</h3>
+                        <div class="row">
+                          <div class="col">Sub-total</div>
+                          <div class="col-lg-2">$3.99</div>
+                        </div>
+                        <div class="row">
+                          <div class="col">Shipping costs</div>
+                          <div class="col-lg-2">$3.99</div>
+                        </div>
+                        <div class="row">
+                          <div class="col">Sales Tax</div>
+                          <div class="col-lg-2">$3.99</div>
+                        </div>
+
+                        <hr />
+
+                        <div class="row">
+                          <div class="col" style={{fontWeight:'bold'}}>Total</div>
+                          <div class="col-lg-2">$3.99</div>
+                        </div>
+
+                        <hr />
+
+                        <div class="row">
+                          <div class="col">
+                            <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="" />
+                            <p>I acknowledge and accept the General Terms and Conditions of Binco.</p>
+                            </div>
+                          </div>
+                          <div class="co l-lg-3 mr-2">
+                            <button className="btn btn-danger my-0 font-weight-bold" type="button">Buy now</button>
+                          </div>
+
+                        </div>
 
                     </div>
                 </div>
@@ -382,6 +432,60 @@ export default class About extends React.Component{
 
                     <div className="widget">
                         <h4 className="widget-title">Order Summary</h4>
+
+                        <form>
+                        <div>
+                          <label>Coupon code</label>
+                        <input type="text" className="form-control" placeholder="Coupon code" />
+                        </div>
+                        </form>
+
+                        <hr/>
+
+                        <div class="row">
+                          <div class="col">Sub-total</div>
+                          <div class="col-lg-2">$3.99</div>
+                        </div>
+                        <div class="row">
+                          <div class="col">Shipping costs</div>
+                          <div class="col-lg-2">$3.99</div>
+                        </div>
+                        <div class="row">
+                          <div class="col">Sales Tax</div>
+                          <div class="col-lg-2">$3.99</div>
+                        </div>
+
+                        <hr />
+
+                        <div class="row">
+                          <div class="col" style={{fontWeight:'bold'}}>Total</div>
+                          <div class="col-lg-2">$3.99</div>
+                        </div>
+
+                        <hr />
+
+                        <p style={{fontWeight:'bold'}}>Nama baju</p>
+                        <div class="row">
+                          <div class="col">
+                            <img  alt="" height="150px" width="120px"  />
+                          </div>
+                          <div class="col">
+                            <label>Size :</label>
+                            <select class="browser-default custom-select">
+                              <option value="S">S</option>
+                              <option value="M">M</option>
+                              <option value="L">L</option>
+                              <option value="XL">XL</option>
+                              <option value="2XL">2XL</option>
+                            </select>
+
+                            <br/><br/>
+                            <label>Qty :</label>
+                            <Qtycheckout/>
+
+                          </div>
+                        </div>
+
 
                     </div>
 
