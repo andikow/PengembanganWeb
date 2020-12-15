@@ -1,3 +1,48 @@
 .gray {
   color: #919aa1;
 }
+
+.bg-gray {
+  background-color: #eceeef;
+}
+
+.nav-link {
+  color: #000;
+}
+
+.nav-title {
+  color: #fff;
+}
+#homepage-tabs .nav-item a:hover {
+  color: #1f9bcf !important;
+}
+#homepage-tabs .nav-title {
+  font-size: 18px;
+}
+#navbar {
+z-index: 3;
+transition: top 0.4s;
+box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.sticky + .headline {
+  padding-top: 100px;
+}
+
+.headline {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px -13px -27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.nav-link {
+  padding: .5rem !important;
+}
+.center {
+  align-items : center;
+}
