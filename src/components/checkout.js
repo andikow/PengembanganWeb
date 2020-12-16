@@ -3,7 +3,7 @@ import './../assets/css/checkout.css';
 import paypal from './../assets/img/paypal.png';
 import Qtycheckout from './qtycheckout.js';
 
-export default class About extends React.Component{
+export default class Checkout extends React.Component{
 
   render(){
 
