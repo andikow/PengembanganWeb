@@ -2,13 +2,14 @@ import React from 'react';
 import Logo from './../assets/img/logo.png';
 import model_custom from './../assets/img/model_custom.png';
 import model_shop from './../assets/img/model_shop.png';
+import './../assets/css/header.css';
 export default class Home extends React.Component{
 
   render(){
 
     return(
     <>
-        <div className="row">
+        <div className="row headline">
           <div className="col-lg-6 pr-5" style={{left:'-30px'}}>
             <div className="row bg-success">
               {/*Foto Headline Kiri*/}
@@ -48,8 +49,25 @@ export default class Home extends React.Component{
 
             </div>
           </div>
-
         </div>
+
+        <div id ="homepage-tabs" className="row bg-gray">
+          <ul class="nav nav-pills d-flex flex-wrap align-items-center">
+            <div class="col p-2 bg-danger ml-2 mr-2" style={{transform:'skewX(-15deg)'}}>
+              <li className="col-lg-auto font-weight-bold ml-5 nav-link nav-title" style={{transform:'skewX(15deg)'}}>Create Now</li>
+            </div>
+              <li class="nav-item col-lg-auto"><a class="nav-link" href="#" ><i className = "fal fa-gift fa-lg mr-2"></i>Christmas gifts</a></li>
+              <li class="nav-item col-lg-auto"><a class="nav-link" href="#"> T-shirts</a></li>
+              <li class="nav-item col-lg-auto"><a class="nav-link" href="#"> Corporate Clothing</a></li>
+              <li class="nav-item col-lg-auto"><a class="nav-link" href="#"> Photo Gifts</a></li>
+              <li class="nav-item col-lg-auto"><a class="nav-link" href="#"> Hoodies & Sweatshirts</a></li>
+              <li class="nav-item col-lg-auto"><a class="nav-link" href="#"> Tank Tops</a></li>
+              <li class="nav-item col-lg-auto"><a class="nav-link" href="#"> Baby Clothing</a></li>
+              <li class="nav-item col-lg-auto"><a class="nav-link" href="#"> Aprons</a></li>
+          </ul>
+        </div>
+
+        <div className="row" style={{height:'100px'}}></div>
     </>
     )
   }
