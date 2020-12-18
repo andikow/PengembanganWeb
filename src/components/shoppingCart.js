@@ -1,5 +1,5 @@
 import React from 'react';
-import Produk1 from '../../assets/img/productex1.jpg'
+import Produk1 from '../assets/img/productex1.jpg'
 
 export default class ShoppingCart extends React.Component{
 

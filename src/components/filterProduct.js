@@ -1,5 +1,5 @@
 import React from 'react';
-import './filterProduct.css'
+import '../assets/css/FilterProduct.css'
 
 export default class FilterProduct extends React.Component{
   constructor() {
