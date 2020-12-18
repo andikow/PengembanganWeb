@@ -1,0 +1,16 @@
+.content {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  background-color: #FAFAFA;
+  padding-top: 20px;}
+
+
+
+a { text-decoration: none;
+  color: #2e3139;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s; }
+
+a:focus, a:hover { text-decoration: none; color: #0943c6; }
+.content{padding-top:80px; padding-bottom:80px}

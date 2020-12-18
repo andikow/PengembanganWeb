@@ -2,7 +2,7 @@ import React from 'react';
 import payment from './../assets/img/payment.png';
 import shipping from './../assets/img/shipping.png';
 
-export default class About extends React.Component{
+export default class Footer extends React.Component{
 
   render(){
 
