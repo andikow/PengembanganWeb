@@ -7,7 +7,7 @@ import Home from './components/home.js';
 
 function App() {
   return (
-    <div className="container-fluid p-0">
+    <div className="container-fluid px-0 no-gutters">
       <Header />
       <Home />
       <Footer />

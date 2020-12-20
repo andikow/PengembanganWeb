@@ -10,7 +10,7 @@ export default class Header extends React.Component{
 
     return(
     <>
-          <div className="row d-flex align-content-center flex-wrap bg-primary">
+          <div className="row no-gutters d-flex align-content-center flex-wrap bg-primary">
             <div className="col-lg-5 d-flex flex-wrap">
               <button type="button" className="col-lg-12 no-gutters btn btn-danger" data-toggle="tooltip" data-placement="right" title="Tooltip on right">
                 <i className = "fal fa-tag fa-fw"></i><b>BLACK FRIDAY SALE! 20% OFF EVERYTHING</b>
@@ -36,7 +36,7 @@ export default class Header extends React.Component{
             </div>
 
           </div>
-          <div id="navbar" className="row align-content-center bg-secondary" style={{height:"100px", marginRight:"0px", marginLeft:"0px"}}>
+          <div id="navbar" className="row no-gutters align-content-center bg-secondary" style={{height:"100px"}}>
             <div className="col-lg-3 d-flex justify-content-center">
               <img src={Logo} alt="logo" />
             </div>

@@ -9,7 +9,7 @@ export default class Footer extends React.Component{
     return(
     <>
 <footer className="page-footer font-small stylish-color-dark pt-4 btn-primary">
-    <div className="row">
+    <div className="row no-gutters">
       <div class="col-lg-4 text-center text-white" style={{fontSize:20}}>
         <i className="fa fa-lock"></i>
         <p>All secure payment methods</p>
