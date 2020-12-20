@@ -13,4 +13,4 @@ a { text-decoration: none;
   transition: all 0.3s; }
 
 a:focus, a:hover { text-decoration: none; color: #0943c6; }
-.content{padding-top:80px; padding-bottom:80px};
+.content{padding-top:80px; padding-bottom:80px}
