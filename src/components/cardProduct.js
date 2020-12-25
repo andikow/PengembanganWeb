@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/css/CardProduct.css';
+import '../assets/css/cardProduct.css';
 import Produk1 from '../assets/img/productex1.jpg'
 
 export default class CardProduct extends React.Component{

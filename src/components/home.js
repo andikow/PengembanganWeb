@@ -17,7 +17,7 @@ export default class Home extends React.Component{
     <>
         <div className="row no-gutters headline">
           <div className="col-lg-5 bg-success">
-            <div className="row">
+            <div className="row no-gutters">
               {/*Foto Headline Kiri*/}
               <div className="col-lg-6">
                 <img src={model_custom} className="float-left" alt="model_custom" width="300px" />
@@ -36,7 +36,7 @@ export default class Home extends React.Component{
 
           </div>
           <div className="offset-lg-2 col-lg-5 bg-warning">
-            <div className="row">
+            <div className="row no-gutters">
               {/*Headline Kanan*/}
               <div className="col-lg-6 bg-warning d-flex align-content-center flex-wrap" style={{transform:'skewX(-15deg)', right:'80px'}}>
                 <div className="row" style={{transform:'skewX(15deg)', position:'relative', right:'-50px'}}>
