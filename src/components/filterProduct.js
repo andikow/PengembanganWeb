@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/css/FilterProduct.css'
+import '../assets/css/filterProduct.css'
 
 export default class FilterProduct extends React.Component{
   constructor() {
@@ -34,10 +34,10 @@ export default class FilterProduct extends React.Component{
               </ul>
               </div>
               :null
-            }            
+            }
           </div>
           {/*End Filter Categories*/}
-          <div><hr></hr></div>  
+          <div><hr></hr></div>
           {/*Start Filter Products*/}
           <div className="subFilter">
             <div className="subFilter-header  d-flex justify-content-between">
@@ -59,10 +59,10 @@ export default class FilterProduct extends React.Component{
               </ul>
               </div>
               :null
-            }            
+            }
           </div>
           {/*End Filter Products*/}
-          <div><hr></hr></div> 
+          <div><hr></hr></div>
           {/*Start Filter Price Range*/}
           <div className="subFilter">
             <div className="subFilter-header  d-flex justify-content-between">
@@ -83,10 +83,10 @@ export default class FilterProduct extends React.Component{
                 </div>
               </div>
               :null
-            }            
+            }
           </div>
           {/*End Filter Price Range*/}
-          <div><hr></hr></div>  
+          <div><hr></hr></div>
           {/*Start Filter Sizes*/}
           <div className="subFilter">
             <div className="subFilter-header  d-flex justify-content-between">
@@ -103,7 +103,7 @@ export default class FilterProduct extends React.Component{
                 <div className="btn border m-2">XXL</div>
               </div>
               :null
-            }            
+            }
           </div>
           {/*End Filter Sizes*/}
           <div><hr></hr></div>
@@ -122,7 +122,7 @@ export default class FilterProduct extends React.Component{
                 <div className="btn border rounded-circle m-1 px-4 py-4" style={{backgroundColor: "#DC4E41"}}></div>
               </div>
               :null
-            }            
+            }
           </div>
           {/*End Filter Colors*/}
           <div><hr></hr></div>
@@ -130,9 +130,9 @@ export default class FilterProduct extends React.Component{
             <input classname="form-check-input" type="checkbox" id="safeSearch"/>
             <label className="form-check-label ml-2" htmlFor="safeSearch"><h4>Safe Search</h4></label>
           </div>
-          <div className="d-flex justify-content-center mt-3"><button className="btn btn-primary w-75">Apply Filter</button></div>     
+          <div className="d-flex justify-content-center mt-3"><button className="btn btn-primary w-75">Apply Filter</button></div>
         </div>
-        
+
     </>
     )
   }

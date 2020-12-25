@@ -31,7 +31,7 @@ export default class Profil extends React.Component{
 
                     <div className="content-panel">
                         <div className="content-header-wrapper">
-                            <h2 className="title">My Account</h2>
+                            <h2>My Account</h2>
                             <div class="row">
                               <div class="col">
                                 <br/>
