@@ -174,7 +174,7 @@ export default class ProductDetail extends React.Component{
                             <button className="btn border border-dark mr-2 mt-2">2XL</button>                           
                             </p>
                         </div>
-                        <div className="col-lg-6 col-12">                            
+                        <div className="col-lg-6 col-12">                                                                        
                             <p className="mt-2">
                             <i className="fa fa-star"></i>
                             <i className="fa fa-star"></i>
@@ -190,7 +190,8 @@ export default class ProductDetail extends React.Component{
                             <i className="fa fa-star"></i>
                             <i className="fa fa-star mr-2"></i>
                             Color <span className="px-2 rounded-circle bg-dark nl-2 mr-2"></span> Size M <br/> Terrific! <br/><small className="mt-1">2 November 2020</small>
-                            </p>                            
+                            </p>  
+                        <div className="row justify-content-center">                            
                             <p className="" aria-label="Page navigation">                            
                             <ul className="pagination">
                                 <li className="page-item"><a class="page-link" href="#">&#60;</a></li>
@@ -200,6 +201,7 @@ export default class ProductDetail extends React.Component{
                                 <li className="page-item"><a class="page-link" href="#">&#62;</a></li>
                             </ul>
                             </p>
+                        </div>
                         </div>
                         </div>
                     </div>

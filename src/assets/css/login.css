@@ -1,0 +1,32 @@
+.or{
+    text-align: center;
+    position: relative;
+}
+
+.or :before{
+    content: "";
+    display: block;
+    width: 800px;
+    height: 1px;
+    background: lightgrey;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    z-index: -3;
+}
+
+.or :after{
+    content: "";
+    display: block;
+    width: 800px;
+    height: 1px;
+    background: lightgrey;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    z-index: -3;
+}
+
+.or span{
+    background: white;
+}
