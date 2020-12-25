@@ -9,7 +9,7 @@ export default class Checkout extends React.Component{
 
     return(
     <>
-    <div className="content">
+    <div className="contents">
     <div className="container">
       <h1>Checkout</h1>
 	  <div className="row">

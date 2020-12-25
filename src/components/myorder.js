@@ -11,14 +11,8 @@ export default class MyOrder extends React.Component{
     <>
     <div className="content">
       <div className="container">
-        <nav aria-label="breadcrumb">
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item"><a href="#">Home</a></li>
-            <li className="breadcrumb-item active" aria-current="page" style={{fontWeight:'bold'}}>My Orders</li>
-          </ol>
-        </nav>
 
-          <h2>Order Overview</h2>
+          <h2>My Orders</h2>
           <br/>
 
           <div className="row pt-2">
