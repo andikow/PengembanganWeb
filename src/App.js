@@ -13,7 +13,11 @@ import FilterProduct from './components/filterProduct.js';
 import MyOrder from './components/myorder.js';
 import ProductDetail from './components/productDetail.js';
 import ShoppingCart from './components/shoppingCart.js';
-import SortBy from './components/sortBy.js'
+import SortBy from './components/sortBy.js';
+import ChangePassword from './components/changePassword.js';
+import ForgotPassword from './components/forgotPassword.js';
+import Login from './components/login.js';
+import Register from './components/register.js';
 
 function App() {
   return (
