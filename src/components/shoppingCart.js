@@ -9,11 +9,11 @@ export default class ShoppingCart extends React.Component{
     <>
         <div className="modal">
             <div className="modal-header">
-                <div className="modal-title"><h1>Shopping Cart</h1></div>    
-            </div> 
+                <div className="modal-title"><h1>Shopping Cart</h1></div>
+            </div>
             <div className="modal-body text-center">
             {/* Start If shopping cart empty */}
-               {/* <p>Your cart is empty. Go shopping!</p>     
+               {/* <p>Your cart is empty. Go shopping!</p>
                <button className="btn btn-outline-primary" >Continue Shopping</button>   */}
             {/* End If shopping cart empty       */}
 
@@ -31,7 +31,7 @@ export default class ShoppingCart extends React.Component{
                 <h4>Rp100.000</h4>
             </div>
             </div>
-            </div> 
+            </div>
             <hr />
             <div className="modal-body">
                 <div className="row justify-content-between">

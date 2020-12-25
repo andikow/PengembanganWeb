@@ -1,6 +1,10 @@
 import React from 'react';
 import Logo from './../assets/img/logo.png';
 import './../assets/css/header.css';
+import {BrowserRouter as Router,
+        Route,
+        Link
+      } from 'react-router-dom';
 import loadMyScript from './../assets/js/main.js';
 export default class Header extends React.Component{
   componentDidMount() {
@@ -36,11 +40,12 @@ export default class Header extends React.Component{
             </div>
 
           </div>
+
           <div id="navbar" className="row no-gutters align-content-center bg-secondary" style={{height:"100px"}}>
             <div className="col-lg-3 d-flex justify-content-center">
-              <img src={Logo} alt="logo" />
+              <Link to = "/"><img src={Logo} alt="logo" /></Link>
             </div>
-            <div className="col-lg-2">
+            <div className="col-lg-2 btn">
               <div className="row d-flex justify-content-center">
                 <h3>Create</h3>
               </div>
@@ -48,15 +53,16 @@ export default class Header extends React.Component{
                 <h5 className="gray">Custom Products</h5>
               </div>
             </div>
-
-            <div className="col-lg-2">
-              <div className="row d-flex justify-content-center">
-                <h3>Shop</h3>
+              <div className="col-lg-2 btn">
+                <Link to ="/shop">
+                <div className="row d-flex justify-content-center">
+                  <h3>Shop</h3>
+                </div>
+                <div className="row d-flex justify-content-center">
+                  <h5 className="gray">Marketplace Designs</h5>
+                </div>
+              </Link>
               </div>
-              <div className="row d-flex justify-content-center">
-                <h5 className="gray">Marketplace Designs</h5>
-              </div>
-            </div>
             <form class="col-lg-5 form-inline">
               <input class="form-control col-lg-7 mr-sm-2" type="text" placeholder="Find Designs or Products" />
               <button class="btn btn-info my-2 my-sm-2" type="submit">Search</button>
