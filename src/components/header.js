@@ -6,6 +6,7 @@ import {BrowserRouter as Router,
         Link
       } from 'react-router-dom';
 import loadMyScript from './../assets/js/main.js';
+import Login from './login.js';
 export default class Header extends React.Component{
   componentDidMount() {
     loadMyScript();
@@ -14,6 +15,7 @@ export default class Header extends React.Component{
 
     return(
     <>
+    <Login />
           <div className="row no-gutters d-flex align-content-center flex-wrap bg-primary">
             <div className="col-lg-5 d-flex flex-wrap">
               <button type="button" className="col-lg-12 no-gutters btn btn-danger" data-toggle="tooltip" data-placement="right" title="Tooltip on right">
@@ -26,13 +28,29 @@ export default class Header extends React.Component{
               <div className="navbar navbar-dark bg-primary navbar-expand-lg p-0">
                 <ul class="navbar-nav mr-auto">
                   <li class="nav-item">
-                    <a class="nav-link" href="#"><i className = "fal fa-question fa-fw ml-1 mr-1"></i>Help</a>
+                    <button type="button" class="btn btn-sm px-2" data-toggle="#" data-target="#">
+                      <a class="nav-link p-0">
+                        <i className = "fal fa-question fa-fw ml-1 mr-1"></i>
+                        <span style ={{fontSize: '0.8rem'}}>Help</span>
+                      </a>
+                    </button>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#"><i className = "fal fa-user fa-fw"></i>Login<i className = "fas fa-caret-down fa-fw ml-1"></i></a>
+                    <button type="button" class="btn btn-sm px-2" data-toggle="modal" data-target="#modalLogin">
+                      <a class = "nav-link p-0">
+                        <i className = "fal fa-user fa-fw"></i>
+                        <span style ={{fontSize: '0.8rem'}}>Login</span>
+                        <i className = "fas fa-caret-down fa-fw ml-1"></i>
+                      </a>
+                    </button>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#"><i className = "fal fa-shopping-cart fa-fw mr-1"></i>Cart</a>
+                    <button type="button" class="btn btn-sm px-2" data-toggle="#" data-target="#">
+                      <a class="nav-link p-0">
+                        <i className = "fal fa-shopping-cart fa-fw mr-1"></i>
+                      <span style ={{fontSize: '0.8rem'}}>Cart</span>
+                    </a>
+                    </button>
                   </li>
                 </ul>
               </div>
