@@ -7,6 +7,7 @@ import {BrowserRouter as Router,
       } from 'react-router-dom';
 import loadMyScript from './../assets/js/main.js';
 import Login from './login.js';
+import ShoppingCart from './shoppingCart.js';
 export default class Header extends React.Component{
   componentDidMount() {
     loadMyScript();
@@ -16,6 +17,7 @@ export default class Header extends React.Component{
     return(
     <>
     <Login />
+    <ShoppingCart />
           <div className="row no-gutters d-flex align-content-center flex-wrap bg-primary">
             <div className="col-lg-5 d-flex flex-wrap">
               <button type="button" className="col-lg-12 no-gutters btn btn-danger" data-toggle="tooltip" data-placement="right" title="Tooltip on right">
@@ -36,8 +38,8 @@ export default class Header extends React.Component{
                     </button>
                   </li>
                   <li class="nav-item">
-                    <button type="button" class="btn btn-sm px-2" data-toggle="modal" data-target="#modalLogin">
-                      <a class = "nav-link p-0">
+                    <button type="button" className="btn btn-sm px-2" data-toggle="modal" data-target="#modalLogin">
+                      <a className = "nav-link p-0">
                         <i className = "fal fa-user fa-fw"></i>
                         <span style ={{fontSize: '0.8rem'}}>Login</span>
                         <i className = "fas fa-caret-down fa-fw ml-1"></i>
@@ -45,8 +47,8 @@ export default class Header extends React.Component{
                     </button>
                   </li>
                   <li class="nav-item">
-                    <button type="button" class="btn btn-sm px-2" data-toggle="#" data-target="#">
-                      <a class="nav-link p-0">
+                    <button type="button" className="btn btn-sm px-2" data-toggle="modal" data-target="#modalCart">
+                      <a className="nav-link p-0">
                         <i className = "fal fa-shopping-cart fa-fw mr-1"></i>
                       <span style ={{fontSize: '0.8rem'}}>Cart</span>
                     </a>

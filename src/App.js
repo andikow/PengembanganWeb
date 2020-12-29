@@ -18,6 +18,7 @@ import ChangePassword from './components/changePassword.js';
 import ForgotPassword from './components/forgotPassword.js';
 import Login from './components/login.js';
 import Register from './components/register.js';
+import Shop from './components/shop.js';
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
       <Router>
       <Header />
       <Route path="/" exact component = {Home}/>
-      <Route path="/shop" component = {Checkout}/>
+      <Route path="/shop" component = {Shop}/>
       </Router>
       <Footer />
     </div>
