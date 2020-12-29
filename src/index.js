@@ -9,7 +9,10 @@ import './assets/css/custom.css';
 import './index.css';
 
 $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
+  $('[data-toggle="tooltip"]').tooltip();
+  $(".closeModal").on('click', function() {
+        $('.modal').modal('toggle');
+    });
 })
 
 ReactDOM.render(
