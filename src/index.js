@@ -11,7 +11,10 @@ import './index.css';
 $(function () {
   $('[data-toggle="tooltip"]').tooltip();
   $(".closeModal").on('click', function() {
-        $('.modal').modal('toggle');
+        $('.modal').modal('hide');
+    });
+  $('#modalCart').on('show.bs.modal', function () {
+    $('#modalCart').css("margin-left", $(window).width() - $('.modal-content').width() - 6/8*$(window).width());
     });
 })
 

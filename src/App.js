@@ -27,6 +27,8 @@ function App() {
       <Header />
       <Route path="/" exact component = {Home}/>
       <Route path="/shop" component = {Shop}/>
+      <Route path="/checkout" component = {Checkout}/>
+      <Route path="/myorder" component = {MyOrder}/>
       </Router>
       <Footer />
     </div>

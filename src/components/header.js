@@ -1,10 +1,7 @@
 import React from 'react';
 import Logo from './../assets/img/logo.png';
 import './../assets/css/header.css';
-import {BrowserRouter as Router,
-        Route,
-        Link
-      } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import loadMyScript from './../assets/js/main.js';
 import Login from './login.js';
 import ShoppingCart from './shoppingCart.js';

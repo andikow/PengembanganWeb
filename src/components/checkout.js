@@ -1,7 +1,7 @@
 import React from 'react';
 import './../assets/css/checkout.css';
 import paypal from './../assets/img/paypal.png';
-import Qtycheckout from './qtycheckout.js';
+import InputNumeric from './qtycheckout.js';
 
 export default class Checkout extends React.Component{
 
@@ -481,7 +481,7 @@ export default class Checkout extends React.Component{
 
                             <br/><br/>
                             <label>Qty :</label>
-                            <Qtycheckout/>
+                            <InputNumeric/>
 
                           </div>
                         </div>

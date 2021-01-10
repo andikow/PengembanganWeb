@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import "./../assets/css/qtycheckout.css";
 
-class inputPage extends Component {
+export default class InputNumeric extends Component {
   state = {
     value: 0
   }
 
   decrease = () => {
-    if(this.state.value != 0){
+    if(this.state.value !== 0){
       this.setState({
         value: this.state.value - 1
       });
@@ -29,5 +29,3 @@ class inputPage extends Component {
       );
   }
 }
-
-export default inputPage;
