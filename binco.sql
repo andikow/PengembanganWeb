@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2021 at 06:06 AM
+-- Generation Time: Jan 12, 2021 at 12:18 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -33,6 +33,13 @@ CREATE TABLE `account` (
   `Password` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `account`
+--
+
+INSERT INTO `account` (`CustomerID`, `Email`, `Password`) VALUES
+(1, 'sona@gmail.com', 'sona123');
+
 -- --------------------------------------------------------
 
 --
@@ -44,6 +51,13 @@ CREATE TABLE `color` (
   `ColorName` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `color`
+--
+
+INSERT INTO `color` (`ColorID`, `ColorName`) VALUES
+('#FFFFFF', 'Pure White');
+
 -- --------------------------------------------------------
 
 --
@@ -52,15 +66,41 @@ CREATE TABLE `color` (
 
 CREATE TABLE `orderdetail` (
   `OrderID` int(8) NOT NULL,
+  `ProductID` int(8) NOT NULL,
+  `ColorID` varchar(8) NOT NULL,
+  `Size` varchar(3) NOT NULL,
+  `Qty` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orderdetail`
+--
+
+INSERT INTO `orderdetail` (`OrderID`, `ProductID`, `ColorID`, `Size`, `Qty`) VALUES
+(1, 1, '#FFFFFF', 'S', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orderheader`
+--
+
+CREATE TABLE `orderheader` (
+  `OrderID` int(8) NOT NULL,
   `OrderDate` date NOT NULL,
   `ShippingID` int(8) NOT NULL,
-  `Qty` int(11) NOT NULL,
-  `Subtotal` int(11) NOT NULL,
   `ShippingCosts` int(11) NOT NULL,
   `SalesTax` int(11) NOT NULL,
-  `ProductID` int(8) NOT NULL,
+  `Total` int(11) NOT NULL,
   `StatusID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orderheader`
+--
+
+INSERT INTO `orderheader` (`OrderID`, `OrderDate`, `ShippingID`, `ShippingCosts`, `SalesTax`, `Total`, `StatusID`) VALUES
+(1, '2021-01-12', 1, 40000, 2500, 265000, 1);
 
 -- --------------------------------------------------------
 
@@ -73,6 +113,13 @@ CREATE TABLE `orderstatusdetail` (
   `StatusID` varchar(30) NOT NULL,
   `Date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orderstatusdetail`
+--
+
+INSERT INTO `orderstatusdetail` (`OrderID`, `StatusID`, `Date`) VALUES
+(1, '1', '2021-01-12');
 
 -- --------------------------------------------------------
 
@@ -87,6 +134,13 @@ CREATE TABLE `productdetail` (
   `Qty` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `productdetail`
+--
+
+INSERT INTO `productdetail` (`ProductID`, `ColorID`, `Size`, `Qty`) VALUES
+(1, '#FFFFFF', 'S', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -100,9 +154,16 @@ CREATE TABLE `productheader` (
   `Category` varchar(50) NOT NULL,
   `Description` varchar(250) NOT NULL,
   `PictureLink1` varchar(100) NOT NULL,
-  `PictureLink2` varchar(100) NOT NULL,
-  `PictureLink3` varchar(100) NOT NULL
+  `PictureLink2` varchar(100) DEFAULT NULL,
+  `PictureLink3` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `productheader`
+--
+
+INSERT INTO `productheader` (`ProductID`, `Name`, `Price`, `Category`, `Description`, `PictureLink1`, `PictureLink2`, `PictureLink3`) VALUES
+(1, 'Eco T-Shirt', 250000, 'T-Shirt', 'Premium T-Shirt with \'Eco\' Design\r\n\r\nMaterial: Cotton\r\nFabric weight: 4.42 oz (lightweight)', 'http://....', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -117,6 +178,13 @@ CREATE TABLE `reviews` (
   `Stars` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`CustomerID`, `OrderID`, `Review`, `Stars`) VALUES
+(1, 1, 'Good quality', 5);
+
 -- --------------------------------------------------------
 
 --
@@ -129,13 +197,20 @@ CREATE TABLE `shippingdetail` (
   `FirstName` varchar(25) NOT NULL,
   `LastName` varchar(50) DEFAULT NULL,
   `Address` varchar(50) NOT NULL,
-  `Building` varchar(50) NOT NULL,
+  `Building` varchar(50) DEFAULT NULL,
   `Country` varchar(50) NOT NULL,
   `ZipCode` varchar(20) NOT NULL,
   `City` varchar(50) NOT NULL,
   `ShippingMethod` varchar(20) NOT NULL,
   `Phone` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `shippingdetail`
+--
+
+INSERT INTO `shippingdetail` (`ShippingID`, `CustomerID`, `FirstName`, `LastName`, `Address`, `Building`, `Country`, `ZipCode`, `City`, `ShippingMethod`, `Phone`) VALUES
+(1, 1, 'Kim', 'Sona', 'Jl. Lily No. 1', NULL, 'Indonesia', '20220', 'Medan', 'JNE', '081234567890');
 
 --
 -- Indexes for dumped tables
@@ -158,8 +233,14 @@ ALTER TABLE `color`
 --
 ALTER TABLE `orderdetail`
   ADD PRIMARY KEY (`OrderID`),
-  ADD KEY `FK_ShippingID` (`ShippingID`),
-  ADD KEY `FK_ProductID` (`ProductID`);
+  ADD KEY `FK_ProductDetail` (`ProductID`,`ColorID`,`Size`);
+
+--
+-- Indexes for table `orderheader`
+--
+ALTER TABLE `orderheader`
+  ADD PRIMARY KEY (`OrderID`),
+  ADD KEY `FK_ShippingID` (`ShippingID`);
 
 --
 -- Indexes for table `orderstatusdetail`
@@ -202,25 +283,25 @@ ALTER TABLE `shippingdetail`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `CustomerID` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `CustomerID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `orderdetail`
+-- AUTO_INCREMENT for table `orderheader`
 --
-ALTER TABLE `orderdetail`
-  MODIFY `OrderID` int(8) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `orderheader`
+  MODIFY `OrderID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `productheader`
 --
 ALTER TABLE `productheader`
-  MODIFY `ProductID` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `ProductID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `shippingdetail`
 --
 ALTER TABLE `shippingdetail`
-  MODIFY `ShippingID` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `ShippingID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -230,27 +311,33 @@ ALTER TABLE `shippingdetail`
 -- Constraints for table `orderdetail`
 --
 ALTER TABLE `orderdetail`
-  ADD CONSTRAINT `FK_ProductID` FOREIGN KEY (`ProductID`) REFERENCES `productheader` (`ProductID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK3_OrderID` FOREIGN KEY (`OrderID`) REFERENCES `orderheader` (`OrderID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_ProductDetail` FOREIGN KEY (`ProductID`,`ColorID`,`Size`) REFERENCES `productdetail` (`ProductID`, `ColorID`, `Size`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `orderheader`
+--
+ALTER TABLE `orderheader`
   ADD CONSTRAINT `FK_ShippingID` FOREIGN KEY (`ShippingID`) REFERENCES `shippingdetail` (`ShippingID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `orderstatusdetail`
 --
 ALTER TABLE `orderstatusdetail`
-  ADD CONSTRAINT `FK_OrderID` FOREIGN KEY (`OrderID`) REFERENCES `orderdetail` (`OrderID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `FK_OrderID` FOREIGN KEY (`OrderID`) REFERENCES `orderheader` (`OrderID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `productdetail`
 --
 ALTER TABLE `productdetail`
-  ADD CONSTRAINT `FK2_ProductID` FOREIGN KEY (`ProductID`) REFERENCES `productheader` (`ProductID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK2_ProductID` FOREIGN KEY (`ProductID`) REFERENCES `productheader` (`ProductID`),
   ADD CONSTRAINT `FK_ColorID` FOREIGN KEY (`ColorID`) REFERENCES `color` (`ColorID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `reviews`
 --
 ALTER TABLE `reviews`
-  ADD CONSTRAINT `FK2_OrderID` FOREIGN KEY (`OrderID`) REFERENCES `orderdetail` (`OrderID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK2_OrderID` FOREIGN KEY (`OrderID`) REFERENCES `orderheader` (`OrderID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK3_CustomerID` FOREIGN KEY (`CustomerID`) REFERENCES `account` (`CustomerID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
