@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2021 at 09:35 AM
+-- Generation Time: Jan 14, 2021 at 04:06 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -48,6 +48,18 @@ INSERT INTO `account` (`CustomerID`, `Email`, `Password`) VALUES
 (8, 'kahado@gmail.com', 'hahadoka'),
 (9, 'leehi88@gmail.com', 'hihilee80'),
 (10, 'jihyosong@gmail.com', 'sjhsjh0000');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `CategoryID` int(11) NOT NULL,
+  `Description` varchar(70) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+-- Error reading data for table binco.category: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `binco`.`category`' at line 1
 
 -- --------------------------------------------------------
 
@@ -238,7 +250,7 @@ CREATE TABLE `productheader` (
   `ProductID` int(8) NOT NULL,
   `Name` varchar(50) NOT NULL,
   `Price` int(11) NOT NULL,
-  `Category` varchar(50) NOT NULL,
+  `CategoryID` int(11) NOT NULL,
   `Description` varchar(1000) NOT NULL,
   `PictureLink1` varchar(100) NOT NULL,
   `PictureLink2` varchar(100) DEFAULT NULL,
@@ -249,17 +261,17 @@ CREATE TABLE `productheader` (
 -- Dumping data for table `productheader`
 --
 
-INSERT INTO `productheader` (`ProductID`, `Name`, `Price`, `Category`, `Description`, `PictureLink1`, `PictureLink2`, `PictureLink3`) VALUES
-(1, 'Eco T-Shirt', 250000, 'T-Shirt', 'Premium T-Shirt with \'Eco\' Design\r\n\r\nUnisex\r\nMaterial: Cotton\r\nFabric weight: 4.42 oz (lightweight)', 'http://....', NULL, NULL),
-(2, 'Jipyeong Hoodie', 400000, 'Hoodie', 'This Jipyeong Hoodie is a comfortable classic. The hooded sweatshirt has become a staple in any wardrobe. Kangaroo-style front pocket is perfect for your phone, keys or anything else you want to stash.\r\n\r\nUnisex\r\n50% cotton/50% polyester | Fabric Weight: 7.8 oz (midweight)\r\nRibbed cuffs and waist hem\r\nAdjustable drawstring hood\r\n', 'http://', NULL, NULL),
-(3, 'Santa Cruz Sweatshirt', 350000, 'Crewneck Sweatshirt', 'This classic has stood the test of time. Always in fashion, this crewneck sweatshirt is perfect as an outer, under or single layer. Soft and comfortable, this stand-by is a must.\r\n\r\nUnisex\r\n50% preshrunk cotton/50% polyester\r\nFabric Weight: 7.75 oz (midweight)\r\nPill-resistant\r\n1X1 Lycra® spandex ribbed collar, cuffs and waist\r\nFully double-stitched', 'http://', NULL, NULL),
-(4, 'Swag V Neck Sweatshirt', 350000, 'V Neck Sweatshirt', 'This V neck sweatshirt is perfect as an outer, under or single layer. Soft and comfortable, this stand-by is a must.\r\n\r\nUnisex\r\n50% preshrunk cotton/50% polyester \r\nFabric Weight: 7.75 oz (midweight)\r\nPill-resistant\r\n1X1 Lycra® spandex ribbed collar, cuffs and waist\r\nFully double-stitched', 'http://', NULL, NULL),
-(5, 'Red Heart Polo Shirt', 300000, 'Polo Shirt', 'A timeless, perfect companion for the office, the golf course, or everyday wear.\r\n\r\nUnisex\r\n100% cotton \r\nHeavyweight fabric (6 oz)\r\nThree-button closure\r\nTopstitching for a crisp finish throughout', 'http://', NULL, NULL),
-(6, 'Keep Going V Neck T-Shirt', 250000, 'V Neck T-Shirt', 'A little V in the neckline can make a T-shirt look classier. Nice enough to wear to the club and casual enough to wear around the house, this super soft jersey cotton V-neck is versatility at its finest.\r\n\r\nUnisex\r\n100% cotton (deep heather is 52% cotton/48% polyester and marble colors are 91% polyester/9% cotton)\r\nFabric weight: 4.2 oz (lightweight)\r\nReinforced shoulder and side seam construction retains shape and elasticity, comfort and support\r\nDouble-stitched sleeves and waist\r\nRibbed v-neck collar', 'http://', NULL, NULL),
-(7, 'Peace Tank Top', 200000, 'Tank Top', 'The premium tank is ideal for anything from yoga and Pilates or gym. Our entire collection is optimized for vibrant print results.\r\n\r\nUnisex\r\n100% cotton (heather gray is 95% cotton/5% viscose. charcoal gray is 80% cotton/20% polyester)\r\nFabric Weight: 4.42 oz (lightweight)\r\nFairly produced, certified and triple audited', 'http://', NULL, NULL),
-(8, 'Cute Cat Long Sleeve Shirt', 300000, 'Long Sleeve Shirt', 'This premium long sleeve t-shirt is as close to perfect as can be. Soft, comfortable and durable.\r\n\r\n100% cotton (heather gray and heather ice blue are 95%/5% viscose. charcoal gray is 80% cotton/20% polyester. heather burgundy is 60% cotton/40% polyester)\r\nFabric Weight: 4.42 oz (heavyweight)\r\nFairly produced, certified and triple audited.\r\nDouble stitched, reinforced seams at shoulder, sleeve, collar and waist\r\nOptimized for beautiful brilliance across all printing methods', 'http://', NULL, NULL),
-(9, 'Milk Mocha Bear T-Shirt', 250000, 'T-Shirt', 'Premium T-Shirt with Milk Mocha Bear Design\r\n\r\nUnisex\r\nMaterial: Cotton\r\nFabric weight: 4.42 oz (lightweight)', 'http://', NULL, NULL),
-(10, 'Calm Hoodie', 400000, 'Hoodie', 'This Calm Design Hoodie is a comfortable classic. The hooded sweatshirt has become a staple in any wardrobe. Kangaroo-style front pocket is perfect for your phone, keys or anything else you want to stash.\r\n\r\nUnisex\r\n50% cotton/50% polyester | Fabric Weight: 7.8 oz (midweight)\r\nRibbed cuffs and waist hem\r\nAdjustable drawstring hood', 'http://', NULL, NULL);
+INSERT INTO `productheader` (`ProductID`, `Name`, `Price`, `CategoryID`, `Description`, `PictureLink1`, `PictureLink2`, `PictureLink3`) VALUES
+(1, 'Eco T-Shirt', 250000, 1, 'Premium T-Shirt with \'Eco\' Design\r\n\r\nUnisex\r\nMaterial: Cotton\r\nFabric weight: 4.42 oz (lightweight)', 'http://....', NULL, NULL),
+(2, 'Jipyeong Hoodie', 400000, 2, 'This Jipyeong Hoodie is a comfortable classic. The hooded sweatshirt has become a staple in any wardrobe. Kangaroo-style front pocket is perfect for your phone, keys or anything else you want to stash.\r\n\r\nUnisex\r\n50% cotton/50% polyester | Fabric Weight: 7.8 oz (midweight)\r\nRibbed cuffs and waist hem\r\nAdjustable drawstring hood\r\n', 'http://', NULL, NULL),
+(3, 'Santa Cruz Sweatshirt', 350000, 3, 'This classic has stood the test of time. Always in fashion, this crewneck sweatshirt is perfect as an outer, under or single layer. Soft and comfortable, this stand-by is a must.\r\n\r\nUnisex\r\n50% preshrunk cotton/50% polyester\r\nFabric Weight: 7.75 oz (midweight)\r\nPill-resistant\r\n1X1 Lycra® spandex ribbed collar, cuffs and waist\r\nFully double-stitched', 'http://', NULL, NULL),
+(4, 'Swag V Neck Sweatshirt', 350000, 4, 'This V neck sweatshirt is perfect as an outer, under or single layer. Soft and comfortable, this stand-by is a must.\r\n\r\nUnisex\r\n50% preshrunk cotton/50% polyester \r\nFabric Weight: 7.75 oz (midweight)\r\nPill-resistant\r\n1X1 Lycra® spandex ribbed collar, cuffs and waist\r\nFully double-stitched', 'http://', NULL, NULL),
+(5, 'Red Heart Polo Shirt', 300000, 5, 'A timeless, perfect companion for the office, the golf course, or everyday wear.\r\n\r\nUnisex\r\n100% cotton \r\nHeavyweight fabric (6 oz)\r\nThree-button closure\r\nTopstitching for a crisp finish throughout', 'http://', NULL, NULL),
+(6, 'Keep Going V Neck T-Shirt', 250000, 6, 'A little V in the neckline can make a T-shirt look classier. Nice enough to wear to the club and casual enough to wear around the house, this super soft jersey cotton V-neck is versatility at its finest.\r\n\r\nUnisex\r\n100% cotton (deep heather is 52% cotton/48% polyester and marble colors are 91% polyester/9% cotton)\r\nFabric weight: 4.2 oz (lightweight)\r\nReinforced shoulder and side seam construction retains shape and elasticity, comfort and support\r\nDouble-stitched sleeves and waist\r\nRibbed v-neck collar', 'http://', NULL, NULL),
+(7, 'Peace Tank Top', 200000, 7, 'The premium tank is ideal for anything from yoga and Pilates or gym. Our entire collection is optimized for vibrant print results.\r\n\r\nUnisex\r\n100% cotton (heather gray is 95% cotton/5% viscose. charcoal gray is 80% cotton/20% polyester)\r\nFabric Weight: 4.42 oz (lightweight)\r\nFairly produced, certified and triple audited', 'http://', NULL, NULL),
+(8, 'Cute Cat Long Sleeve Shirt', 300000, 8, 'This premium long sleeve t-shirt is as close to perfect as can be. Soft, comfortable and durable.\r\n\r\n100% cotton (heather gray and heather ice blue are 95%/5% viscose. charcoal gray is 80% cotton/20% polyester. heather burgundy is 60% cotton/40% polyester)\r\nFabric Weight: 4.42 oz (heavyweight)\r\nFairly produced, certified and triple audited.\r\nDouble stitched, reinforced seams at shoulder, sleeve, collar and waist\r\nOptimized for beautiful brilliance across all printing methods', 'http://', NULL, NULL),
+(9, 'Milk Mocha Bear T-Shirt', 250000, 1, 'Premium T-Shirt with Milk Mocha Bear Design\r\n\r\nUnisex\r\nMaterial: Cotton\r\nFabric weight: 4.42 oz (lightweight)', 'http://', NULL, NULL),
+(10, 'Calm Hoodie', 400000, 2, 'This Calm Design Hoodie is a comfortable classic. The hooded sweatshirt has become a staple in any wardrobe. Kangaroo-style front pocket is perfect for your phone, keys or anything else you want to stash.\r\n\r\nUnisex\r\n50% cotton/50% polyester | Fabric Weight: 7.8 oz (midweight)\r\nRibbed cuffs and waist hem\r\nAdjustable drawstring hood', 'http://', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -324,6 +336,12 @@ ALTER TABLE `account`
   ADD PRIMARY KEY (`CustomerID`);
 
 --
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`CategoryID`);
+
+--
 -- Indexes for table `color`
 --
 ALTER TABLE `color`
@@ -360,7 +378,8 @@ ALTER TABLE `productdetail`
 -- Indexes for table `productheader`
 --
 ALTER TABLE `productheader`
-  ADD PRIMARY KEY (`ProductID`);
+  ADD PRIMARY KEY (`ProductID`),
+  ADD KEY `FK_CategoryID` (`CategoryID`);
 
 --
 -- Indexes for table `reviews`
@@ -385,6 +404,12 @@ ALTER TABLE `shippingdetail`
 --
 ALTER TABLE `account`
   MODIFY `CustomerID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `orderheader`
@@ -433,6 +458,12 @@ ALTER TABLE `orderstatusdetail`
 ALTER TABLE `productdetail`
   ADD CONSTRAINT `FK2_ProductID` FOREIGN KEY (`ProductID`) REFERENCES `productheader` (`ProductID`),
   ADD CONSTRAINT `FK_ColorID` FOREIGN KEY (`ColorID`) REFERENCES `color` (`ColorID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `productheader`
+--
+ALTER TABLE `productheader`
+  ADD CONSTRAINT `FK_CategoryID` FOREIGN KEY (`CategoryID`) REFERENCES `category` (`CategoryID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `reviews`
