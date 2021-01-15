@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 14, 2021 at 04:06 PM
+-- Generation Time: Jan 15, 2021 at 03:34 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -59,7 +59,20 @@ CREATE TABLE `category` (
   `CategoryID` int(11) NOT NULL,
   `Description` varchar(70) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
--- Error reading data for table binco.category: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `binco`.`category`' at line 1
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`CategoryID`, `Description`) VALUES
+(1, 'T-Shirt'),
+(2, 'Hoodie'),
+(3, 'Crewneck Sweatshirt'),
+(4, 'V Neck SweatShirt'),
+(5, 'Polo Shirt'),
+(6, 'V Neck T-Shirt'),
+(7, 'Tank Top'),
+(8, 'Long Sleeve Shirt');
 
 -- --------------------------------------------------------
 
