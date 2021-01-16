@@ -228,7 +228,7 @@ export default class Profil extends React.Component{
                                               a
                                             </td>
                                             <td class="text-danger">
-                                             <span><i class="fa-lg far fa-times"></i></span>&emsp;Cancel
+                                             <span><i class="fa-lg fas fa-times"></i></span>&emsp;Cancel
                                             </td>
                                           </tr>
 
