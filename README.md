@@ -1,3 +1,9 @@
+Cara menjalankan db dengan reactjs:
+1. Jalankan XAMPP (Apache dan MySQL)
+2. Jika baru pertama kali import binco.sql ke phpMyAdmin
+3. Jalankan di cmd file js yang berisi perintah untuk db (caranya ketik node db.js)
+4. Jalankan react (caranya ketik npm start)
+
 Catatan Untuk Tugas Web:
 1. Ikuti panduan dari situs spreadshirt.com
 2. Kalau mau edit bootstrapnya disitus https://bootstrap.build/app
