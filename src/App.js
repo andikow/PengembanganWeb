@@ -55,7 +55,7 @@ function App() {
       <Route path="/" exact component = {Home}/>
       <Route path="/aboutus" component = {AboutUs}/>
       <Route path="/admin/addproduct" component = {AddProduct}/>
-      <Route path="/admin" component = {Admin}/>
+      <Route path="/admin" exact component = {Admin}/>
       <Route path="/admin/order1" component = {AdminOrder}/>
       <Route path="/admin/order2" component = {AdminOrder2}/>
       <Route path="/admin/order3" component = {AdminOrder3}/>
@@ -83,7 +83,7 @@ function App() {
       <Route path="/payment2" component = {Payment2}/>
       <Route path="/privacy" component = {Privacy}/>
       <Route path="/productdetail" component = {ProductDetail}/>
-      <Route path="/profil" component = {Profil}/>
+      <Route path="/profil" exact component = {Profil}/>
       <Route path="/profil/order" component = {ProfilOrder}/>
       <Route path="/profil/sosial" component = {ProfilSosial}/>
       <Route path="/qtycheckout" component = {QtyCheckout}/>
