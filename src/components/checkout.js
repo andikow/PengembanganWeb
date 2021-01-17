@@ -421,7 +421,9 @@ export default class Checkout extends React.Component{
                             </div>
                           </div>
                           <div class="co l-lg-3 mr-2">
+                          <Link to="/myorder">
                             <button className="btn btn-danger my-0 font-weight-bold" type="button">Buy now</button>
+                            </Link>
                           </div>
 
                         </div>

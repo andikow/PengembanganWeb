@@ -64,8 +64,10 @@ export default class ShoppingCart extends React.Component{
                 <button className="btn btn-block btn-primary closeModal">Checkout
                 </button>
               </Link>
-              <button className="btn btn-outline-primary w-100">Continue Shopping
+              <Link to="/shop" className="w-100">
+              <button className="btn btn-block btn-outline-primary closeModal">Continue Shopping
               </button>
+              </Link>
             </div>
             {/* End If shopping cart is filled */}
           </div>

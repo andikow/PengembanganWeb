@@ -73,7 +73,9 @@ export default class MyOrder extends React.Component{
             </div>
 
             <div className="col d-flex flex-wrap justify-content-center align-content-center">
+            <Link to="/orderdetail">
               <button type="button" className="btn btn-outline-primary">Details</button>
+            </Link>
             </div>
 
           </div>

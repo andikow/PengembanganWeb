@@ -102,7 +102,9 @@ export default class Profil extends React.Component{
                                 </form>
                                 <br/>
                                 <br/>
+                                <Link to ="/admin/product">
                                 <button className="btn btn-danger my-0 font-weight-bold ml-auto mr-4 float-right" type="button">Add product</button>
+                                </Link>
                               </div>
                             </div>
 

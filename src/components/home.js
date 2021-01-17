@@ -46,7 +46,9 @@ export default class Home extends React.Component{
                     <h1 className="text-secondary font-weight-bold">SHOP</h1>
                     <h5 className="text-secondary mr-2 ml-2">unique designs on any products by independent designers</h5>
                   </div>
+                  <Link to ="/shop">
                   <button className="btn btn-danger font-weight-bold btn-block mr-2 ml-2">Find Something You Love</button>
+                  </Link>
                 </div>
               </div>
 

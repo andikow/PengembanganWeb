@@ -9,7 +9,7 @@ export default class Profil extends React.Component{
 
     return(
     <>
-    <div className="content">
+    <div className="content px-0">
         <div className="view-account">
             <section className="module">
                 <div className="module-inner">
@@ -19,11 +19,11 @@ export default class Profil extends React.Component{
                         </div>
                         <nav className="side-menu">
                             <ul className="nav">
-                                <li><a href="#"><span className="fa fa-tachometer-alt"></span> Dashboard</a></li>
-                                <li><a href="#"><span className="fa fa-boxes"></span> Orders</a></li>
-                                <li className="active"><a href="#"><span className="fa fa-tshirt"></span> Product</a></li>
+                                <li><Link to ="/admin"><span className="fa fa-tachometer-alt"></span> Dashboard</Link></li>
+                                <li><Link to ="/admin/order1"><span className="fa fa-boxes"></span> Orders</Link></li>
+                                <li className="active"><Link to ="/admin/product"><span className="fa fa-tshirt"></span> Product</Link></li>
                                 <br/><br/><br/><br/>
-                                <li><a href="#"><span className="fa fa-sign-out-alt"></span> Logout</a></li>
+                                <li><Link to ="/"><span className="fa fa-sign-out-alt"></span> Logout</Link></li>
                             </ul>
                         </nav>
                     </div>
@@ -31,7 +31,9 @@ export default class Profil extends React.Component{
                     <div className="content-panel">
                         <div className="content-header-wrapper">
                           <div class="row">
-                              <button className="btn btn-danger my-0 font-weight-bold ml-auto" type="button"><span><i class="fas fa-plus"></i></span>&emsp;Add new products</button>
+                          <Link to ="/admin/addproduct">
+                              <button className="btn btn-danger my-0 font-weight-bold" type="button"><span><i class="fas fa-plus"></i></span>&emsp;Add new products</button>
+                              </Link>
                               <div class=" pt-4 col-md-12">
                                 <div class="card">
                                   <div class="card-body">
@@ -99,7 +101,9 @@ export default class Profil extends React.Component{
                                               a
                                             </td>
                                             <td>
+                                            <Link to ="/admin/editproduct">
                                               <p class="font-weight-bold" style={{color:'#63BCC9', width:50}}><i class="fas fa-edit"></i> Edit</p>
+                                              </Link>
                                             </td>
                                           </tr>
                                           <tr>
@@ -131,7 +135,9 @@ export default class Profil extends React.Component{
                                               a
                                             </td>
                                             <td>
+                                            <Link to ="/admin/editproduct">
                                               <p class="font-weight-bold" style={{color:'#63BCC9', width:50}}><i class="fas fa-edit"></i> Edit</p>
+                                              </Link>
                                             </td>
                                           </tr>
 

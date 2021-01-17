@@ -10,7 +10,7 @@ export default class Profil extends React.Component{
 
     return(
     <>
-    <div className="content">
+    <div className="content px-0">
         <div className="view-account">
             <section className="module">
                 <div className="module-inner">
@@ -21,12 +21,12 @@ export default class Profil extends React.Component{
                         </div>
                         <nav className="side-menu">
                             <ul className="nav">
-                                <li><a href="#"><span className="fa fa-user"></span> My Account</a></li>
-                                <li className="active"><a href="#"><span className="fa fa-box-alt"></span> My Orders</a></li>
-                                <li><a href="#"><span className="fa fa-users"></span> Social Accounts</a></li>
+                                <li><Link to ="/profil"><span className="fa fa-user"></span> My Account</Link></li>
+                                <li className="active"><Link to ="/profil/order"><span className="fa fa-box-alt"></span> My Orders</Link></li>
+                                <li><Link to ="/profil/sosial"><span className="fa fa-users"></span> Social Accounts</Link></li>
                                 <br/><br/><br/><br/>
                                 <li><a href="#"><span className="fa fa-user-times"></span> Delete Account</a></li>
-                                <li><a href="#"><span className="fa fa-sign-out-alt"></span> Logout</a></li>
+                                <li><Link to ="/"><span className="fa fa-sign-out-alt"></span> Logout</Link></li>
                             </ul>
                         </nav>
                     </div>

@@ -27,14 +27,17 @@ export default class Header extends React.Component{
               <div className="navbar navbar-dark bg-primary navbar-expand-lg p-0">
                 <ul class="navbar-nav mr-auto">
                   <li class="nav-item">
+                    <Link to ="/help">
                     <button type="button" class="btn btn-sm px-2" data-toggle="#" data-target="#">
                       <a class="nav-link p-0">
                         <i className = "fal fa-question fa-fw ml-1 mr-1"></i>
                         <span style ={{fontSize: '0.8rem'}}>Help</span>
                       </a>
                     </button>
+                    </Link>
                   </li>
                   <li class="nav-item">
+                    <Link to="/login">
                     <button type="button" className="btn btn-sm px-2" data-toggle="modal" data-target="#modalLogin">
                       <a className = "nav-link p-0">
                         <i className = "fal fa-user fa-fw"></i>
@@ -42,14 +45,17 @@ export default class Header extends React.Component{
                         <i className = "fas fa-caret-down fa-fw ml-1"></i>
                       </a>
                     </button>
+                    </Link>
                   </li>
                   <li class="nav-item">
+                    <Link to="/shoppingcart">
                     <button type="button" className="btn btn-sm px-2" data-toggle="modal" data-target="#modalCart">
                       <a className="nav-link p-0">
                         <i className = "fal fa-shopping-cart fa-fw mr-1"></i>
                       <span style ={{fontSize: '0.8rem'}}>Cart</span>
                     </a>
                     </button>
+                    </Link>
                   </li>
                 </ul>
               </div>
