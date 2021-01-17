@@ -1,7 +1,7 @@
 import React from 'react';
 import './../assets/css/about.css';
 import photo from './../assets/img/aboutus.png';
-
+import {Link} from 'react-router-dom';
 
 export default class About extends React.Component{
 

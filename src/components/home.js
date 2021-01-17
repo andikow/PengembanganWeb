@@ -9,6 +9,8 @@ import banner_left4 from './../assets/img/winter_small.webp';
 import banner_right1 from './../assets/img/905x332_big_tile_stickers.jpg';
 import banner_right2 from './../assets/img/HarryPotter_Startpage.jpg';
 import './../assets/css/header.css';
+import {Link} from 'react-router-dom';
+
 export default class Home extends React.Component{
 
   render(){

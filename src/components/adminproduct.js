@@ -1,6 +1,7 @@
 import React from 'react';
 import photo from './../assets/img/productex1.jpg';
 import './../assets/css/admin.css'
+import {Link} from 'react-router-dom';
 
 export default class Profil extends React.Component{
 

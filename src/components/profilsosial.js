@@ -1,6 +1,7 @@
 import React from 'react';
 import './../assets/css/profil.css'
 import profil from './../assets/img/profil.PNG';
+import {Link} from 'react-router-dom';
 
 
 export default class Profil extends React.Component{

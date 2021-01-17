@@ -1,6 +1,7 @@
 import React from 'react';
 import payment from './../assets/img/payment.png';
 import shipping from './../assets/img/shipping.png';
+import {Link} from 'react-router-dom';
 
 export default class Footer extends React.Component{
 

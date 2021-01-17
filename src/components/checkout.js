@@ -2,6 +2,7 @@ import React from 'react';
 import './../assets/css/checkout.css';
 import paypal from './../assets/img/paypal.png';
 import InputNumeric from './qtycheckout.js';
+import {Link} from 'react-router-dom';
 
 export default class Checkout extends React.Component{
 
