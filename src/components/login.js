@@ -2,7 +2,6 @@ import React from 'react';
 import '../assets/css/login.css';
 import {Link} from 'react-router-dom';
 import Register from './register.js';
-import {Link} from 'react-router-dom';
 
 export default class Login extends React.Component{
   constructor() {
@@ -117,11 +116,12 @@ export default class Login extends React.Component{
                     </span>
                     </Link>
                   </p>
-                  <button className="btn btn-primary w-100 mt-2">Login</button>
                   <Link to ="#" onClick = {()=>this.login()}><button className="btn btn-primary w-100 mt-2">Login</button></Link>
+                  <Link to="/admin">
+                  <button className="btn btn-primary w-100 mt-2 closeModal">Login As Admin</button></Link>
                   <p className="or mt-3"><span>or</span></p>
-                  <button className="btn text-light mt-2 w-100" style={{backgroundColor: "#3B5998"}}>
-                    <i className="fab fa-facebook-square mr-2" />Log in with Facebook
+                  <button className="btn text-white mt-2 w-100" style={{backgroundColor: "#3B5998"}}><a class="text-white" href="https://id-id.facebook.com/login.php">
+                    <i className="fab fa-facebook-square mr-2" />Log in with Facebook</a>
                   </button>
 
                 </form>

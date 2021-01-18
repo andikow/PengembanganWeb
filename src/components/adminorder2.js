@@ -186,7 +186,9 @@ export default class Profil extends React.Component{
                                               a
                                             </td>
                                             <td>
+                                            <Link to ="/admin/order3">
                                               <button className="btn btn-success" type="button"><i class="fas fa-check"></i></button>
+                                              </Link>
                                             </td>
                                           </tr>
                                           <tr>
@@ -212,7 +214,9 @@ export default class Profil extends React.Component{
                                               a
                                             </td>
                                             <td>
+                                            <Link to ="/admin/order3">
                                               <button className="btn btn-success" type="button"><i class="fas fa-check"></i></button>
+                                              </Link>
                                             </td>
                                           </tr>
 
