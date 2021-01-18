@@ -19,6 +19,7 @@ import ForgotPassword from './components/forgotPassword.js';
 import Login from './components/login.js';
 import Register from './components/register.js';
 import Shop from './components/shop.js';
+import Success from './components/loginsuccess.js'
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
       <Route path="/shop" component = {Shop}/>
       <Route path="/checkout" component = {Checkout}/>
       <Route path="/myorder" component = {MyOrder}/>
+      <Route path="/login/:id/:pass" component={Success} />
       </Router>
       <Footer />
     </div>

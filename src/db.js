@@ -32,10 +32,11 @@ app.get('/shop', (req, res)=>{
     })
 })
 
-app.get('/login/:id', (req, res)=>{
-    var id = req.params.id + '';
+app.post('/login/', (req, res)=>{
+    var email = req.body.email;
+    var pass = req.body.pass;
 
-    conn.query("select password from account where email = '" + id + "'", (err, row)=>{
+    conn.query("select * from account where email = '" + email + "' and password ='" + pass + "'", (err, row)=>{
         if(row.length>0) res.json(row[0])
         else res.json({})
     })
