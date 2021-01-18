@@ -2,7 +2,6 @@ import React from 'react';
 import '../assets/css/login.css';
 import {Link} from 'react-router-dom';
 import Register from './register.js';
-import {Link} from 'react-router-dom';
 
 export default class Login extends React.Component{
   constructor() {
