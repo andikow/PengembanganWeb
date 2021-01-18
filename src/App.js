@@ -31,8 +31,8 @@ function App() {
       <Route path="/checkout" component = {Checkout}/>
       <Route path="/myorder" component = {MyOrder}/>
       <Route path="/login/:id/:pass" component={Success} />
-      </Router>
       <Footer />
+      </Router>
     </div>
   );
 }

@@ -4,7 +4,7 @@ import color1 from './../assets/img/color1.png';
 import color2 from './../assets/img/color2.jpg';
 import color3 from './../assets/img/color3.jpg';
 import color4 from './../assets/img/color4.jpg';
-
+import {Link} from 'react-router-dom';
 
 export default class Creating extends React.Component{
 

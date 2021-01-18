@@ -2,6 +2,8 @@ import React from 'react';
 import FilterProduct from './filterProduct.js';
 import SortBy from './sortBy.js';
 import CardProduct from './cardProduct.js';
+import {Link} from 'react-router-dom';
+
 export default class Shop extends React.Component{
     render(){
       return(

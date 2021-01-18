@@ -1,5 +1,6 @@
 import React from 'react';
 import './../assets/css/privacy.css';
+import {Link} from 'react-router-dom';
 
 
 

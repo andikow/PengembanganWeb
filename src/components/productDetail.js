@@ -1,6 +1,7 @@
 import React from 'react';
 import Produk1 from '../assets/img/productex1.jpg'
 import '../assets/css/productDetail.css'
+import {Link} from 'react-router-dom';
 
 export default class ProductDetail extends React.Component{
 
@@ -24,7 +25,7 @@ export default class ProductDetail extends React.Component{
                     <img type="button" src={Produk1} alt="Produk Example 1" style={{width: '8rem', height: '8rem'}}/>
                     <img type="button" src={Produk1} alt="Produk Example 1" style={{width: '8rem', height: '8rem'}}/>
                 </p>
-                </div> 
+                </div>
                 <div className="col-md-6 col-12 py-1">
                     <h2>Men's T-shirt</h2>
                     <p>
@@ -54,9 +55,9 @@ export default class ProductDetail extends React.Component{
                     </p>
                     <button className="btn btn-primary text-center w-75"><i className="fas fa-shopping-cart mr-2"></i> Add to cart</button>
                     <button className="btn border border-primary text-primary text-center w-75 mt-2"><i className="far fa-heart mr-2"></i> Add to favorite</button>
-                </div>   
+                </div>
 
-            </div> 
+            </div>
             <div className="row mt-5">
                 <div className="col-12 text-center"><h1>Got this design on other products</h1></div>
                 <div className="col-12 text-center">
@@ -85,7 +86,7 @@ export default class ProductDetail extends React.Component{
                         <p>This classic tee offers plenty of room and is ideal for most body types. Contoured and side seamed for a feminine fit ITEM RUNS SMALL.<br/>100% preshrunk cotton <br/>Durable and reliable</p>
                     </div>
                     :null
-                    }            
+                    }
                 </div>
                 <div><hr></hr></div>
                 <div className="subDesc">
@@ -96,7 +97,7 @@ export default class ProductDetail extends React.Component{
                     {
                     this.state.SizeChart?
                     <div className="subDesc-body">
-                        <div className="row"> 
+                        <div className="row">
                         <div className="col-12 col-md-6">
                         <table className="table table-striped w-100">
                         <thead>
@@ -127,7 +128,7 @@ export default class ProductDetail extends React.Component{
                             <td>6.97</td>
                             </tr>
                         </tbody>
-                        </table>                        
+                        </table>
                         </div>
                         <div className="col-12 col-md-6">
                             <p>
@@ -139,12 +140,12 @@ export default class ProductDetail extends React.Component{
                         </div>
                     </div>
                     :null
-                    }            
+                    }
                 </div>
                 <div><hr></hr></div>
                 <div className="subDesc">
                     <div className="subDesc-header d-flex justify-content-between py-3">
-                    <h4>Customer Reviews  
+                    <h4>Customer Reviews
                         <i className="fa fa-star ml-2"></i>
                         <i className="fa fa-star"></i>
                         <i className="fa fa-star"></i>
@@ -164,17 +165,17 @@ export default class ProductDetail extends React.Component{
                             <button className="btn border border-dark mr-2 mt-2">2 stars</button>
                             <button className="btn border border-dark mr-2 mt-2">3 stars</button>
                             <button className="btn border border-dark mr-2 mt-2">4 stars</button>
-                            <button className="btn border border-dark mr-2 mt-2">5 stars</button>                           
+                            <button className="btn border border-dark mr-2 mt-2">5 stars</button>
                             </p>
                             <h5>Filter by size</h5>
                             <p><button className="btn border border-dark mr-2 mt-2">S</button>
                             <button className="btn border border-dark mr-2 mt-2">M</button>
                             <button className="btn border border-dark mr-2 mt-2">L</button>
                             <button className="btn border border-dark mr-2 mt-2">XL</button>
-                            <button className="btn border border-dark mr-2 mt-2">2XL</button>                           
+                            <button className="btn border border-dark mr-2 mt-2">2XL</button>
                             </p>
                         </div>
-                        <div className="col-lg-6 col-12">                                                                        
+                        <div className="col-lg-6 col-12">
                             <p className="mt-2">
                             <i className="fa fa-star"></i>
                             <i className="fa fa-star"></i>
@@ -190,9 +191,9 @@ export default class ProductDetail extends React.Component{
                             <i className="fa fa-star"></i>
                             <i className="fa fa-star mr-2"></i>
                             Color <span className="px-2 rounded-circle bg-dark nl-2 mr-2"></span> Size M <br/> Terrific! <br/><small className="mt-1">2 November 2020</small>
-                            </p>  
-                        <div className="row justify-content-center">                            
-                            <p className="" aria-label="Page navigation">                            
+                            </p>
+                        <div className="row justify-content-center">
+                            <p className="" aria-label="Page navigation">
                             <ul className="pagination">
                                 <li className="page-item"><a class="page-link" href="#">&#60;</a></li>
                                 <li className="page-item"><a class="page-link" href="#">1</a></li>
@@ -206,11 +207,11 @@ export default class ProductDetail extends React.Component{
                         </div>
                     </div>
                     :null
-                    }            
+                    }
                 </div>
-                <div><hr></hr></div>                
-                </div>                
-            </div>                     
+                <div><hr></hr></div>
+                </div>
+            </div>
         </div>
     </>
     )

@@ -1,6 +1,7 @@
 import React from 'react';
 import '../assets/css/cardProduct.css';
 import Produk1 from '../assets/img/productex1.jpg'
+import {Link} from 'react-router-dom';
 
 export default class CardProduct extends React.Component{
 

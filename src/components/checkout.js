@@ -2,6 +2,7 @@ import React from 'react';
 import './../assets/css/checkout.css';
 import paypal from './../assets/img/paypal.png';
 import InputNumeric from './qtycheckout.js';
+import {Link} from 'react-router-dom';
 
 export default class Checkout extends React.Component{
 
@@ -420,7 +421,9 @@ export default class Checkout extends React.Component{
                             </div>
                           </div>
                           <div class="co l-lg-3 mr-2">
+                          <Link to="/myorder">
                             <button className="btn btn-danger my-0 font-weight-bold" type="button">Buy now</button>
+                            </Link>
                           </div>
 
                         </div>

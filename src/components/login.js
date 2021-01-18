@@ -2,6 +2,8 @@ import React from 'react';
 import '../assets/css/login.css';
 import {Link} from 'react-router-dom';
 import Register from './register.js';
+import {Link} from 'react-router-dom';
+
 export default class Login extends React.Component{
   constructor() {
       super()
@@ -95,7 +97,9 @@ export default class Login extends React.Component{
               <div className="modal-body">
                 <form>
                   <p>Want to shop?
+                  <Link to="/register">
                     <span type="button" className="text-primary closeModal" data-toggle="modal" data-target="#modalRegister"><i className="fa fa-user ml-2 mr-2" />Register now</span>
+                    </Link>
                   </p>
                   <input type="email" value={this.state.email} onChange={ev=> this.setState({email : ev.target.value})} className="form-control w-100" aria-describedby="emailHelp" placeholder="Email or Username"/>
                   <p className="mt-2 mr-3 text-right w-100">
@@ -107,9 +111,11 @@ export default class Login extends React.Component{
                       <input type="checkbox" className="form-check-input" id="stayin"/>
                       <label htmlFor="stayin" className="form-check-label">Stay signed in</label>
                     </span>
-                    <span className="float-right" type="button">
-                      <h5 className=" text-primary">Forgot your password?</h5>
+                    <Link to="/forgotpassword">
+                    <span className="float-right closeModal" type="button" data-toggle="modal" data-target="#modalForgot">
+                      <h5 className="text-primary">Forgot your password?</h5>
                     </span>
+                    </Link>
                   </p>
                   <button className="btn btn-primary w-100 mt-2">Login</button>
                   <Link to ="#" onClick = {()=>this.login()}><button className="btn btn-primary w-100 mt-2">Login</button></Link>

@@ -1,6 +1,7 @@
 import React from 'react';
 import './../assets/css/contact.css';
 import photo from './../assets/img/contact.jpg';
+import {Link} from 'react-router-dom';
 
 
 export default class Contact extends React.Component{

@@ -1,5 +1,6 @@
 import React from 'react';
 import './../assets/css/admin.css'
+import {Link} from 'react-router-dom';
 
 export default class Profil extends React.Component{
 
@@ -7,7 +8,7 @@ export default class Profil extends React.Component{
 
     return(
     <>
-    <div className="content">
+    <div className="content px-0">
         <div className="view-account">
             <section className="module">
                 <div className="module-inner">
@@ -17,11 +18,11 @@ export default class Profil extends React.Component{
                         </div>
                         <nav className="side-menu">
                             <ul className="nav">
-                                <li className="active"><a href="#"><span className="fa fa-tachometer-alt"></span> Dashboard</a></li>
-                                <li><a href="#"><span className="fa fa-boxes"></span> Orders</a></li>
-                                <li><a href="#"><span className="fa fa-tshirt"></span> Product</a></li>
+                                <li className="active"><Link to ="/admin"><span className="fa fa-tachometer-alt"></span> Dashboard</Link></li>
+                                <li><Link to ="/admin/order1"><span className="fa fa-boxes"></span> Orders</Link></li>
+                                <li><Link to ="/admin/product"><span className="fa fa-tshirt"></span> Product</Link></li>
                                 <br/><br/><br/><br/>
-                                <li><a href="#"><span className="fa fa-sign-out-alt"></span> Logout</a></li>
+                                <li><Link to ="/"><span className="fa fa-sign-out-alt"></span> Logout</Link></li>
                             </ul>
                         </nav>
                     </div>

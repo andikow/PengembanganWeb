@@ -1,5 +1,6 @@
 import React from 'react';
 import './../assets/css/admin.css'
+import {Link} from 'react-router-dom';
 
 export default class Profil extends React.Component{
 
@@ -7,7 +8,7 @@ export default class Profil extends React.Component{
 
     return(
     <>
-    <div className="content">
+    <div className="content px-0">
         <div className="view-account">
             <section className="module">
                 <div className="module-inner">
@@ -17,11 +18,11 @@ export default class Profil extends React.Component{
                         </div>
                         <nav className="side-menu">
                             <ul className="nav">
-                                <li><a href="#"><span className="fa fa-tachometer-alt"></span> Dashboard</a></li>
-                                <li className="active"><a href="#"><span className="fa fa-boxes"></span> Orders</a></li>
-                                <li><a href="#"><span className="fa fa-tshirt"></span> Product</a></li>
+                                <li><Link to ="/admin"><span className="fa fa-tachometer-alt"></span> Dashboard</Link></li>
+                                <li className="active"><Link to ="/admin/order1"><span className="fa fa-boxes"></span> Orders</Link></li>
+                                <li><Link to ="/admin/product"><span className="fa fa-tshirt"></span> Product</Link></li>
                                 <br/><br/><br/><br/>
-                                <li><a href="#"><span className="fa fa-sign-out-alt"></span> Logout</a></li>
+                                <li><Link to ="/"><span className="fa fa-sign-out-alt"></span> Logout</Link></li>
                             </ul>
                         </nav>
                     </div>
@@ -30,6 +31,7 @@ export default class Profil extends React.Component{
                         <div className="content-header-wrapper">
                           <div class="row">
                               <div class="col-lg-3 col-md-6 col-sm-6">
+                              <Link to ="/admin/order1">
                                 <div class="kuning card card-stats border-0">
                                   <div class="card-body ">
                                     <div class="row">
@@ -50,8 +52,10 @@ export default class Profil extends React.Component{
                                     <i class="far fa-sync"></i>&emsp;Update Now
                                   </div>
                                 </div>
+                                </Link>
                               </div>
                               <div class="col-lg-3 col-md-6 col-sm-6">
+                              <Link to ="/admin/order2">
                                 <div class="card card-stats">
                                   <div class="card-body ">
                                     <div class="row">
@@ -72,8 +76,10 @@ export default class Profil extends React.Component{
                                     <i class="far fa-sync"></i>&emsp;Update Now
                                   </div>
                                 </div>
+                                </Link>
                               </div>
                               <div class="col-lg-3 col-md-6 col-sm-6">
+                              <Link to ="/admin/order3">
                                 <div class="card card-stats">
                                   <div class="card-body ">
                                     <div class="row">
@@ -94,8 +100,10 @@ export default class Profil extends React.Component{
                                     <i class="far fa-sync"></i>&emsp;Update Now
                                   </div>
                                 </div>
+                                </Link>
                               </div>
                               <div class="col-lg-3 col-md-6 col-sm-6">
+                              <Link to ="/admin/order4">
                                 <div class="card card-stats">
                                   <div class="card-body ">
                                     <div class="row">
@@ -116,6 +124,7 @@ export default class Profil extends React.Component{
                                     <i class="far fa-sync"></i>&emsp;Update Now
                                   </div>
                                 </div>
+                                </Link>
                               </div>
                               <br/>
                               <div class=" pt-4 col-md-12">
