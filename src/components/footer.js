@@ -50,13 +50,13 @@ export default class Footer extends React.Component{
         <h5 className="font-weight-bold text-white mt-3 mb-4">Service</h5>
         <ul className="list-unstyled">
           <li>
-            <a href="#" className="text-secondary"><i className="fas fa-fw mr-2 fa-tshirt"></i>Your Orders</a>
+            <Link to="/myorder"><span class="text-white"><i className="fas fa-fw mr-2 fa-tshirt"></i>Your Orders</span></Link>
           </li>
           <li>
-            <a href="#" className="text-secondary"><i className="fas fa-fw mr-2 fa-question"></i>Help</a>
+            <Link to="/help"><span class="text-white"><i className="fas fa-fw mr-2 fa-question"></i>Help</span></Link>
           </li>
           <li>
-            <a href="#" className="text-secondary"><i className="fas fa-fw mr-2 fa-envelope"></i>Contact</a>
+            <Link to="/contact"><span class="text-white"><i className="fas fa-fw mr-2 fa-envelope"></i>Contact</span></Link>
           </li>
 
         </ul>
@@ -68,13 +68,13 @@ export default class Footer extends React.Component{
         <h5 className="font-weight-bold text-white mt-3 mb-4">The Company</h5>
         <ul className="list-unstyled">
           <li>
-            <a href="#!" className=" text-secondary">About Us</a>
+            <Link to="/aboutus"><span class="text-white">About Us</span></Link>
           </li>
           <li>
-            <a href="#!" className=" text-secondary">Privacy</a>
+            <Link to="/privacy"><span class="text-white">Privacy</span></Link>
           </li>
           <li>
-            <a href="#!" className=" text-secondary">Terms & Condition</a>
+            <Link to="/term"><span class="text-white">Terms & Condition</span></Link>
           </li>
         </ul>
       </div>
@@ -85,16 +85,16 @@ export default class Footer extends React.Component{
         <h5 className="font-weight-bold text-white mt-3 mb-4">Follow Us</h5>
         <ul className="list-unstyled">
           <li>
-            <a href="#" className="text-secondary"><i className="fab fa-fw mr-2 fa-facebook"></i>Facebook</a>
+            <a href="https://www.facebook.com/" className="text-secondary"><i className="fab fa-fw mr-2 fa-facebook"></i>Facebook</a>
           </li>
           <li>
-            <a href="#" className="text-secondary"><i className="fab fa-fw mr-2 fa-twitter"></i>Twitter</a>
+            <a href="https://twitter.com/" className="text-secondary"><i className="fab fa-fw mr-2 fa-twitter"></i>Twitter</a>
           </li>
           <li>
-            <a href="#" className="text-secondary"><i className="fab fa-fw mr-2 fa-instagram"></i>Instagram</a>
+            <a href="https://www.instagram.com/" className="text-secondary"><i className="fab fa-fw mr-2 fa-instagram"></i>Instagram</a>
           </li>
           <li>
-            <a href="#" className="text-secondary"><i className="fab fa-fw mr-2 fa-pinterest"></i>Pinterest</a>
+            <a href="https://id.pinterest.com/" className="text-secondary"><i className="fab fa-fw mr-2 fa-pinterest"></i>Pinterest</a>
           </li>
         </ul>
       </div>

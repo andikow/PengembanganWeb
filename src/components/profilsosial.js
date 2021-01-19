@@ -41,10 +41,10 @@ export default class Profil extends React.Component{
                         <br/>
                         <div class="row">
                           <div class="col-xl-4">
-                            <button className="btn btn-outline-primary my-0" type="button"><i className="fab fa-facebook-square" style={{fontSize:20}}></i><span>&emsp;Link Facebook account</span></button>
+                            <button className="btn btn-outline-primary my-0" type="button"><a href="https://id-id.facebook.com/login.php"><i className="fab fa-facebook-square" style={{fontSize:20}}></i><span>&emsp;Link Facebook account</span></a></button>
                           </div>
                           <div class="col">
-                            <button className="btn btn-outline-primary my-0" type="button"><i className="fab fa-google" style={{fontSize:20}}></i><span>&emsp;Link Google account</span></button>
+                            <button className="btn btn-outline-primary my-0" type="button"><a href="https://accounts.google.com/signin/v2/identifier?hl=id&refresh=1)%2C&flowName=GlifWebSignIn&flowEntry=ServiceLogin"><i className="fab fa-google" style={{fontSize:20}}></i><span>&emsp;Link Google account</span></a></button>
                           </div>
                         </div>
 

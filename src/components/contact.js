@@ -49,7 +49,9 @@ export default class Contact extends React.Component{
         </div>
         </form>
         <br/>
+        <Link to="/contact">
         <button className="btn btn-danger float-right my-0 font-weight-bold btn-sm" type="button">Send</button>
+        </Link>
       </div>
     </div>
     </div>

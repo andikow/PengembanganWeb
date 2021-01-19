@@ -94,8 +94,8 @@ function App() {
       <Route path="/shoppingcart" component = {ShoppingCart}/>
       <Route path="/sortby" component = {SortBy}/>
       <Route path="/term" component = {Term}/>
-      </Router>
       <Footer />
+      </Router>
     </div>
   );
 }
