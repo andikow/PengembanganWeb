@@ -5,6 +5,27 @@ import {Link} from 'react-router-dom';
 
 export default class Profil extends React.Component{
 
+  constructor(){
+    super();
+    this.state = {
+      productHeader : []
+    }
+  }
+
+  getProductHeader(){
+    fetch ('http://localhost:8000/productheader')
+    .then(response => response.json())
+    .then(res => {
+      this.setState({
+        productHeader: res
+      })
+    })
+  }
+
+  componentDidMount(){
+    this.getProductHeader()
+  }
+
   render(){
 
     return(
@@ -72,75 +93,24 @@ export default class Profil extends React.Component{
                                           </th>
                                         </thead>
                                         <tbody class="text-center">
-                                          <tr>
-                                            <td>
-                                              <img src={photo} alt="photo" width="100%" /><br/><br/>
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                            <Link to ="/admin/editproduct">
+                                        {
+                                          this.state.productHeader.map((item, index)=>(
+                                            <tr key={index}>
+                                              <td>{item.PictureLink1}</td>
+                                              <td>{item.ProductID}</td>
+                                              <td>{item.Name}</td>
+                                              <td>{item.Price}</td>
+                                              <td>{item.CategoryID}</td>
+                                              <td>{item.Description}</td>
+                                              <td>{item.PictureLink1}</td>
+                                              <td>{item.PictureLink2}</td>
+                                              <td>{item.PictureLink3}</td>
+                                              <td><Link to ="/admin/editproduct">
                                               <p class="font-weight-bold" style={{color:'#63BCC9', width:50}}><i class="fas fa-edit"></i> Edit</p>
-                                              </Link>
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td>
-                                              <img src={photo} alt="photo" width="100%" /><br/><br/>
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                            <Link to ="/admin/editproduct">
-                                              <p class="font-weight-bold" style={{color:'#63BCC9', width:50}}><i class="fas fa-edit"></i> Edit</p>
-                                              </Link>
-                                            </td>
-                                          </tr>
-
+                                              </Link></td>
+                                            </tr>
+                                          ))
+                                        }
                                         </tbody>
                                       </table>
                                     </div>

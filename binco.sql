@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2021 at 03:34 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.34
+-- Generation Time: Jan 19, 2021 at 06:17 PM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -155,8 +155,8 @@ CREATE TABLE `orderheader` (
   `OrderDate` date NOT NULL,
   `ShippingID` int(8) NOT NULL,
   `ShippingCosts` int(11) NOT NULL,
-  `SalesTax` int(11) NOT NULL,
-  `Total` int(11) NOT NULL,
+  `SalesTax` double(11,2) NOT NULL,
+  `Total` double(11,2) NOT NULL,
   `StatusID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -165,12 +165,12 @@ CREATE TABLE `orderheader` (
 --
 
 INSERT INTO `orderheader` (`OrderID`, `OrderDate`, `ShippingID`, `ShippingCosts`, `SalesTax`, `Total`, `StatusID`) VALUES
-(1, '2021-01-01', 1, 40000, 5500, 595000, 4),
-(2, '2021-01-13', 2, 35000, 7000, 742000, 2),
-(3, '2021-01-13', 3, 35000, 12000, 1247000, 3),
-(4, '2021-01-14', 4, 25000, 10000, 1035000, 3),
-(5, '2021-01-14', 5, 40000, 12000, 1252000, 1),
-(6, '2021-01-15', 6, 30000, 15000, 1545000, 1);
+(1, '2021-01-01', 1, 3, 0.46, 46.46, 4),
+(2, '2021-01-13', 2, 3, 1.51, 152.51, 2),
+(3, '2021-01-13', 3, 4, 0.99, 135.99, 3),
+(4, '2021-01-14', 4, 4, 0.75, 75.75, 3),
+(5, '2021-01-14', 5, 3, 1.46, 147.46, 1),
+(6, '2021-01-15', 6, 2, 2.00, 188.87, 1);
 
 -- --------------------------------------------------------
 
@@ -275,16 +275,16 @@ CREATE TABLE `productheader` (
 --
 
 INSERT INTO `productheader` (`ProductID`, `Name`, `Price`, `CategoryID`, `Description`, `PictureLink1`, `PictureLink2`, `PictureLink3`) VALUES
-(1, 'Eco T-Shirt', 250000, 1, 'Premium T-Shirt with \'Eco\' Design\r\n\r\nUnisex\r\nMaterial: Cotton\r\nFabric weight: 4.42 oz (lightweight)', 'http://....', NULL, NULL),
-(2, 'Jipyeong Hoodie', 400000, 2, 'This Jipyeong Hoodie is a comfortable classic. The hooded sweatshirt has become a staple in any wardrobe. Kangaroo-style front pocket is perfect for your phone, keys or anything else you want to stash.\r\n\r\nUnisex\r\n50% cotton/50% polyester | Fabric Weight: 7.8 oz (midweight)\r\nRibbed cuffs and waist hem\r\nAdjustable drawstring hood\r\n', 'http://', NULL, NULL),
-(3, 'Santa Cruz Sweatshirt', 350000, 3, 'This classic has stood the test of time. Always in fashion, this crewneck sweatshirt is perfect as an outer, under or single layer. Soft and comfortable, this stand-by is a must.\r\n\r\nUnisex\r\n50% preshrunk cotton/50% polyester\r\nFabric Weight: 7.75 oz (midweight)\r\nPill-resistant\r\n1X1 Lycra® spandex ribbed collar, cuffs and waist\r\nFully double-stitched', 'http://', NULL, NULL),
-(4, 'Swag V Neck Sweatshirt', 350000, 4, 'This V neck sweatshirt is perfect as an outer, under or single layer. Soft and comfortable, this stand-by is a must.\r\n\r\nUnisex\r\n50% preshrunk cotton/50% polyester \r\nFabric Weight: 7.75 oz (midweight)\r\nPill-resistant\r\n1X1 Lycra® spandex ribbed collar, cuffs and waist\r\nFully double-stitched', 'http://', NULL, NULL),
-(5, 'Red Heart Polo Shirt', 300000, 5, 'A timeless, perfect companion for the office, the golf course, or everyday wear.\r\n\r\nUnisex\r\n100% cotton \r\nHeavyweight fabric (6 oz)\r\nThree-button closure\r\nTopstitching for a crisp finish throughout', 'http://', NULL, NULL),
-(6, 'Keep Going V Neck T-Shirt', 250000, 6, 'A little V in the neckline can make a T-shirt look classier. Nice enough to wear to the club and casual enough to wear around the house, this super soft jersey cotton V-neck is versatility at its finest.\r\n\r\nUnisex\r\n100% cotton (deep heather is 52% cotton/48% polyester and marble colors are 91% polyester/9% cotton)\r\nFabric weight: 4.2 oz (lightweight)\r\nReinforced shoulder and side seam construction retains shape and elasticity, comfort and support\r\nDouble-stitched sleeves and waist\r\nRibbed v-neck collar', 'http://', NULL, NULL),
-(7, 'Peace Tank Top', 200000, 7, 'The premium tank is ideal for anything from yoga and Pilates or gym. Our entire collection is optimized for vibrant print results.\r\n\r\nUnisex\r\n100% cotton (heather gray is 95% cotton/5% viscose. charcoal gray is 80% cotton/20% polyester)\r\nFabric Weight: 4.42 oz (lightweight)\r\nFairly produced, certified and triple audited', 'http://', NULL, NULL),
-(8, 'Cute Cat Long Sleeve Shirt', 300000, 8, 'This premium long sleeve t-shirt is as close to perfect as can be. Soft, comfortable and durable.\r\n\r\n100% cotton (heather gray and heather ice blue are 95%/5% viscose. charcoal gray is 80% cotton/20% polyester. heather burgundy is 60% cotton/40% polyester)\r\nFabric Weight: 4.42 oz (heavyweight)\r\nFairly produced, certified and triple audited.\r\nDouble stitched, reinforced seams at shoulder, sleeve, collar and waist\r\nOptimized for beautiful brilliance across all printing methods', 'http://', NULL, NULL),
-(9, 'Milk Mocha Bear T-Shirt', 250000, 1, 'Premium T-Shirt with Milk Mocha Bear Design\r\n\r\nUnisex\r\nMaterial: Cotton\r\nFabric weight: 4.42 oz (lightweight)', 'http://', NULL, NULL),
-(10, 'Calm Hoodie', 400000, 2, 'This Calm Design Hoodie is a comfortable classic. The hooded sweatshirt has become a staple in any wardrobe. Kangaroo-style front pocket is perfect for your phone, keys or anything else you want to stash.\r\n\r\nUnisex\r\n50% cotton/50% polyester | Fabric Weight: 7.8 oz (midweight)\r\nRibbed cuffs and waist hem\r\nAdjustable drawstring hood', 'http://', NULL, NULL);
+(1, 'Eco T-Shirt', 20, 1, 'Premium T-Shirt with \'Eco\' Design\r\n\r\nUnisex\r\nMaterial: Cotton\r\nFabric weight: 4.42 oz (lightweight)', 'http://....', NULL, NULL),
+(2, 'Jipyeong Hoodie', 23, 2, 'This Jipyeong Hoodie is a comfortable classic. The hooded sweatshirt has become a staple in any wardrobe. Kangaroo-style front pocket is perfect for your phone, keys or anything else you want to stash.\r\n\r\nUnisex\r\n50% cotton/50% polyester | Fabric Weight: 7.8 oz (midweight)\r\nRibbed cuffs and waist hem\r\nAdjustable drawstring hood\r\n', 'http://', NULL, NULL),
+(3, 'Santa Cruz Sweatshirt', 40, 3, 'This classic has stood the test of time. Always in fashion, this crewneck sweatshirt is perfect as an outer, under or single layer. Soft and comfortable, this stand-by is a must.\r\n\r\nUnisex\r\n50% preshrunk cotton/50% polyester\r\nFabric Weight: 7.75 oz (midweight)\r\nPill-resistant\r\n1X1 Lycra® spandex ribbed collar, cuffs and waist\r\nFully double-stitched', 'http://', NULL, NULL),
+(4, 'Swag V Neck Sweatshirt', 37, 4, 'This V neck sweatshirt is perfect as an outer, under or single layer. Soft and comfortable, this stand-by is a must.\r\n\r\nUnisex\r\n50% preshrunk cotton/50% polyester \r\nFabric Weight: 7.75 oz (midweight)\r\nPill-resistant\r\n1X1 Lycra® spandex ribbed collar, cuffs and waist\r\nFully double-stitched', 'http://', NULL, NULL),
+(5, 'Red Heart Polo Shirt', 26, 5, 'A timeless, perfect companion for the office, the golf course, or everyday wear.\r\n\r\nUnisex\r\n100% cotton \r\nHeavyweight fabric (6 oz)\r\nThree-button closure\r\nTopstitching for a crisp finish throughout', 'http://', NULL, NULL),
+(6, 'Keep Going V Neck T-Shirt', 31, 6, 'A little V in the neckline can make a T-shirt look classier. Nice enough to wear to the club and casual enough to wear around the house, this super soft jersey cotton V-neck is versatility at its finest.\r\n\r\nUnisex\r\n100% cotton (deep heather is 52% cotton/48% polyester and marble colors are 91% polyester/9% cotton)\r\nFabric weight: 4.2 oz (lightweight)\r\nReinforced shoulder and side seam construction retains shape and elasticity, comfort and support\r\nDouble-stitched sleeves and waist\r\nRibbed v-neck collar', 'http://', NULL, NULL),
+(7, 'Peace Tank Top', 39, 7, 'The premium tank is ideal for anything from yoga and Pilates or gym. Our entire collection is optimized for vibrant print results.\r\n\r\nUnisex\r\n100% cotton (heather gray is 95% cotton/5% viscose. charcoal gray is 80% cotton/20% polyester)\r\nFabric Weight: 4.42 oz (lightweight)\r\nFairly produced, certified and triple audited', 'http://', NULL, NULL),
+(8, 'Cute Cat Long Sleeve Shirt', 30, 8, 'This premium long sleeve t-shirt is as close to perfect as can be. Soft, comfortable and durable.\r\n\r\n100% cotton (heather gray and heather ice blue are 95%/5% viscose. charcoal gray is 80% cotton/20% polyester. heather burgundy is 60% cotton/40% polyester)\r\nFabric Weight: 4.42 oz (heavyweight)\r\nFairly produced, certified and triple audited.\r\nDouble stitched, reinforced seams at shoulder, sleeve, collar and waist\r\nOptimized for beautiful brilliance across all printing methods', 'http://', NULL, NULL),
+(9, 'Milk Mocha Bear T-Shirt', 38, 1, 'Premium T-Shirt with Milk Mocha Bear Design\r\n\r\nUnisex\r\nMaterial: Cotton\r\nFabric weight: 4.42 oz (lightweight)', 'http://', NULL, NULL),
+(10, 'Calm Hoodie', 36, 2, 'This Calm Design Hoodie is a comfortable classic. The hooded sweatshirt has become a staple in any wardrobe. Kangaroo-style front pocket is perfect for your phone, keys or anything else you want to stash.\r\n\r\nUnisex\r\n50% cotton/50% polyester | Fabric Weight: 7.8 oz (midweight)\r\nRibbed cuffs and waist hem\r\nAdjustable drawstring hood', 'http://', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -331,12 +331,12 @@ CREATE TABLE `shippingdetail` (
 --
 
 INSERT INTO `shippingdetail` (`ShippingID`, `CustomerID`, `FirstName`, `LastName`, `Address`, `Building`, `Country`, `ZipCode`, `City`, `ShippingMethod`, `Phone`) VALUES
-(1, 1, 'Kim', 'Sona', 'Jl. Lily No. 1', NULL, 'Indonesia', '20220', 'Medan', 'JNE', '081234567890'),
-(2, 5, 'Sasa', NULL, 'Jl. Mawar no. 9', NULL, 'Indonesia', '20222', 'Kupang', 'JNE', '089912123333'),
-(3, 3, 'Hasanuddin', NULL, 'Jl. Pinus No. 3', 'Toko Apin', 'Indonesia', '20290', 'Makassar', 'JnT', '085243547878'),
-(4, 4, 'Dahlia', 'Ria', 'Jl. Nanas Komp. Indah no. 90', '', 'Indonesia', '20292', 'Pekanbaru', 'JnT', '089034542134'),
-(5, 5, 'Ronald', 'Prump', 'Jl. Bintang No. 14', 'PT. Putih', 'Indonesia', '20890', 'Aceh', 'JNE', '089756453212'),
-(6, 6, 'Jojo', 'Lie', 'Aprt. Lestari Blok A No. 19 ', '', 'Indonesia', '29090', 'Jakarta', 'JnT', '084523124378');
+(1, 1, 'Kim', 'Sona', 'Lily No. 1', NULL, 'German', '20220', 'Frankfrut', 'Fedex', '+4981234567890'),
+(2, 5, 'Sasa', NULL, 'Qingxin no. 9', NULL, 'China', '20222', 'GuangZhou', 'Fedex', '+8689912123333'),
+(3, 3, 'Hasanuddin', NULL, 'Jl. Pinus No. 3', 'Toko Apin', 'Indonesia', '20290', 'Makassar', 'DHL', '085243547878'),
+(4, 4, 'Dahlia', 'Ria', 'Jl. Nanas Komp. Indah no. 90', '', 'Indonesia', '20292', 'Pekanbaru', 'DHL', '089034542134'),
+(5, 5, 'Ronald', 'Prump', 'Jl. Bintang No. 14', 'PT. Putih', 'Indonesia', '20890', 'Aceh', 'USPostalService', '089756453212'),
+(6, 6, 'Jojo', 'Lie', 'Aprt. Lestari Blok A No. 19 ', '', 'Indonesia', '29090', 'Jakarta', 'USPostalService', '084523124378');
 
 --
 -- Indexes for dumped tables
