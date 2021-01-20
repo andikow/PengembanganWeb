@@ -66,6 +66,51 @@ app.post('/home', (req, res)=>{
     res.end()
 })
 
+// Show order header on Admin Dashboard
+app.get('/admin', (req, res)=>{
+    var query = "SELECT DISTINCT orderheader.OrderID, DATE_FORMAT(OrderDate, '%m-%d-%Y') AS OrderDate, orderheader.ShippingID, orderheader.Total, orderheader.StatusID FROM orderheader INNER JOIN orderdetail on orderheader.OrderID = orderdetail.OrderID Order BY orderheader.OrderID"
+    conn.query(query, (err, result) =>{
+        if (err)
+            res.json(err)
+        else
+            res.json(result)
+    })
+})
+
+// Show Product List
+app.get('/productheader', (req, res)=>{
+    var query = "SELECT * FROM productheader"
+    conn.query(query, (err, result) =>{
+        if (err)
+            res.json(err)
+        else
+            res.json(result)
+    })
+})
+
+// Show Category Desc if the Category input type is dropdown or option (currently it is text input type)
+
+// app.get('/addproduct', (req, res)=>{
+//     var query = "SELECT * FROM category"
+//     conn.query(query, (err, result) =>{
+//         if (err)
+//             res.json(err)
+//         else
+//             res.json(result)
+//     })
+// })
+
+// Insert new product
+app.post('/addproduct', (req, res)=>{
+    var data = req.body
+    conn.query("INSERT INTO productheader SET ?", data, (err, result) =>{
+        if (err)
+            res.json(err)
+        else
+            res.json(result)
+    })
+})
+
 app.listen(8000, ()=>{
     console.log('Server berjalan di port 8000')
 })

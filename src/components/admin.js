@@ -4,7 +4,46 @@ import {Link} from 'react-router-dom';
 
 export default class Profil extends React.Component{
 
+  constructor(){
+    super();
+    this.state = {
+      orderHeader : []
+    }
+  }
+
+  getOrderHeader(){
+    fetch ('http://localhost:8000/admin')
+    .then(response => response.json())
+    .then(res => {
+      this.setState({
+        orderHeader: res
+      })
+    })
+  }
+
+  componentDidMount(){
+    this.getOrderHeader()
+  }
+
   render(){
+
+    function StatusDesc(statusID){
+      if (statusID == 1){
+        return "NOT YET PAID"
+      }
+      else if (statusID == 2)
+      {
+        return "PACKED"
+      }
+      else if (statusID == 3)
+      {
+        return "SHIPPING"
+      }
+      else if (statusID == 4)
+      {
+        return "FINISH"
+      }
+    }
 
     return(
     <>
@@ -118,7 +157,7 @@ export default class Profil extends React.Component{
                                   </div>
                                 </div>
                               </div>
-                              <br/>
+                              <br/>                              
                               <div class=" pt-4 col-md-12">
                                 <div class="card">
                                   <div class="card-header">
@@ -129,76 +168,34 @@ export default class Profil extends React.Component{
                                       <table class="table">
                                         <thead class="text-center text-primary">
                                           <th>
-                                            OrderID
+                                            Order ID
                                           </th>
                                           <th>
-                                            OrderDate
+                                            Order Date
                                           </th>
                                           <th>
-                                            ShippingID
+                                            Shipping ID
                                           </th>
                                           <th>
-                                            Qty
+                                            Total
                                           </th>
                                           <th>
-                                            Subtotal
-                                          </th>
-                                          <th>
-                                            ProductID
-                                          </th>
-                                          <th>
-                                            StatusID
+                                            Status ID
                                           </th>
 
                                         </thead>
                                         <tbody class="text-center">
-                                          <tr>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                          </tr>
-
+                                          {
+                                          this.state.orderHeader.map((item, index)=>(
+                                            <tr key={index}>
+                                              <td>{item.OrderID}</td>
+                                              <td>{item.OrderDate}</td>
+                                              <td>{item.ShippingID}</td>
+                                              <td>{item.Total}</td>
+                                              <td>{StatusDesc(item.StatusID)}</td>
+                                            </tr>
+                                          ))     
+                                          }
                                         </tbody>
                                       </table>
                                     </div>
