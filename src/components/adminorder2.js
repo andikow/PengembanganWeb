@@ -136,7 +136,7 @@ export default class Profil extends React.Component{
                                     <div class="table-responsive">
                                       <table class="table">
                                         <thead class="text-center text-primary">
-                                          <th>
+                                        <th>
                                             OrderID
                                           </th>
                                           <th>
@@ -146,21 +146,8 @@ export default class Profil extends React.Component{
                                             ShippingID
                                           </th>
                                           <th>
-                                            Qty
-                                          </th>
-                                          <th>
-                                            Subtotal
-                                          </th>
-                                          <th>
-                                            ProductID
-                                          </th>
-                                          <th>
-                                            StatusID
-                                          </th>
-                                          <th>
                                             Action
                                           </th>
-
                                         </thead>
                                         <tbody class="text-center">
                                           <tr>
@@ -174,52 +161,11 @@ export default class Profil extends React.Component{
                                               a
                                             </td>
                                             <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
                                             <Link to ="/admin/order3">
                                               <button className="btn btn-success" type="button"><i class="fas fa-check"></i></button>
                                               </Link>
                                             </td>
                                           </tr>
-                                          <tr>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                            <Link to ="/admin/order3">
-                                              <button className="btn btn-success" type="button"><i class="fas fa-check"></i></button>
-                                              </Link>
-                                            </td>
-                                          </tr>
-
                                         </tbody>
                                       </table>
                                     </div>

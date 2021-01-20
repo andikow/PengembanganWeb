@@ -4,7 +4,98 @@ import {Link} from 'react-router-dom';
 
 export default class Profil extends React.Component{
 
+  constructor(){
+    super();
+    this.state = {
+      orderHeader : []
+    }
+  }
+
+  getOrderHeader(){
+    fetch ('http://localhost:8000/admin/order1')
+    .then(response => response.json())
+    .then(res => {
+      this.setState({
+        orderHeader: res
+      })
+    })
+  }
+
+  componentDidMount(){
+    this.getOrderHeader()
+  }
+
   render(){
+
+    function StatusDesc(statusID){
+      if (statusID == 1){
+        return "WAITING FOR PAYMENT"
+      }
+      else if (statusID == 2)
+      {
+        return "PACKING"
+      }
+      else if (statusID == 3)
+      {
+        return "SHIPPING"
+      }
+      else if (statusID == 4)
+      {
+        return "DELIVERED"
+      }
+    }
+
+    function PaymentSign(statusID){
+      if (statusID == 1){
+        return (
+          <td class="text-warning">
+              <span><i class="far fa-clock"></i></span>&emsp;Pending
+          </td>
+        )
+      }
+      else if (statusID == 2)
+      {
+        return (
+          <td class="text-success">
+            <span><i class="fa fa-check"></i></span>&emsp;Success
+          </td>
+        )
+      }
+      else if (statusID == 3)
+      {
+        return (
+          <td class="text-success">
+            <span><i class="fa fa-check"></i></span>&emsp;Success
+          </td>
+        )
+      }
+      else if (statusID == 4)
+      {
+        return (
+          <td class="text-success">
+            <span><i class="fa fa-check"></i></span>&emsp;Success
+          </td>
+        )
+      }
+    }
+
+    function PaymentDate(statusID, paymentDate){
+      if (statusID == 1){
+        return <td>-</td>
+      }
+      else if (statusID == 2)
+      {
+        return <td>{paymentDate}</td>
+      }
+      // else if (statusID == 3)
+      // {
+      //   return "SHIPPING"
+      // }
+      // else if (statusID == 4)
+      // {
+      //   return "DELIVERED"
+      // }
+    }
 
     return(
     <>
@@ -146,101 +237,24 @@ export default class Profil extends React.Component{
                                             ShippingID
                                           </th>
                                           <th>
-                                            Qty
-                                          </th>
-                                          <th>
-                                            Subtotal
-                                          </th>
-                                          <th>
-                                            ProductID
-                                          </th>
-                                          <th>
-                                            StatusID
-                                          </th>
-                                          <th>
                                             Payment
+                                          </th>
+                                          <th>
+                                            Payment Date
                                           </th>
                                         </thead>
                                         <tbody class="text-center">
-                                          <tr>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td class="text-warning">
-                                              <span><i class="far fa-clock"></i></span>&emsp;Pending
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td class="text-success">
-                                             <span><i class="fa fa-check"></i></span>&emsp;Success
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td class="text-danger">
-                                             <span><i class="fa-lg fas fa-times"></i></span>&emsp;Cancel
-                                            </td>
-                                          </tr>
-
+                                        {
+                                          this.state.orderHeader.map((item, index)=>(
+                                            <tr key={index}>
+                                              <td>{item.OrderID}</td>
+                                              <td>{item.OrderDate}</td>
+                                              <td>{item.ShippingID}</td>
+                                              {PaymentSign(item.StatusID)}
+                                              {PaymentDate(item.StatusID, item.PaymentDate)}
+                                            </tr>
+                                          ))     
+                                          }
                                         </tbody>
                                       </table>
                                     </div>

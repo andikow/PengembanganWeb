@@ -85,7 +85,7 @@ app.post('/pegawai', (req, res)=>{
 
 // Show order header on Admin Dashboard
 app.get('/admin', (req, res)=>{
-    var query = "SELECT DISTINCT orderheader.OrderID, DATE_FORMAT(OrderDate, '%m-%d-%Y') AS OrderDate, orderheader.ShippingID, orderheader.Total, orderheader.StatusID FROM orderheader INNER JOIN orderdetail on orderheader.OrderID = orderdetail.OrderID Order BY orderheader.OrderID"
+    var query = "SELECT DISTINCT orderheader.OrderID, DATE_FORMAT(OrderDate, '%m-%d-%Y') AS OrderDate, orderheader.ShippingID, orderheader.Total, orderheader.StatusID FROM orderheader INNER JOIN orderdetail on orderheader.OrderID = orderdetail.OrderID Order BY orderheader.OrderID DESC"
     conn.query(query, (err, result) =>{
         if (err)
             res.json(err)
@@ -121,6 +121,28 @@ app.get('/productheader', (req, res)=>{
 app.post('/addproduct', (req, res)=>{
     var data = req.body
     conn.query("INSERT INTO productheader SET ?", data, (err, result) =>{
+        if (err)
+            res.json(err)
+        else
+            res.json(result)
+    })
+})
+
+// Show order header on Admin Order Payment
+app.get('/admin/order1', (req, res)=>{
+    var query = "SELECT DISTINCT orderheader.OrderID, DATE_FORMAT(OrderDate, '%m-%d-%Y') AS OrderDate, orderheader.ShippingID, orderheader.Total, orderstatusdetail.StatusID, DATE_FORMAT(orderstatusdetail.Date, '%m-%d-%Y') AS PaymentDate FROM orderheader INNER JOIN orderstatusdetail on orderheader.OrderID = orderstatusdetail.OrderID WHERE orderstatusdetail.StatusID = 1 OR orderstatusdetail.StatusID = 2 Order BY orderheader.OrderID"
+    conn.query(query, (err, result) =>{
+        if (err)
+            res.json(err)
+        else
+            res.json(result)
+    })
+})
+
+// Show order header on Admin Order Packing
+app.get('/admin/order2', (req, res)=>{
+    var query = "SELECT DISTINCT orderheader.OrderID, DATE_FORMAT(OrderDate, '%m-%d-%Y') AS OrderDate, orderheader.ShippingID, orderheader.Total, orderheader.StatusID DATE_FORMAT(orderstatusdetail.Date, '%m-%d-%Y') AS PaymentDate FROM orderheader INNER JOIN orderstatusdetail on orderheader.OrderID = orderstatusdetail.OrderID Order BY orderheader.OrderID"
+    conn.query(query, (err, result) =>{
         if (err)
             res.json(err)
         else
