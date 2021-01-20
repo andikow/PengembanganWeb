@@ -2,11 +2,14 @@ import React from 'react';
 import '../assets/css/login.css';
 import {Link} from 'react-router-dom';
 import Register from './register.js';
+import $ from 'jquery';
 
 export default class Login extends React.Component{
-  constructor() {
+  constructor(props) {
       super()
       this.state = {
+        isLogin : false,
+        modal : "",
           login : [],
           email : '',
           password : ''
@@ -29,8 +32,13 @@ export default class Login extends React.Component{
       })
       .then(response => response.json())
       .then(res => {
-        if(res.CustomerID > 0 )
-            alert('Login Success')
+        if(res.CustomerID > 0 ){
+          this.setState({
+            modal : "closeModal"
+          })
+          this.props.parenthandler(true);
+          $('.modal-backdrop').remove()
+        }
         else{
             alert('Login Gagal')
             }
@@ -40,54 +48,12 @@ export default class Login extends React.Component{
   componentDidMount(){
 
   }
-
-  // getData(){
-  //     fetch('http://localhost:8000/login')
-  //     .then(response => response.json())
-  //     .then(res=>{
-  //         this.setState({
-  //             login : res
-  //         })
-  //     })
-  //     .catch(err=>{
-  //         console.error('Error : ' + err)
-  //     })
-  // }
-
-  // simpan(){
-  //     var data = {
-  //         email : this.state.email,
-  //         password : this.state.password
-  //     }
-  //
-  //     fetch(
-  //         'http://localhost:8000/login',
-  //         {
-  //             method : 'POST',
-  //             headers : {
-  //                 'Accept' : 'application/json',
-  //                 'Content-Type' : 'application/json'
-  //             },
-  //             body : JSON.stringify(data)
-  //         }
-  //     ).then(response=> response.json())
-  //     .then(res=>{
-  //         alert('Data berhasil disimpan')
-  //         this.setState({
-  //             nip  : '', nama : '', email : '', no_hp : ''
-  //         })
-  //
-  //         this.getData()
-  //     }).catch(err=>{
-  //         alert('Data gagal disimpan')
-  //     })
-  // }
   render(){
 
     return(
     <>
     <Register />
-        <div className="modal fade" id="modalLogin">
+        <div className={"modal fade " + this.state.modal} id="modalLogin">
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
@@ -116,7 +82,7 @@ export default class Login extends React.Component{
                     </span>
                     </Link>
                   </p>
-                  <Link to ="#" onClick = {()=>this.login()}><button className="btn btn-primary w-100 mt-2">Login</button></Link>
+                  <Link to ="/" onClick = {()=>this.login()}><button className="btn btn-primary w-100 mt-2">Login</button></Link>
                   <Link to="/admin">
                   <button className="btn btn-primary w-100 mt-2 closeModal">Login As Admin</button></Link>
                   <p className="or mt-3"><span>or</span></p>

@@ -6,14 +6,24 @@ import loadMyScript from './../assets/js/main.js';
 import Login from './login.js';
 import ShoppingCart from './shoppingCart.js';
 export default class Header extends React.Component{
+  constructor(props) {
+    super(props)
+    this.state={
+      isLogin: false
+    }
+
+  }
+  handler = (childData)=> {
+    this.setState({isLogin:childData})
+  }
   componentDidMount() {
     loadMyScript();
   }
   render(){
-
+    const {data} = this.state;
     return(
     <>
-    <Login />
+    <Login parenthandler={this.handler}/> {data}
     <ShoppingCart />
           <div className="row no-gutters d-flex align-content-center flex-wrap bg-primary">
             <div className="col-lg-5 d-flex flex-wrap">
@@ -37,11 +47,11 @@ export default class Header extends React.Component{
                     </Link>
                   </li>
                   <li class="nav-item">
-                    <Link to="/login">
-                    <button type="button" className="btn btn-sm px-2" data-toggle="modal" data-target="#modalLogin">
+                    <Link to={this.state.isLogin ? "/profil" : "/login"}>
+                    <button type="button" className="btn btn-sm px-2" data-toggle={this.state.isLogin ? "" : "modal"} data-target="#modalLogin">
                       <a className = "nav-link p-0">
                         <i className = "fal fa-user fa-fw"></i>
-                        <span style ={{fontSize: '0.8rem'}}>Login</span>
+                        <span style ={{fontSize: '0.8rem'}}>{this.state.isLogin ? "Profil" : "Login" }</span>
                         <i className = "fas fa-caret-down fa-fw ml-1"></i>
                       </a>
                     </button>

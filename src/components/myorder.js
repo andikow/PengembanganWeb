@@ -3,8 +3,54 @@ import './../assets/css/myorder.css'
 import {Link} from 'react-router-dom';
 
 export default class MyOrder extends React.Component{
-
+  constructor() {
+    super()
+    this.state = {
+      order : [],
+      orderID :'',
+      orderDate : '',
+      Total : ''
+    }
+  }
+  getOrder() {
+    fetch('http://localhost:8000/profil/order/',
+    {
+      headers : {
+        'Accept' : 'application/json',
+        'Content-Type' : 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(res => {
+      this.setState({
+        order : res
+      })
+    })
+    .catch(err=>{
+      console.error('Error : ' + err)
+    })
+  }
+  componentDidMount(){
+      this.getOrder()
+  }
   render(){
+    function StatusDesc(statusID){
+      if (statusID == 1){
+        return "NOT YET PAID"
+      }
+      else if (statusID == 2)
+      {
+        return "PACKED"
+      }
+      else if (statusID == 3)
+      {
+        return "SHIPPING"
+      }
+      else if (statusID == 4)
+      {
+        return "FINISH"
+      }
+    }
 
     return(
     <>
@@ -46,39 +92,42 @@ export default class MyOrder extends React.Component{
           </div>
 
           <hr/>
+          {
+            this.state.order.map((item, index)=>(
+            <div className="row pt-2">
+              <div className="col">
+                <img className="d-flex flex-wrap m-auto"  alt="" height="100px" width="100px"  />
+              </div>
 
-          <div className="row pt-2">
-            <div className="col">
-              <img className="d-flex flex-wrap m-auto"  alt="" height="100px" width="100px"  />
+              <div className="col-lg-4 d-flex flex-wrap justify-content-center align-content-center">
+                <i className="fa fa-credit-card"></i><p> &emsp; {StatusDesc(item.StatusID)}</p>
+              </div>
+
+              <div className="col d-flex flex-wrap justify-content-center align-content-center">
+                <p>{"ID000" + item.OrderID}</p>
+              </div>
+
+              <div className="col d-flex flex-wrap justify-content-center align-content-center">
+                <p>{item.OrderDate}</p>
+              </div>
+
+              <div className="col d-flex flex-wrap justify-content-center align-content-center">
+                <p>1</p>
+              </div>
+
+              <div className="col d-flex flex-wrap justify-content-center align-content-center">
+                <p>{"$" + item.Total}</p>
+              </div>
+
+              <div className="col d-flex flex-wrap justify-content-center align-content-center">
+                <Link to={"/orderdetail/" + item.OrderID}>
+                  <button type="button" className="btn btn-outline-primary">Details</button>
+                </Link>
+              </div>
+
             </div>
-
-            <div className="col-lg-4 d-flex flex-wrap justify-content-center align-content-center">
-              <i className="fa fa-credit-card"></i><p> &emsp; Payment pending</p>
-            </div>
-
-            <div className="col d-flex flex-wrap justify-content-center align-content-center">
-              <p>11508259</p>
-            </div>
-
-            <div className="col d-flex flex-wrap justify-content-center align-content-center">
-              <p>12/14/20</p>
-            </div>
-
-            <div className="col d-flex flex-wrap justify-content-center align-content-center">
-              <p>1</p>
-            </div>
-
-            <div className="col d-flex flex-wrap justify-content-center align-content-center">
-              <p>$57.49</p>
-            </div>
-
-            <div className="col d-flex flex-wrap justify-content-center align-content-center">
-            <Link to="/orderdetail">
-              <button type="button" className="btn btn-outline-primary">Details</button>
-            </Link>
-            </div>
-
-          </div>
+            ))
+          }
 
 
 

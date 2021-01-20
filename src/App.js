@@ -25,7 +25,6 @@ import ForgotPassword from './components/forgotPassword.js';
 import Header from './components/header.js';
 import Help from './components/help.js';
 import Home from './components/home.js';
-import Login from './components/login.js';
 import MyOrder from './components/myorder.js';
 import Order1 from './components/order1.js';
 import Order2 from './components/order2.js';
@@ -73,12 +72,11 @@ function App() {
       <Route path="/forgotpassword" component = {ForgotPassword}/>
       <Route path="/header" component = {Header}/>
       <Route path="/help" component = {Help}/>
-      <Route path="/login" component = {Login}/>
       <Route path="/myorder" component = {MyOrder}/>
       <Route path="/order1" component = {Order1}/>
       <Route path="/order2" component = {Order2}/>
       <Route path="/order3" component = {Order3}/>
-      <Route path="/orderdetail" component = {OrderDetail}/>
+      <Route path="/orderdetail/:id" component = {OrderDetail}/>
       <Route path="/payment1" component = {Payment1}/>
       <Route path="/payment2" component = {Payment2}/>
       <Route path="/privacy" component = {Privacy}/>
