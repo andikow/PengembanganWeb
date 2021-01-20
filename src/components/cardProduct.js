@@ -37,6 +37,7 @@ export default class CardProduct extends React.Component{
 
         {this.state.productheader.map((item, index)=>(
           <div class="col-lg-4 my-2">
+          <Link to={"/productdetail/" + item.ProductID}>
             <div className="card card-hover">
               <img className="card-img-top" src={Produk1} alt="Product Example" width="100px" />
               <span class="uk-card-badge span-fav ml-2 mt-2 mr-2" style={{position: "absolute", right: 0}}>
@@ -47,6 +48,7 @@ export default class CardProduct extends React.Component{
                 <p class="card-text text-primary font-weight-bold">$ {item.Price}</p>
               </div>
             </div>
+            </Link>
           </div>
           ))
           }
