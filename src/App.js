@@ -76,7 +76,7 @@ function App() {
       <Route path="/order1" component = {Order1}/>
       <Route path="/order2" component = {Order2}/>
       <Route path="/order3" component = {Order3}/>
-      <Route path="/orderdetail" component = {OrderDetail}/>
+      <Route path="/orderdetail/:id" component = {OrderDetail}/>
       <Route path="/payment1" component = {Payment1}/>
       <Route path="/payment2" component = {Payment2}/>
       <Route path="/privacy" component = {Privacy}/>
