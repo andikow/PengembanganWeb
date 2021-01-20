@@ -27,9 +27,15 @@ const conn = mysql.createConnection({
 })
 
 app.get('/shop', (req, res)=>{
-    conn.query("select * from account", (err, rows)=>{
+    conn.query("Select Description from category", (err, rows)=>{
         res.json(rows)
     })
+})
+
+app.post('/shop', (req, res)=>{
+  conn.query("select Name, Price, Description, PictureLink1 from productheader", (err, rows)=>{
+      res.json(rows)
+  })
 })
 
 app.post('/login/', (req, res)=>{

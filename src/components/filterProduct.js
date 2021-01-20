@@ -6,8 +6,26 @@ export default class FilterProduct extends React.Component{
   constructor() {
     super()
     this.state={
+      category : [],
+      Description : '',
       Categories: true, Products: true, PriceRange: true, Sizes: true, Colors: true
     }
+  }
+  componentDidMount(){
+      this.getData()
+  }
+
+  getData(){
+      fetch('http://localhost:8000/shop')
+      .then(response => response.json())
+      .then(res=>{
+          this.setState({
+              category : res
+          })
+      })
+      .catch(err=>{
+          console.error('Error : ' + err)
+      })
   }
 
   render(){
@@ -24,45 +42,17 @@ export default class FilterProduct extends React.Component{
               this.state.Categories?
               <div className="subFilter-body">
               <ul>
-                <li>Men</li>
-                <li>Women</li>
-                <li>Kids</li>
-                <li>Babies</li>
-                <li>Accessories</li>
-                <li>Phone Cases</li>
-                <li>Home &#38; Living</li>
-                <li>Stationery</li>
+              {this.state.category.map((item, index)=>(
+                <li>{item.Description}</li>
+              ))
+              }
               </ul>
               </div>
               :null
             }
           </div>
           {/*End Filter Categories*/}
-          <div><hr></hr></div>
-          {/*Start Filter Products*/}
-          <div className="subFilter">
-            <div className="subFilter-header  d-flex justify-content-between">
-              <div><h4>Products</h4></div>
-              <div type="button" onClick={()=>this.setState({Products: !this.state.Products})}><h4><i className="fa fa-plus"/></h4></div>
-            </div>
-            {
-              this.state.Products?
-              <div className="subFilter-body">
-              <ul>
-                <li>Men</li>
-                <li>Women</li>
-                <li>Kids</li>
-                <li>Babies</li>
-                <li>Accessories</li>
-                <li>Phone Cases</li>
-                <li>Home &#38; Living</li>
-                <li>Stationery</li>
-              </ul>
-              </div>
-              :null
-            }
-          </div>
-          {/*End Filter Products*/}
+
           <div><hr></hr></div>
           {/*Start Filter Price Range*/}
           <div className="subFilter">
