@@ -26,20 +26,44 @@ const conn = mysql.createConnection({
     database : 'binco'
 })
 
+app.get('/', (req, res)=>{
+  res.write('Hello World')
+  res.end()
+})
+
+app.post('/login/', (req, res)=>{
+  var email = req.body.email;
+  var pass = req.body.pass;
+
+  conn.query("select * from account where email = '" + email + "' and password ='" + pass + "'", (err, row)=>{
+    if(row.length>0) res.json(row[0])
+    else res.json({})
+  })
+})
+
 app.get('/shop', (req, res)=>{
-    conn.query("select * from account", (err, rows)=>{
+    conn.query("Select Description from category", (err, rows)=>{
         res.json(rows)
     })
 })
 
-app.post('/login/', (req, res)=>{
-    var email = req.body.email;
-    var pass = req.body.pass;
+app.post('/shop', (req, res)=>{
+  conn.query("select Name, Price, Description, PictureLink1 from productheader", (err, rows)=>{
+      res.json(rows)
+  })
+})
 
-    conn.query("select * from account where email = '" + email + "' and password ='" + pass + "'", (err, row)=>{
-        if(row.length>0) res.json(row[0])
-        else res.json({})
-    })
+app.get('/profil/order/', (req, res)=>{
+  conn.query("select OrderID, DATE_FORMAT(OrderDate, '%m-%d-%Y') AS OrderDate, StatusID, ShippingID, Total from orderheader", (err,rows)=>{
+    res.json(rows)
+  })
+})
+
+app.get('/orderdetail/:id', (req, res)=>{
+  var id = req.params.id
+  conn.query("SELECT orderheader.OrderID, DATE_FORMAT(OrderDate, '%m-%d-%Y') AS OrderDate, orderdetail.ProductID, productheader.Name, color.ColorName, size, Qty, orderheader.StatusID, Price FROM `orderdetail`, `color`, `orderheader`, `productheader` WHERE orderheader.OrderID = "+ id+" AND orderdetail.ProductID = productheader.ProductID AND orderdetail.ColorID = color.ColorID AND orderheader.OrderID = orderdetail.OrderID ", (err,rows)=>{
+    res.json(rows)
+  })
 })
 
 app.post('/pegawai', (req, res)=>{
@@ -51,20 +75,6 @@ app.post('/pegawai', (req, res)=>{
     })
 })
 
-app.get('/', (req, res)=>{
-    res.write('Hello World')
-    res.end()
-})
-
-app.get('/home', (req, res)=>{
-    res.write('Konten url Home')
-    res.end()
-})
-
-app.post('/home', (req, res)=>{
-    res.write('Konten url Home method POST')
-    res.end()
-})
 
 // Show order header on Admin Dashboard
 app.get('/admin', (req, res)=>{
