@@ -96,7 +96,7 @@ export default class MyOrder extends React.Component{
             this.state.order.map((item, index)=>(
             <div className="row pt-2">
               <div className="col">
-                <img className="d-flex flex-wrap m-auto"  alt="" height="100px" width="100px"  />
+                <img src={item.PictureLink1} className="d-flex flex-wrap m-auto"  alt="" height="100px" width="100px"  />
               </div>
 
               <div className="col-lg-4 d-flex flex-wrap justify-content-center align-content-center">

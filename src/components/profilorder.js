@@ -17,7 +17,7 @@ export default class Profil extends React.Component{
                     <div className="side-bar">
                         <div className="user-info">
                             <img className="img-profile rounded-circle img-responsive center-block" src={profil} alt=""  />
-                            <p>Andikatama</p>
+                            <p>Sona</p>
                         </div>
                         <nav className="side-menu">
                             <ul className="nav">

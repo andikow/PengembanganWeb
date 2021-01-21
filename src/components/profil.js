@@ -16,7 +16,7 @@ export default class Profil extends React.Component{
                     <div className="side-bar">
                         <div className="user-info">
                             <img className="img-profile rounded-circle img-responsive center-block" src={profil} alt=""  />
-                            <p>Andikatama</p>
+                              <p>Sona</p>
                         </div>
                         <nav className="side-menu">
                             <ul className="nav">
@@ -50,11 +50,11 @@ export default class Profil extends React.Component{
                                       <p>Password</p>
                                     </div>
                                     <div class="col">
-                                      <p>Andikatama</p>
-                                      <p>andikatama@gmail.com</p>
+                                      <p>Sona</p>
+                                      <p>sona@gmail.com</p>
                                       <p>10-02-2001</p>
                                       <p>087862407686</p>
-                                      <p>******</p>
+                                      <p>*******</p>
                                       <Link to ="/changepassword">
                                       <button className="btn btn-block btn-danger my-0 font-weight-bold btn-sm" type="button">Change Password</button>
                                       </Link>

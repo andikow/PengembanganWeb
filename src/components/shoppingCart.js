@@ -1,5 +1,5 @@
 import React from 'react';
-import Produk1 from '../assets/img/productex1.jpg';
+import Produk1 from '../assets/img/cart1.jpg';
 import InputNumeric from './qtycheckout.js';
 import Checkout from './checkout.js';
 import {Link} from 'react-router-dom';
@@ -28,9 +28,9 @@ export default class ShoppingCart extends React.Component{
                   <span class="uk-card-badge span-fav ml-2 mt-2 mr-2" style={{position: "absolute", right: 10}}><i className="far fa-2x fa-heart"></i></span>
                 </div>
                 <div className="col-6 text-left">
-                  <h2>Product Example 1</h2>
-                  <p>Color: Grey</p>
-                  <p>Size: 2XL</p>
+                  <h2>Eco T-Shirt</h2>
+                  <p>Color: Black</p>
+                  <p>Size: M</p>
                   <div class="row">
                     <div class="col-lg-7">
                       <InputNumeric/>
@@ -40,7 +40,8 @@ export default class ShoppingCart extends React.Component{
                     </div>
 
                   </div>
-                  <h4>Rp100.000</h4>
+                  <br/>
+                  <h4>$ 20</h4>
                 </div>
               </div>
             </div>
@@ -48,15 +49,15 @@ export default class ShoppingCart extends React.Component{
             <div className="modal-body">
               <div className="row justify-content-between">
                 <div className="col-6">Subtotal</div>
-                <div className="col-6 text-right">Rp100.000</div>
+                <div className="col-6 text-right">$ 20</div>
               </div>
               <div className="row justify-content-between">
                 <div className="col-6">Shipping costs</div>
-                <div className="col-6 text-right">Rp100.000</div>
+                <div className="col-6 text-right">$ 10</div>
               </div>
               <div className="row justify-content-between mt-2">
                 <div className="col-6 font-weight-bold">Total</div>
-                <div className="col-6 text-right font-weight-bold"><h4>Rp100.000</h4></div>
+                <div className="col-6 text-right font-weight-bold"><h4>$ 30</h4></div>
               </div>
             </div>
             <div className="modal-footer">

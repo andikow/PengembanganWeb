@@ -111,31 +111,12 @@ export default class OrderDetail extends React.Component{
 
 
       </div>
-      <div className="box">
-        <div class="row">
-          <div class="col">
-            <h3>Payment pending</h3>
-            <p>We’re not yet able to print your order</p>
-          </div>
-          <div class="col">
-            <ul className="list-unstyled">
-              <li className="cancel">
-                <a href="#"><i className="fa fa-times mr-2"></i>Cancel Order</a>
-              </li>
-            </ul>
-          </div>
-        </div>
 
-        <hr/>
-
-        <p>Please complete your payment first, try again or choose a different payment method.</p>
-        <button className="btn btn-danger my-0 font-weight-bold" type="button" style={{width:250}}>Pay Now</button>
-      </div>
       {
         this.state.orderDetail.map((item, index)=>(
           <div class="row">
           <div class="col-lg-2">
-          <img  alt="" height="200px" width="180px"  />
+          <img src={item.PictureLink1}  alt="" height="200px" width="180px"  />
           </div>
 
           <div class="col pl-4">
