@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 19, 2021 at 06:17 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.0
+-- Generation Time: Jan 21, 2021 at 06:48 AM
+-- Server version: 10.3.16-MariaDB
+-- PHP Version: 7.3.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -265,7 +266,7 @@ CREATE TABLE `productheader` (
   `Price` int(11) NOT NULL,
   `CategoryID` int(11) NOT NULL,
   `Description` varchar(1000) NOT NULL,
-  `PictureLink1` varchar(100) NOT NULL,
+  `PictureLink1` varchar(500) NOT NULL,
   `PictureLink2` varchar(100) DEFAULT NULL,
   `PictureLink3` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -275,11 +276,11 @@ CREATE TABLE `productheader` (
 --
 
 INSERT INTO `productheader` (`ProductID`, `Name`, `Price`, `CategoryID`, `Description`, `PictureLink1`, `PictureLink2`, `PictureLink3`) VALUES
-(1, 'Eco T-Shirt', 20, 1, 'Premium T-Shirt with \'Eco\' Design\r\n\r\nUnisex\r\nMaterial: Cotton\r\nFabric weight: 4.42 oz (lightweight)', 'http://....', NULL, NULL),
-(2, 'Jipyeong Hoodie', 23, 2, 'This Jipyeong Hoodie is a comfortable classic. The hooded sweatshirt has become a staple in any wardrobe. Kangaroo-style front pocket is perfect for your phone, keys or anything else you want to stash.\r\n\r\nUnisex\r\n50% cotton/50% polyester | Fabric Weight: 7.8 oz (midweight)\r\nRibbed cuffs and waist hem\r\nAdjustable drawstring hood\r\n', 'http://', NULL, NULL),
-(3, 'Santa Cruz Sweatshirt', 40, 3, 'This classic has stood the test of time. Always in fashion, this crewneck sweatshirt is perfect as an outer, under or single layer. Soft and comfortable, this stand-by is a must.\r\n\r\nUnisex\r\n50% preshrunk cotton/50% polyester\r\nFabric Weight: 7.75 oz (midweight)\r\nPill-resistant\r\n1X1 Lycra® spandex ribbed collar, cuffs and waist\r\nFully double-stitched', 'http://', NULL, NULL),
-(4, 'Swag V Neck Sweatshirt', 37, 4, 'This V neck sweatshirt is perfect as an outer, under or single layer. Soft and comfortable, this stand-by is a must.\r\n\r\nUnisex\r\n50% preshrunk cotton/50% polyester \r\nFabric Weight: 7.75 oz (midweight)\r\nPill-resistant\r\n1X1 Lycra® spandex ribbed collar, cuffs and waist\r\nFully double-stitched', 'http://', NULL, NULL),
-(5, 'Red Heart Polo Shirt', 26, 5, 'A timeless, perfect companion for the office, the golf course, or everyday wear.\r\n\r\nUnisex\r\n100% cotton \r\nHeavyweight fabric (6 oz)\r\nThree-button closure\r\nTopstitching for a crisp finish throughout', 'http://', NULL, NULL),
+(1, 'Eco T-Shirt', 20, 1, 'Premium T-Shirt with \'Eco\' Design\r\n\r\nUnisex\r\nMaterial: Cotton\r\nFabric weight: 4.42 oz (lightweight)', 'https://m.media-amazon.com/images/I/A13usaonutL._AC_CLa%7C2140%2C2000%7C81LJLhEQ2yL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_UX342_.png', NULL, NULL),
+(2, 'Jipyeong Hoodie', 23, 2, 'This Jipyeong Hoodie is a comfortable classic. The hooded sweatshirt has become a staple in any wardrobe. Kangaroo-style front pocket is perfect for your phone, keys or anything else you want to stash.\r\n\r\nUnisex\r\n50% cotton/50% polyester | Fabric Weight: 7.8 oz (midweight)\r\nRibbed cuffs and waist hem\r\nAdjustable drawstring hood\r\n', 'https://res.cloudinary.com/teepublic/image/private/s--QAT6NEcD--/t_Resized%20Artwork/c_crop,x_10,y_10/c_fit,h_620/c_crop,g_north_west,h_620,w_465,x_-4,y_6/g_north_west,u_upload:v1446840652:production:blanks:ymwlojdlb9pdlxgcmck4,x_-395,y_-276/b_rgb:eeeeee/c_limit,f_auto,h_630,q_90,w_630/v1606869302/production/designs/16759957_0.jpg', NULL, NULL),
+(3, 'Santa Cruz Sweatshirt', 40, 3, 'This classic has stood the test of time. Always in fashion, this crewneck sweatshirt is perfect as an outer, under or single layer. Soft and comfortable, this stand-by is a must.\r\n\r\nUnisex\r\n50% preshrunk cotton/50% polyester\r\nFabric Weight: 7.75 oz (midweight)\r\nPill-resistant\r\n1X1 Lycra® spandex ribbed collar, cuffs and waist\r\nFully double-stitched', 'https://i.pinimg.com/originals/15/29/c7/1529c760958a93c96fe42b3b9778f4e9.jpg', NULL, NULL),
+(4, 'Swag V Neck Sweatshirt', 37, 4, 'This V neck sweatshirt is perfect as an outer, under or single layer. Soft and comfortable, this stand-by is a must.\r\n\r\nUnisex\r\n50% preshrunk cotton/50% polyester \r\nFabric Weight: 7.75 oz (midweight)\r\nPill-resistant\r\n1X1 Lycra® spandex ribbed collar, cuffs and waist\r\nFully double-stitched', 'https://ae01.alicdn.com/kf/H6dfbcd323d244cef955eae57ede8619bz/Swag-V-Neck-Long-Sleeve-T-Shirts-Men-Clothes-Sailor-Patchwork-Fabric-Striped-T-Shirts-Fashion.jpg_960x960.jpg', NULL, NULL),
+(5, 'Red Heart Polo Shirt', 26, 5, 'A timeless, perfect companion for the office, the golf course, or everyday wear.\r\n\r\nUnisex\r\n100% cotton \r\nHeavyweight fabric (6 oz)\r\nThree-button closure\r\nTopstitching for a crisp finish throughout', 'https://www.hervia.com/uploads/images/products/verylarge/hervia.com-comme-des-gar-ons-play-t006-red-heart-polo-shirt-white-1592319408ggg.png', NULL, NULL),
 (6, 'Keep Going V Neck T-Shirt', 31, 6, 'A little V in the neckline can make a T-shirt look classier. Nice enough to wear to the club and casual enough to wear around the house, this super soft jersey cotton V-neck is versatility at its finest.\r\n\r\nUnisex\r\n100% cotton (deep heather is 52% cotton/48% polyester and marble colors are 91% polyester/9% cotton)\r\nFabric weight: 4.2 oz (lightweight)\r\nReinforced shoulder and side seam construction retains shape and elasticity, comfort and support\r\nDouble-stitched sleeves and waist\r\nRibbed v-neck collar', 'http://', NULL, NULL),
 (7, 'Peace Tank Top', 39, 7, 'The premium tank is ideal for anything from yoga and Pilates or gym. Our entire collection is optimized for vibrant print results.\r\n\r\nUnisex\r\n100% cotton (heather gray is 95% cotton/5% viscose. charcoal gray is 80% cotton/20% polyester)\r\nFabric Weight: 4.42 oz (lightweight)\r\nFairly produced, certified and triple audited', 'http://', NULL, NULL),
 (8, 'Cute Cat Long Sleeve Shirt', 30, 8, 'This premium long sleeve t-shirt is as close to perfect as can be. Soft, comfortable and durable.\r\n\r\n100% cotton (heather gray and heather ice blue are 95%/5% viscose. charcoal gray is 80% cotton/20% polyester. heather burgundy is 60% cotton/40% polyester)\r\nFabric Weight: 4.42 oz (heavyweight)\r\nFairly produced, certified and triple audited.\r\nDouble stitched, reinforced seams at shoulder, sleeve, collar and waist\r\nOptimized for beautiful brilliance across all printing methods', 'http://', NULL, NULL),

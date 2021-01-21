@@ -48,7 +48,7 @@ app.get('/shop', (req, res)=>{
 })
 
 app.post('/shop', (req, res)=>{
-  conn.query("select Name, Price, Description, PictureLink1 from productheader", (err, rows)=>{
+  conn.query("select ProductID, Name, Price, Description, PictureLink1 from productheader", (err, rows)=>{
       res.json(rows)
   })
 })
@@ -68,7 +68,7 @@ app.get('/orderdetail/:id', (req, res)=>{
 
 app.get('/productdetail/:id', (req, res)=>{
   var id = req.params.id
-  conn.query("SELECT productheader.Name, productheader.Price, productheader.Description, productheader.PictureLink1, productdetail.ColorID, productdetail.Size, productdetail.Qty from productdetail, productheader WHERE productheader.ProductID = '" + id + "' AND productheader.ProductID = productdetail.ProductID", (err,rows)=>{
+  conn.query("SELECT productdetail.ProductID, productheader.Name, productheader.Price, productheader.Description, productheader.PictureLink1, productdetail.ColorID, productdetail.Size, productdetail.Qty from productdetail, productheader WHERE productheader.ProductID = '" + id + "' AND productheader.ProductID = productdetail.ProductID", (err,rows)=>{
     res.json(rows)
   })
 })

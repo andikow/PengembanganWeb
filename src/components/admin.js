@@ -29,11 +29,11 @@ export default class Profil extends React.Component{
 
     function StatusDesc(statusID){
       if (statusID == 1){
-        return "WAITING FOR PAYMENT"
+        return "NOT YET PAID"
       }
       else if (statusID == 2)
       {
-        return "PACKING"
+        return "PACKED"
       }
       else if (statusID == 3)
       {
@@ -41,7 +41,7 @@ export default class Profil extends React.Component{
       }
       else if (statusID == 4)
       {
-        return "DELIVERED"
+        return "FINISH"
       }
     }
 
@@ -157,7 +157,7 @@ export default class Profil extends React.Component{
                                   </div>
                                 </div>
                               </div>
-                              <br/>                              
+                              <br/>
                               <div class=" pt-4 col-md-12">
                                 <div class="card">
                                   <div class="card-header">
@@ -194,7 +194,7 @@ export default class Profil extends React.Component{
                                               <td>{item.Total}</td>
                                               <td>{StatusDesc(item.StatusID)}</td>
                                             </tr>
-                                          ))     
+                                          ))
                                           }
                                         </tbody>
                                       </table>
