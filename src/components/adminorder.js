@@ -27,24 +27,6 @@ export default class Profil extends React.Component{
 
   render(){
 
-    function StatusDesc(statusID){
-      if (statusID == 1){
-        return "WAITING FOR PAYMENT"
-      }
-      else if (statusID == 2)
-      {
-        return "PACKING"
-      }
-      else if (statusID == 3)
-      {
-        return "SHIPPING"
-      }
-      else if (statusID == 4)
-      {
-        return "DELIVERED"
-      }
-    }
-
     function PaymentSign(statusID){
       if (statusID == 1){
         return (
@@ -77,24 +59,6 @@ export default class Profil extends React.Component{
           </td>
         )
       }
-    }
-
-    function PaymentDate(statusID, paymentDate){
-      if (statusID == 1){
-        return <td>-</td>
-      }
-      else if (statusID == 2)
-      {
-        return <td>{paymentDate}</td>
-      }
-      // else if (statusID == 3)
-      // {
-      //   return "SHIPPING"
-      // }
-      // else if (statusID == 4)
-      // {
-      //   return "DELIVERED"
-      // }
     }
 
     return(
@@ -239,9 +203,6 @@ export default class Profil extends React.Component{
                                           <th>
                                             Payment
                                           </th>
-                                          <th>
-                                            Payment Date
-                                          </th>
                                         </thead>
                                         <tbody class="text-center">
                                         {
@@ -251,7 +212,6 @@ export default class Profil extends React.Component{
                                               <td>{item.OrderDate}</td>
                                               <td>{item.ShippingID}</td>
                                               {PaymentSign(item.StatusID)}
-                                              {PaymentDate(item.StatusID, item.PaymentDate)}
                                             </tr>
                                           ))     
                                           }

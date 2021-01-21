@@ -4,6 +4,27 @@ import {Link} from 'react-router-dom';
 
 export default class Profil extends React.Component{
 
+  constructor(){
+    super();
+    this.state = {
+      orderHeader : []
+    }
+  }
+
+  getOrderHeader(){
+    fetch ('http://localhost:8000/admin/order3')
+    .then(response => response.json())
+    .then(res => {
+      this.setState({
+        orderHeader: res
+      })
+    })
+  }
+
+  componentDidMount(){
+    this.getOrderHeader()
+  }
+
   render(){
 
     return(
@@ -135,7 +156,7 @@ export default class Profil extends React.Component{
                                   <div class="card-body">
                                     <div class="table-responsive">
                                       <table class="table">
-                                        <thead class="text-center text-primary">
+                                      <thead class="text-center text-primary">
                                           <th>
                                             OrderID
                                           </th>
@@ -144,69 +165,22 @@ export default class Profil extends React.Component{
                                           </th>
                                           <th>
                                             ShippingID
-                                          </th>
+                                          </th> 
                                           <th>
-                                            Qty
-                                          </th>
-                                          <th>
-                                            Subtotal
-                                          </th>
-                                          <th>
-                                            ProductID
-                                          </th>
-                                          <th>
-                                            StatusID
-                                          </th>
-
+                                            ShippingDate
+                                          </th>                                
                                         </thead>
                                         <tbody class="text-center">
-                                          <tr>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                            <td>
-                                              a
-                                            </td>
-                                          </tr>
-
+                                        {
+                                          this.state.orderHeader.map((item, index)=>(
+                                            <tr key={index}>
+                                              <Link to={"/admin/adminorderdetail/" + item.OrderID} ><td type="button">{item.OrderID}</td></Link>
+                                              <td>{item.OrderDate}</td>
+                                              <td>{item.ShippingID}</td>
+                                              <td>{item.ShippingDate}</td>
+                                            </tr>
+                                          ))     
+                                          }
                                         </tbody>
                                       </table>
                                     </div>

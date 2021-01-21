@@ -40,7 +40,7 @@ export default class Profil extends React.Component {
   //   this.setState ({CategoryID: categoryID})
   // } 
 
-  addProduct(){
+  addProduct() {
     var data = {
       ProductID: this.state.ProductID,
       Name: this.state.Name,
@@ -53,18 +53,18 @@ export default class Profil extends React.Component {
     }
 
     fetch(
-      'http://localhost:8000/addproduct', 
+      'http://localhost:8000/addproduct',
       {
-        method : 'POST', 
-        headers : {
+        method: 'POST',
+        headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
-        
+
         },
         body: JSON.stringify(data)
       }
     ).then(respons => respons.json())
-    .then(alert('New product successfully added!'))
+      .then(alert('New product successfully added!'))
   }
 
   render() {
@@ -81,11 +81,11 @@ export default class Profil extends React.Component {
                   </div>
                   <nav className="side-menu">
                     <ul className="nav">
-                      <li><a href="#"><span className="fa fa-tachometer-alt"></span> Dashboard</a></li>
-                      <li><a href="#"><span className="fa fa-boxes"></span> Orders</a></li>
-                      <li className="active"><a href="#"><span className="fa fa-tshirt"></span> Product</a></li>
+                      <li><Link to="/admin"><span className="fa fa-tachometer-alt"></span> Dashboard</Link></li>
+                      <li><Link to="/admin/order1"><span className="fa fa-boxes"></span> Orders</Link></li>
+                      <li className="active"><Link to="/admin/product"><span className="fa fa-tshirt"></span> Product</Link></li>
                       <br /><br /><br /><br />
-                      <li><a href="#"><span className="fa fa-sign-out-alt"></span> Logout</a></li>
+                      <li><Link to="/"><span className="fa fa-sign-out-alt"></span> Logout</Link></li>
                     </ul>
                   </nav>
                 </div>
@@ -95,21 +95,6 @@ export default class Profil extends React.Component {
                     <h3 class="ml-4">Add New Products</h3>
                     <br />
                     <div class="row">
-                      <div class="col">
-                        <div class="form-group">
-                          <label>Upload Image</label>
-                          <div class="input-group">
-                            <span class="input-group-btn">
-                              <span class="btn btn-default btn-file">
-                                Browse… <input type="file" id="imgInp" />
-                              </span>
-                            </span>
-                            <input type="text" class="form-control" readonly />
-                          </div>
-                          <br />
-                          <img id='img-upload' />
-                        </div>
-                      </div>
                       <div class="col">
                         <form>
                           <div>
@@ -121,19 +106,19 @@ export default class Profil extends React.Component {
                         <form>
                           <div>
                             <label>Name</label>
-                            <input onChange = {ev => this.setState({Name : ev.target.value})} type="text" className="form-control" style={{ width: 300 }} placeholder="Name" />
+                            <input onChange={ev => this.setState({ Name: ev.target.value })} type="text" className="form-control" style={{ width: 300 }} placeholder="Name" />
                           </div>
                         </form><br />
                         <form>
                           <div>
                             <label>Price</label>
-                            <input onChange = {ev => this.setState({Price: ev.target.value})} type="text" className="form-control" style={{ width: 300 }} placeholder="Price" />
+                            <input onChange={ev => this.setState({ Price: ev.target.value })} type="text" className="form-control" style={{ width: 300 }} placeholder="Price" />
                           </div>
                         </form><br />
                         <form>
                           <div>
                             <label>Category ID</label>
-                            <input onChange = {ev => this.setState({CategoryID: ev.target.value})} type="text" className="form-control" style={{ width: 300 }} placeholder="Category ID 1-8" />
+                            <input onChange={ev => this.setState({ CategoryID: ev.target.value })} type="text" className="form-control" style={{ width: 300 }} placeholder="Category ID 1-8" />
 
                             {/* <select onClick = {(e) => this.changeValue()}class="custom-select" id="SelectCategory">
                               <option selected>Choose...</option>
@@ -159,35 +144,35 @@ export default class Profil extends React.Component {
                         <form>
                           <div>
                             <label>Description</label>
-                            <input onChange = {ev => this.setState({Description : ev.target.value})} type="text" className="form-control" style={{ width: 300 }} placeholder="Description" />
+                            <input onChange={ev => this.setState({ Description: ev.target.value })} type="text" className="form-control" style={{ width: 300 }} placeholder="Description" />
                           </div>
                         </form><br />
                         <form>
                           <div>
                             <label>PictureLink1</label>
-                            <input onChange = {ev => this.setState({PictureLink1 : ev.target.value})} type="text" className="form-control" style={{ width: 300 }} placeholder="PictureLink1" />
+                            <input onChange={ev => this.setState({ PictureLink1: ev.target.value })} type="text" className="form-control" style={{ width: 300 }} placeholder="PictureLink1" />
                           </div>
                         </form><br />
                         <form>
                           <div>
                             <label>PictureLink2</label>
-                            <input onChange = {ev => this.setState({PictureLink2 : ev.target.value})}type="text" className="form-control" style={{ width: 300 }} placeholder="PictureLink2" />
+                            <input onChange={ev => this.setState({ PictureLink2: ev.target.value })} type="text" className="form-control" style={{ width: 300 }} placeholder="PictureLink2" />
                           </div>
                         </form><br />
                         <form>
                           <div>
                             <label>PictureLink3</label>
-                            <input onChange = {ev => this.setState({PictureLink3 : ev.target.value})} type="text" className="form-control" style={{ width: 300 }} placeholder="PictureLink3" />
+                            <input onChange={ev => this.setState({ PictureLink3: ev.target.value })} type="text" className="form-control" style={{ width: 300 }} placeholder="PictureLink3" />
                           </div>
                         </form>
                         <br />
                         <br />
                         <Link to="/admin/product">
-                          <button onClick = {()=> this.addProduct()} className="btn btn-danger my-0 font-weight-bold ml-auto mr-4 float-right" type="button">Add product</button>
+                          <button onClick={() => this.addProduct()} className="btn btn-danger my-0 font-weight-bold ml-auto mr-4 float-right" type="button">Add product</button>
                         </Link>
                       </div>
                     </div>
-                    
+
 
 
                   </div>
