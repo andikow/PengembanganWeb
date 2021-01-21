@@ -82,7 +82,7 @@ function App() {
       <Route path="/payment1" component = {Payment1}/>
       <Route path="/payment2" component = {Payment2}/>
       <Route path="/privacy" component = {Privacy}/>
-      <Route path="/productdetail" component = {ProductDetail}/>
+      <Route path="/productdetail/:id" component = {ProductDetail}/>
       <Route path="/profil" exact component = {Profil}/>
       <Route path="/profil/order" component = {ProfilOrder}/>
       <Route path="/profil/sosial" component = {ProfilSosial}/>
