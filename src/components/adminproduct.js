@@ -65,7 +65,7 @@ export default class Profil extends React.Component{
                                             Picture
                                           </th>
                                           <th>
-                                            ProductID
+                                            Product ID
                                           </th>
                                           <th>
                                             Name
@@ -78,16 +78,7 @@ export default class Profil extends React.Component{
                                           </th>
                                           <th>
                                             Description
-                                          </th>
-                                          <th>
-                                            PictureLink1
-                                          </th>
-                                          <th>
-                                            PictureLink2
-                                          </th>
-                                          <th>
-                                            PictureLink3
-                                          </th>
+                                          </th>                                          
                                           <th>
                                             Action
                                           </th>
@@ -96,15 +87,12 @@ export default class Profil extends React.Component{
                                         {
                                           this.state.productHeader.map((item, index)=>(
                                             <tr key={index}>
-                                              <td>{item.PictureLink1}</td>
+                                              <td><img src={item.PictureLink1} alt="Produk Example 1" style={{width: '100%', paddingRight: "2%"}}/></td>
                                               <td>{item.ProductID}</td>
                                               <td>{item.Name}</td>
                                               <td>{item.Price}</td>
                                               <td>{item.CategoryID}</td>
-                                              <td>{item.Description}</td>
-                                              <td>{item.PictureLink1}</td>
-                                              <td>{item.PictureLink2}</td>
-                                              <td>{item.PictureLink3}</td>
+                                              <td className="text-left">{item.Description}</td>
                                               <td><Link to ="/admin/editproduct">
                                               <p class="font-weight-bold" style={{color:'#63BCC9', width:50}}><i class="fas fa-edit"></i> Edit</p>
                                               </Link></td>

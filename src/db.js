@@ -130,7 +130,7 @@ app.post('/addproduct', (req, res)=>{
 
 // Show order header on Admin Order Payment
 app.get('/admin/order1', (req, res)=>{
-    var query = "SELECT DISTINCT orderheader.OrderID, DATE_FORMAT(OrderDate, '%m-%d-%Y') AS OrderDate, orderheader.ShippingID, orderheader.Total, orderstatusdetail.StatusID, DATE_FORMAT(orderstatusdetail.Date, '%m-%d-%Y') AS PaymentDate FROM orderheader INNER JOIN orderstatusdetail on orderheader.OrderID = orderstatusdetail.OrderID WHERE orderstatusdetail.StatusID = 1 OR orderstatusdetail.StatusID = 2 Order BY orderheader.OrderID"
+    var query = "SELECT orderheader.OrderID, DATE_FORMAT(OrderDate, '%m-%d-%Y') AS OrderDate, orderheader.ShippingID, orderheader.Total, orderstatusdetail.StatusID, DATE_FORMAT(orderstatusdetail.Date, '%m-%d-%Y') AS PaymentDate FROM orderheader INNER JOIN orderstatusdetail on orderheader.OrderID = orderstatusdetail.OrderID WHERE orderheader.StatusID = 1"
     conn.query(query, (err, result) =>{
         if (err)
             res.json(err)
@@ -141,7 +141,29 @@ app.get('/admin/order1', (req, res)=>{
 
 // Show order header on Admin Order Packing
 app.get('/admin/order2', (req, res)=>{
-    var query = "SELECT DISTINCT orderheader.OrderID, DATE_FORMAT(OrderDate, '%m-%d-%Y') AS OrderDate, orderheader.ShippingID, orderheader.Total, orderheader.StatusID DATE_FORMAT(orderstatusdetail.Date, '%m-%d-%Y') AS PaymentDate FROM orderheader INNER JOIN orderstatusdetail on orderheader.OrderID = orderstatusdetail.OrderID Order BY orderheader.OrderID"
+    var query = "SELECT orderheader.OrderID, DATE_FORMAT(OrderDate, '%m-%d-%Y') AS OrderDate, orderheader.ShippingID, orderheader.Total, orderheader.StatusID, DATE_FORMAT(orderstatusdetail.Date, '%m-%d-%Y') AS PaymentDate FROM orderheader INNER JOIN orderstatusdetail on orderheader.OrderID = orderstatusdetail.OrderID WHERE orderheader.StatusID = 2"
+    conn.query(query, (err, result) =>{
+        if (err)
+            res.json(err)
+        else
+            res.json(result)
+    })
+})
+
+// Show order header on Admin Order Shipping
+app.get('/admin/order3', (req, res)=>{
+    var query = "SELECT orderheader.OrderID, DATE_FORMAT(OrderDate, '%m-%d-%Y') AS OrderDate, orderheader.ShippingID, orderheader.Total, orderheader.StatusID, DATE_FORMAT(orderstatusdetail.Date, '%m-%d-%Y') AS ShippingDate FROM orderheader INNER JOIN orderstatusdetail on orderheader.OrderID = orderstatusdetail.OrderID WHERE orderheader.StatusID = 3 AND orderstatusdetail.StatusID = 3"
+    conn.query(query, (err, result) =>{
+        if (err)
+            res.json(err)
+        else
+            res.json(result)
+    })
+})
+
+// Show order header on Admin Order Delivered
+app.get('/admin/order4', (req, res)=>{
+    var query = "SELECT orderheader.OrderID, DATE_FORMAT(OrderDate, '%m-%d-%Y') AS OrderDate, orderheader.ShippingID, orderheader.Total, orderstatusdetail.StatusID, DATE_FORMAT(orderstatusdetail.Date, '%m-%d-%Y') AS DeliveredDate FROM orderheader INNER JOIN orderstatusdetail on orderheader.OrderID = orderstatusdetail.OrderID WHERE orderstatusdetail.StatusID = 4"
     conn.query(query, (err, result) =>{
         if (err)
             res.json(err)

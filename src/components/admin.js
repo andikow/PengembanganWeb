@@ -188,7 +188,7 @@ export default class Profil extends React.Component{
                                           {
                                           this.state.orderHeader.map((item, index)=>(
                                             <tr key={index}>
-                                              <td>{item.OrderID}</td>
+                                              <Link to={"/admin/adminorderdetail/" + item.OrderID} ><td type="button">{item.OrderID}</td></Link>
                                               <td>{item.OrderDate}</td>
                                               <td>{item.ShippingID}</td>
                                               <td>{item.Total}</td>
