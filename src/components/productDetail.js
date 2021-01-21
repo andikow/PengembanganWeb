@@ -48,7 +48,7 @@ export default class ProductDetail extends React.Component{
                 {
                   this.state.productDetail.slice(0,1).map((item, index)=>(
                   <>
-                <img src={item.PictureLink1} alt="Produk Example 1" style={{width: '100%', paddingRight: "2%"}}/>  
+                <img src={item.PictureLink1} alt="Produk Example 1" style={{width: '100%', paddingRight: "2%"}}/>
                   </>
                   ))
                 }
@@ -64,7 +64,7 @@ export default class ProductDetail extends React.Component{
                 <i style={{color:"#F5C60D"}} className="fas fa-star"></i>
                 <i style={{color:"#F5C60D"}} className="fas fa-star"></i>
                 <i className="fas fa-star mr-2"></i>
-                (10 reviews)
+                (438 reviews)
                 </p>
                 <h1 className="mt-3">$ {item.Price}</h1>
                 <small>Plus shipping</small>
@@ -111,8 +111,12 @@ export default class ProductDetail extends React.Component{
                     {
                     this.state.ProdDet?
                     <div className="subDesc-body">
-                        <h3>Men's T-Shirt</h3>
-                        <p>This classic tee offers plenty of room and is ideal for most body types. Contoured and side seamed for a feminine fit ITEM RUNS SMALL.<br/>100% preshrunk cotton <br/>Durable and reliable</p>
+
+                        <h3>Eco T-Shirt</h3>
+                        <p>Premium T-Shirt with 'Eco' Design<br/>Unisex<br/>Material: Cotton<br/>Fabric weight: 4.42 oz (lightweight)</p>
+
+                          ))
+                        }
                     </div>
                     :null
                     }
@@ -175,12 +179,13 @@ export default class ProductDetail extends React.Component{
                 <div className="subDesc">
                     <div className="subDesc-header d-flex justify-content-between py-3">
                     <h4>Customer Reviews
-                        <i className="fa fa-star ml-2"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star mr-2"></i>
-                        (1000)
+                    <i style={{color:"#F5C60D"}} className="fas fa-star"></i>
+                    <i style={{color:"#F5C60D"}} className="fas fa-star"></i>
+                    <i style={{color:"#F5C60D"}} className="fas fa-star"></i>
+                    <i style={{color:"#F5C60D"}} className="fas fa-star"></i>
+                    <i className="fas fa-star mr-2"></i>
+                    (438 reviews)
+
                     </h4>
                         <div type="button" onClick={()=>this.setState({Reviews: !this.state.Reviews})}><h4><i className="fa fa-plus"/></h4></div>
                     </div>
@@ -206,20 +211,31 @@ export default class ProductDetail extends React.Component{
                         </div>
                         <div className="col-lg-6 col-12">
                             <p className="mt-2">
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star mr-2"></i>
+                            <i style={{color:"#F5C60D"}} className="fas fa-star"></i>
+                            <i style={{color:"#F5C60D"}} className="fas fa-star"></i>
+                            <i style={{color:"#F5C60D"}} className="fas fa-star"></i>
+                            <i style={{color:"#F5C60D"}} className="fas fa-star"></i>
+                            <i className="fas fa-star mr-2"></i>
+
                             Color <span className="px-2 rounded-circle bg-dark nl-2 mr-2"></span> Size M <br/> Terrific! <br/><small className="mt-1">2 November 2020</small>
                             </p>
                             <p className="mt-2">
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star mr-2"></i>
-                            Color <span className="px-2 rounded-circle bg-dark nl-2 mr-2"></span> Size M <br/> Terrific! <br/><small className="mt-1">2 November 2020</small>
+                            <i style={{color:"#F5C60D"}} className="fas fa-star"></i>
+                            <i style={{color:"#F5C60D"}} className="fas fa-star"></i>
+                            <i style={{color:"#F5C60D"}} className="fas fa-star"></i>
+                            <i style={{color:"#F5C60D"}} className="fas fa-star"></i>
+                            <i className="fas fa-star mr-2"></i>
+
+                            Color <span className="px-2 rounded-circle bg-dark nl-2 mr-2"></span> Size M <br/> Nice! <br/><small className="mt-1">2 December 2020</small>
+                            </p>
+                            <p className="mt-2">
+                            <i style={{color:"#F5C60D"}} className="fas fa-star"></i>
+                            <i style={{color:"#F5C60D"}} className="fas fa-star"></i>
+                            <i style={{color:"#F5C60D"}} className="fas fa-star"></i>
+                            <i style={{color:"#F5C60D"}} className="fas fa-star"></i>
+                            <i className="fas fa-star mr-2"></i>
+
+                            Color <span className="px-2 rounded-circle bg-dark nl-2 mr-2"></span> Size M <br/> Wow! <br/><small className="mt-1">5 January 2021</small>
                             </p>
                         <div className="row justify-content-center">
                             <p className="" aria-label="Page navigation">
