@@ -2,6 +2,7 @@ import React from 'react';
 import './../assets/css/checkout.css';
 import paypal from './../assets/img/paypal.png';
 import InputNumeric from './qtycheckout.js';
+import Produk1 from '../assets/img/cart1.jpg';
 import {Link} from 'react-router-dom';
 
 export default class Checkout extends React.Component{
@@ -393,22 +394,22 @@ export default class Checkout extends React.Component{
                         <h3 className="box-title">Order</h3>
                         <div class="row">
                           <div class="col">Sub-total</div>
-                          <div class="col-lg-2">$3.99</div>
+                          <div class="col-lg-2">$20</div>
                         </div>
                         <div class="row">
                           <div class="col">Shipping costs</div>
-                          <div class="col-lg-2">$3.99</div>
+                          <div class="col-lg-2">$10</div>
                         </div>
                         <div class="row">
                           <div class="col">Sales Tax</div>
-                          <div class="col-lg-2">$3.99</div>
+                          <div class="col-lg-2">$0</div>
                         </div>
 
                         <hr />
 
                         <div class="row">
                           <div class="col" style={{fontWeight:'bold'}}>Total</div>
-                          <div class="col-lg-2">$3.99</div>
+                          <div class="col-lg-2">$30</div>
                         </div>
 
                         <hr />
@@ -447,22 +448,22 @@ export default class Checkout extends React.Component{
 
                         <div class="row">
                           <div class="col">Sub-total</div>
-                          <div class="col-lg-2">$3.99</div>
+                          <div class="col-lg-2">$20</div>
                         </div>
                         <div class="row">
                           <div class="col">Shipping costs</div>
-                          <div class="col-lg-2">$3.99</div>
+                          <div class="col-lg-2">$10</div>
                         </div>
                         <div class="row">
                           <div class="col">Sales Tax</div>
-                          <div class="col-lg-2">$3.99</div>
+                          <div class="col-lg-2">$0</div>
                         </div>
 
                         <hr />
 
                         <div class="row">
                           <div class="col" style={{fontWeight:'bold'}}>Total</div>
-                          <div class="col-lg-2">$3.99</div>
+                          <div class="col-lg-2">$30</div>
                         </div>
 
                         <hr />
@@ -470,7 +471,7 @@ export default class Checkout extends React.Component{
                         <p style={{fontWeight:'bold'}}>Nama baju</p>
                         <div class="row">
                           <div class="col">
-                            <img  alt="" height="150px" width="120px"  />
+                            <img src={Produk1} alt=""  width="120px"  />
                           </div>
                           <div class="col">
                             <label>Size :</label>

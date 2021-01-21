@@ -78,15 +78,7 @@ export default class Header extends React.Component{
             <div className="col-lg-3 d-flex justify-content-center">
               <Link to = "/"><img src={Logo} alt="logo" /></Link>
             </div>
-            <div className="col-lg-2 btn">
-              <div className="row d-flex justify-content-center">
-                <h3>Create</h3>
-              </div>
-              <div className="row d-flex justify-content-center">
-                <h5 className="gray">Custom Products</h5>
-              </div>
-            </div>
-              <div className="col-lg-2 btn">
+              <div className="col-lg-4 btn">
                 <Link to ="/shop">
                 <div className="row d-flex justify-content-center">
                   <h3>Shop</h3>
