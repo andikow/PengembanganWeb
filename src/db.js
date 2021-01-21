@@ -123,7 +123,7 @@ app.post('/addproduct', (req, res)=>{
 
 // Show order header on Admin Order Payment
 app.get('/admin/order1', (req, res)=>{
-    var query = "SELECT DISTINCT orderheader.OrderID, DATE_FORMAT(OrderDate, '%m-%d-%Y') AS OrderDate, orderheader.ShippingID, orderheader.Total, orderstatusdetail.StatusID, DATE_FORMAT(orderstatusdetail.Date, '%m-%d-%Y') AS PaymentDate FROM orderheader INNER JOIN orderstatusdetail on orderheader.OrderID = orderstatusdetail.OrderID WHERE orderstatusdetail.StatusID = 1 OR orderstatusdetail.StatusID = 2 Order BY orderheader.OrderID"
+    var query = "SELECT orderheader.OrderID, DATE_FORMAT(OrderDate, '%m-%d-%Y') AS OrderDate, orderheader.ShippingID, orderheader.Total, orderstatusdetail.StatusID, DATE_FORMAT(orderstatusdetail.Date, '%m-%d-%Y') AS PaymentDate FROM orderheader INNER JOIN orderstatusdetail on orderheader.OrderID = orderstatusdetail.OrderID"
     conn.query(query, (err, result) =>{
         if (err)
             res.json(err)
