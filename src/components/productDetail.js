@@ -111,12 +111,6 @@ export default class ProductDetail extends React.Component{
                     {
                     this.state.ProdDet?
                     <div className="subDesc-body">
-
-                        <h3>Eco T-Shirt</h3>
-                        <p>Premium T-Shirt with 'Eco' Design<br/>Unisex<br/>Material: Cotton<br/>Fabric weight: 4.42 oz (lightweight)</p>
-
-                          ))
-                        }
                     </div>
                     :null
                     }

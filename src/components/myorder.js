@@ -61,16 +61,13 @@ export default class MyOrder extends React.Component{
           <br/>
 
           <div className="row pt-2">
+
             <div className="col">
-              <p className="d-flex flex-wrap justify-content-center" style={{fontWeight:'bold'}}>Preview</p>
+              <p className="d-flex flex-wrap justify-content-center" style={{fontWeight:'bold'}}>Order ID</p>
             </div>
 
             <div className="col-lg-4">
               <p className="d-flex flex-wrap justify-content-center" style={{fontWeight:'bold'}}>Status</p>
-            </div>
-
-            <div className="col">
-              <p className="d-flex flex-wrap justify-content-center" style={{fontWeight:'bold'}}>Order ID</p>
             </div>
 
             <div className="col">
@@ -95,16 +92,13 @@ export default class MyOrder extends React.Component{
           {
             this.state.order.map((item, index)=>(
             <div className="row pt-2">
-              <div className="col">
-                <img src={item.PictureLink1} className="d-flex flex-wrap m-auto"  alt="" height="100px" width="100px"  />
-              </div>
-
-              <div className="col-lg-4 d-flex flex-wrap justify-content-center align-content-center">
-                <i className="fa fa-credit-card"></i><p> &emsp; {StatusDesc(item.StatusID)}</p>
-              </div>
 
               <div className="col d-flex flex-wrap justify-content-center align-content-center">
                 <p>{"ID000" + item.OrderID}</p>
+              </div>
+
+              <div className="col-lg-4 d-flex flex-wrap justify-content-center align-content-center">
+              <i className="fa fa-credit-card"></i><p> &emsp; {StatusDesc(item.StatusID)}</p>
               </div>
 
               <div className="col d-flex flex-wrap justify-content-center align-content-center">
