@@ -62,7 +62,7 @@ export default class OrderDetail extends React.Component{
           }</h2>
           </div>
           <div className="col" style={{textAlign:'right'}}>
-            <p>Order Date : {this.state.orderDetail.slice(0,1).map((item, index)=>(<span>
+            <p className="font-weight-bold">Order Date : {this.state.orderDetail.slice(0,1).map((item, index)=>(<span>
               {item.OrderDate}</span>
             ))
           }</p>
@@ -124,7 +124,7 @@ export default class OrderDetail extends React.Component{
           <p>Size: {item.size}</p>
           <p>Color: {item.colorName}</p>
           <p>Quantity: {item.Qty}</p>
-          <p>Price: $ {item.Price}</p>
+          <p>Price: IDR {item.Price}</p>
 
           </div>
           </div>

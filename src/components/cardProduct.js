@@ -45,7 +45,7 @@ export default class CardProduct extends React.Component{
               </span>
               <div className="card-body">
                 <h5 class="card-title text-truncate">{item.Name}</h5>
-                <p class="card-text text-primary font-weight-bold">$ {item.Price}</p>
+                <p class="card-text text-primary font-weight-bold">IDR {item.Price}</p>
               </div>
             </div>
             </Link>

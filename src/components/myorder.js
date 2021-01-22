@@ -110,7 +110,7 @@ export default class MyOrder extends React.Component{
               </div>
 
               <div className="col d-flex flex-wrap justify-content-center align-content-center">
-                <p>{"$" + item.Total}</p>
+                <p>{"IDR" + item.Total}</p>
               </div>
 
               <div className="col d-flex flex-wrap justify-content-center align-content-center">

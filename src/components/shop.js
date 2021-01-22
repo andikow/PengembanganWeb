@@ -10,9 +10,6 @@ export default class Shop extends React.Component{
         <>
         <div class="container py-4">
           <div class="row py-4">
-            <h3>Sweater</h3>
-          </div>
-          <div class="row">
             <div class="col-lg-3 pl-0">
               <FilterProduct />
             </div>
