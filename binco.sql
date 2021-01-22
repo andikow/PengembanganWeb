@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 21 Jan 2021 pada 11.46
--- Versi Server: 10.1.24-MariaDB
--- PHP Version: 7.1.6
+-- Generation Time: Jan 22, 2021 at 04:42 PM
+-- Server version: 10.3.16-MariaDB
+-- PHP Version: 7.3.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `account`
+-- Table structure for table `account`
 --
 
 CREATE TABLE `account` (
@@ -35,7 +35,7 @@ CREATE TABLE `account` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `account`
+-- Dumping data for table `account`
 --
 
 INSERT INTO `account` (`CustomerID`, `Email`, `Password`) VALUES
@@ -53,7 +53,21 @@ INSERT INTO `account` (`CustomerID`, `Email`, `Password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `category`
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `CartID` int(3) NOT NULL,
+  `ProductID` int(3) NOT NULL,
+  `Qty` int(3) NOT NULL,
+  `Size` text NOT NULL,
+  `ColorID` varchar(7) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
 --
 
 CREATE TABLE `category` (
@@ -62,7 +76,7 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `category`
+-- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`CategoryID`, `Description`) VALUES
@@ -78,7 +92,7 @@ INSERT INTO `category` (`CategoryID`, `Description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `color`
+-- Table structure for table `color`
 --
 
 CREATE TABLE `color` (
@@ -87,7 +101,7 @@ CREATE TABLE `color` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `color`
+-- Dumping data for table `color`
 --
 
 INSERT INTO `color` (`ColorID`, `ColorName`) VALUES
@@ -110,7 +124,7 @@ INSERT INTO `color` (`ColorID`, `ColorName`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `orderdetail`
+-- Table structure for table `orderdetail`
 --
 
 CREATE TABLE `orderdetail` (
@@ -122,7 +136,7 @@ CREATE TABLE `orderdetail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `orderdetail`
+-- Dumping data for table `orderdetail`
 --
 
 INSERT INTO `orderdetail` (`OrderID`, `ProductID`, `ColorID`, `Size`, `Qty`) VALUES
@@ -143,7 +157,7 @@ INSERT INTO `orderdetail` (`OrderID`, `ProductID`, `ColorID`, `Size`, `Qty`) VAL
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `orderheader`
+-- Table structure for table `orderheader`
 --
 
 CREATE TABLE `orderheader` (
@@ -157,7 +171,7 @@ CREATE TABLE `orderheader` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `orderheader`
+-- Dumping data for table `orderheader`
 --
 
 INSERT INTO `orderheader` (`OrderID`, `OrderDate`, `ShippingID`, `ShippingCosts`, `SalesTax`, `Total`, `StatusID`) VALUES
@@ -171,7 +185,7 @@ INSERT INTO `orderheader` (`OrderID`, `OrderDate`, `ShippingID`, `ShippingCosts`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `orderstatusdetail`
+-- Table structure for table `orderstatusdetail`
 --
 
 CREATE TABLE `orderstatusdetail` (
@@ -181,7 +195,7 @@ CREATE TABLE `orderstatusdetail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `orderstatusdetail`
+-- Dumping data for table `orderstatusdetail`
 --
 
 INSERT INTO `orderstatusdetail` (`OrderID`, `StatusID`, `Date`) VALUES
@@ -203,7 +217,7 @@ INSERT INTO `orderstatusdetail` (`OrderID`, `StatusID`, `Date`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `productdetail`
+-- Table structure for table `productdetail`
 --
 
 CREATE TABLE `productdetail` (
@@ -214,7 +228,7 @@ CREATE TABLE `productdetail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `productdetail`
+-- Dumping data for table `productdetail`
 --
 
 INSERT INTO `productdetail` (`ProductID`, `ColorID`, `Size`, `Qty`) VALUES
@@ -249,7 +263,7 @@ INSERT INTO `productdetail` (`ProductID`, `ColorID`, `Size`, `Qty`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `productheader`
+-- Table structure for table `productheader`
 --
 
 CREATE TABLE `productheader` (
@@ -264,7 +278,7 @@ CREATE TABLE `productheader` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `productheader`
+-- Dumping data for table `productheader`
 --
 
 INSERT INTO `productheader` (`ProductID`, `Name`, `Price`, `CategoryID`, `Description`, `PictureLink1`, `PictureLink2`, `PictureLink3`) VALUES
@@ -282,7 +296,7 @@ INSERT INTO `productheader` (`ProductID`, `Name`, `Price`, `CategoryID`, `Descri
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `reviews`
+-- Table structure for table `reviews`
 --
 
 CREATE TABLE `reviews` (
@@ -293,7 +307,7 @@ CREATE TABLE `reviews` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `reviews`
+-- Dumping data for table `reviews`
 --
 
 INSERT INTO `reviews` (`CustomerID`, `OrderID`, `Review`, `Stars`) VALUES
@@ -302,7 +316,7 @@ INSERT INTO `reviews` (`CustomerID`, `OrderID`, `Review`, `Stars`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `shippingdetail`
+-- Table structure for table `shippingdetail`
 --
 
 CREATE TABLE `shippingdetail` (
@@ -320,7 +334,7 @@ CREATE TABLE `shippingdetail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `shippingdetail`
+-- Dumping data for table `shippingdetail`
 --
 
 INSERT INTO `shippingdetail` (`ShippingID`, `CustomerID`, `FirstName`, `LastName`, `Address`, `Building`, `Country`, `ZipCode`, `City`, `ShippingMethod`, `Phone`) VALUES
@@ -340,6 +354,12 @@ INSERT INTO `shippingdetail` (`ShippingID`, `CustomerID`, `FirstName`, `LastName
 --
 ALTER TABLE `account`
   ADD PRIMARY KEY (`CustomerID`);
+
+--
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`CartID`);
 
 --
 -- Indexes for table `category`
@@ -410,71 +430,82 @@ ALTER TABLE `shippingdetail`
 --
 ALTER TABLE `account`
   MODIFY `CustomerID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `CartID` int(3) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
 --
 -- AUTO_INCREMENT for table `orderheader`
 --
 ALTER TABLE `orderheader`
   MODIFY `OrderID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `productheader`
 --
 ALTER TABLE `productheader`
-  MODIFY `ProductID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ProductID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- AUTO_INCREMENT for table `shippingdetail`
 --
 ALTER TABLE `shippingdetail`
   MODIFY `ShippingID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `orderdetail`
+-- Constraints for table `orderdetail`
 --
 ALTER TABLE `orderdetail`
   ADD CONSTRAINT `FK3_OrderID` FOREIGN KEY (`OrderID`) REFERENCES `orderheader` (`OrderID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_ProductDetail` FOREIGN KEY (`ProductID`,`ColorID`,`Size`) REFERENCES `productdetail` (`ProductID`, `ColorID`, `Size`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `orderheader`
+-- Constraints for table `orderheader`
 --
 ALTER TABLE `orderheader`
   ADD CONSTRAINT `FK_ShippingID` FOREIGN KEY (`ShippingID`) REFERENCES `shippingdetail` (`ShippingID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `orderstatusdetail`
+-- Constraints for table `orderstatusdetail`
 --
 ALTER TABLE `orderstatusdetail`
   ADD CONSTRAINT `FK_OrderID` FOREIGN KEY (`OrderID`) REFERENCES `orderheader` (`OrderID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `productdetail`
+-- Constraints for table `productdetail`
 --
 ALTER TABLE `productdetail`
   ADD CONSTRAINT `FK2_ProductID` FOREIGN KEY (`ProductID`) REFERENCES `productheader` (`ProductID`),
   ADD CONSTRAINT `FK_ColorID` FOREIGN KEY (`ColorID`) REFERENCES `color` (`ColorID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `productheader`
+-- Constraints for table `productheader`
 --
 ALTER TABLE `productheader`
   ADD CONSTRAINT `FK_CategoryID` FOREIGN KEY (`CategoryID`) REFERENCES `category` (`CategoryID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `reviews`
+-- Constraints for table `reviews`
 --
 ALTER TABLE `reviews`
   ADD CONSTRAINT `FK2_OrderID` FOREIGN KEY (`OrderID`) REFERENCES `orderheader` (`OrderID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK3_CustomerID` FOREIGN KEY (`CustomerID`) REFERENCES `account` (`CustomerID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `shippingdetail`
+-- Constraints for table `shippingdetail`
 --
 ALTER TABLE `shippingdetail`
   ADD CONSTRAINT `FK_CustomerID` FOREIGN KEY (`CustomerID`) REFERENCES `account` (`CustomerID`) ON DELETE CASCADE ON UPDATE CASCADE;
