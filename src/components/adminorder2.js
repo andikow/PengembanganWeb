@@ -155,20 +155,20 @@ export default class Profil extends React.Component {
                           </div>
                           <div class="card-body">
                             <div class="table-responsive">
-                              <table class="table">                        
+                              <table class="table">
                                 <thead class="text-center text-primary">
                                   <th>
                                     OrderID
-                                          </th>
+                                  </th>
                                   <th>
                                     OrderDate
-                                          </th>
+                                  </th>
                                   <th>
                                     ShippingID
-                                          </th>
+                                  </th>
                                   <th>
                                     Action
-                                          </th>
+                                  </th>
                                 </thead>
                                 <tbody class="text-center">
                                   {
@@ -192,12 +192,7 @@ export default class Profil extends React.Component {
                           </div>
                         </div>
                       </div>
-
                     </div>
-
-
-
-
                   </div>
                 </div>
               </div>

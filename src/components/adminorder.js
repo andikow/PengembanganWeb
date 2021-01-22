@@ -221,12 +221,7 @@ export default class Profil extends React.Component{
                                   </div>
                                 </div>
                               </div>
-
                           </div>
-
-
-
-
                         </div>
                     </div>
                 </div>

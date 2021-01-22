@@ -68,7 +68,7 @@ function App() {
       <Route path="/contact" component = {Contact}/>
       <Route path="/creating1" component = {Creating1}/>
       <Route path="/creating2" component = {Creating2}/>
-      <Route path="/admin/editproduct" component = {EditProduct}/>
+      <Route path="/admin/editproduct/:productid" component = {EditProduct}/>
       <Route path="/filterproduct" component = {FilterProduct}/>
       <Route path="/footer" component = {Footer}/>
       <Route path="/forgotpassword" component = {ForgotPassword}/>

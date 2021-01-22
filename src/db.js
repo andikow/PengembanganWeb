@@ -128,6 +128,51 @@ app.post('/addproduct', (req, res)=>{
     })
 })
 
+// Edit product
+app.put('/editproduct/:productid', (req, res)=>{
+    var Name = req.body.Name
+    var Price = req.body.Price
+    var CategoryID = req.body.CategoryID
+    var Description = req.body.Description
+    var PictureLink1 = req.body.PictureLink1
+    var PictureLink2 = req.body.PictureLink2
+    var PictureLink3 = req.body.PictureLink3
+    var productid = req.params.productid 
+    var query = "UPDATE productheader SET Name = '" + Name + "', Price = " + Price + ", CategoryID = " + CategoryID + ", Description = '" + Description + "' , PictureLink1 = '" + PictureLink1 + "', PictureLink2 = '" + PictureLink2 + "', PictureLink3 = '" + PictureLink3 + "' WHERE ProductID = " + productid
+
+   
+    conn.query(query, (err, result) =>{
+        if (err)
+            res.json(err)
+        else
+            res.json(result)
+    })
+})
+
+// Get Data to Edit Product List
+app.get('/editproduct/:productid', (req, res)=>{
+    var productid = req.params.productid 
+    var query = "SELECT * FROM productheader WHERE ProductID = " + productid
+    conn.query(query, (err, result) =>{
+        if (err)
+            res.json(err)
+        else
+            res.json(result)
+    })
+})
+
+// Delete Product --Belum Selesai Edit Isinya
+app.delete('/editproduct/:productid', (req, res)=>{
+    var productid = req.params.productid 
+    var query = "DELETE FROM productheader WHERE ProductID = " + productid
+    conn.query(query, (err, result) =>{
+        if (err)
+            res.json(err)
+        else
+            res.json(result)
+    })
+})
+
 // Show order header on Admin Order Payment
 app.get('/admin/order1', (req, res)=>{
     var query = "SELECT orderheader.OrderID, DATE_FORMAT(OrderDate, '%m-%d-%Y') AS OrderDate, orderheader.ShippingID, orderheader.Total, orderstatusdetail.StatusID, DATE_FORMAT(orderstatusdetail.Date, '%m-%d-%Y') AS PaymentDate FROM orderheader INNER JOIN orderstatusdetail on orderheader.OrderID = orderstatusdetail.OrderID WHERE orderheader.StatusID = 1"
