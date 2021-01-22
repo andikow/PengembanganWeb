@@ -12,7 +12,9 @@ export default class Login extends React.Component{
         modal : "",
           login : [],
           email : '',
-          password : ''
+          password : '',
+          show : "password",
+          isShow : false
       }
   }
 
@@ -44,6 +46,18 @@ export default class Login extends React.Component{
             }
           })
       }
+      show() {
+        if(this.state.isShow){
+          this.setState({
+            show : "text",
+            isShow : true
+
+          })
+        }
+        else{
+          
+        }
+      }
 
   componentDidMount(){
 
@@ -68,8 +82,8 @@ export default class Login extends React.Component{
                   </p>
                   <input type="email" value={this.state.email} onChange={ev=> this.setState({email : ev.target.value})} className="form-control w-100" aria-describedby="emailHelp" placeholder="Email or Username"/>
                   <p className="mt-2 mr-3 text-right w-100">
-                  <input type="text" value={this.state.password} onChange={ev=> this.setState({password : ev.target.value})} className="form-control" placeholder="Password"/>
-                    <i className="fas fa-eye mr-2"/>Show
+                  <input type={this.state.show} value={this.state.password} onChange={ev=> this.setState({password : ev.target.value})} className="form-control" placeholder="Password"/>
+                    <i onClick = {()=>this.show()} className="fas fa-eye mr-2"/>{this.state.isShow?"Hide":"Show"}
                   </p>
                   <p>
                     <span className="ml-4">
