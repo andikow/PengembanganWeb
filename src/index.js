@@ -23,6 +23,8 @@ $(function () {
 		input.trigger('fileselect', [label]);
 		});
 
+    
+
 		$('.btn-file :file').on('fileselect', function(event, label) {
 
 		    var input = $(this).parents('.input-group').find(':text'),
