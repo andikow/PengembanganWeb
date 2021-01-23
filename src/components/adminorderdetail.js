@@ -7,8 +7,23 @@ export default class Profil extends React.Component{
   constructor(){
     super();
     this.state = {
-      orderHeader : []
+      OrderDetail : []
     }
+  }
+
+  getOrderDetail(){
+    fetch ('http://localhost:8000/admin/orderdetail')
+    .then(response => response.json())
+    .then(res => {
+      this.setState({
+        OrderDetail: res
+      })
+      console.log(res)
+    })
+  }
+
+  componentDidMount(){
+    this.getOrderDetail()
   }
   
   render(){    
@@ -37,32 +52,72 @@ export default class Profil extends React.Component{
                         <div className="content-header-wrapper">
                           <div class="row">                              
                               <div class="col-12">
-                              <h4>Order ID: { this.props.match.params.orderid}</h4>
+                              <h3 className="text-primary">Order ID: { this.props.match.params.orderid}</h3>
+                              <h5 className="mt-4">Shipping ID: { this.state.OrderDetail.ShippingID}</h5>
+                              <h5 className="mt-2">Status: Pending</h5>
                               </div>
                               <br/>
                               <div class=" pt-4 col-md-12">
                                 <div class="card">
                                   <div class="card-header bg-color-transparent">
-                                      <h5 class="card-title">Payment</h5>
+                                      <h5 class="card-title">Product</h5>
                                   </div>
                                   <div class="card-body">
                                     <div class="table-responsive">
                                       <table class="table">
                                         <thead class="text-center text-primary">
                                           <th>
-                                            OrderID
+                                            No
                                           </th>
                                           <th>
-                                            OrderDate
+                                            Item
                                           </th>
                                           <th>
-                                            ShippingID
+                                            Color
+                                          </th>
+                                          <th>
+                                            Size
+                                          </th>
+                                          <th>
+                                            Qty
+                                          </th>
+                                          <th>
+                                            Subtotal
+                                          </th>
+
+                                        </thead>
+                                        <tbody class="text-center">
+                                        
+                                        </tbody>
+                                      </table>
+                                      <h5 className="text-primary text-right">Shipping Fee: 150000</h5>
+                                      <h5 className="text-primary text-right">Sales Tax: 150000</h5>
+                                      <h5 className="text-primary text-right">Total: 150000</h5>
+
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class=" pt-4 col-md-12">
+                                <div class="card">
+                                  <div class="card-header bg-color-transparent">
+                                      <h5 class="card-title">Order Track</h5>
+                                  </div>
+                                  <div class="card-body">
+                                    <div class="table-responsive">
+                                      <table class="table">
+                                        <thead class="text-center text-primary">
+                                          <th>
+                                            Order
                                           </th>
                                           <th>
                                             Payment
                                           </th>
                                           <th>
-                                            Payment Date
+                                            Shipping
+                                          </th>
+                                          <th>
+                                            Delivered
                                           </th>
                                         </thead>
                                         <tbody class="text-center">

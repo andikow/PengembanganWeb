@@ -7,7 +7,8 @@ export default class Profil extends React.Component{
   constructor(){
     super();
     this.state = {
-      orderHeader : []
+      orderHeader : [],
+      TotalOrder: 0
     }
   }
 
@@ -21,8 +22,18 @@ export default class Profil extends React.Component{
     })
   }
 
+  getTotalOrder(){
+    fetch ('http://localhost:8000/admintotalorder')
+    .then(response => response.json())
+    .then(res => {
+      this.setState({ TotalOrder: res })
+    })
+  }
+
+
   componentDidMount(){
     this.getOrderHeader()
+    this.getTotalOrder()
   }
 
   render(){
