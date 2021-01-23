@@ -61,10 +61,11 @@ app.get('/profil/order/', (req, res)=>{
 
 app.get('/orderdetail/:id', (req, res)=>{
   var id = req.params.id
-  conn.query("SELECT orderheader.OrderID, DATE_FORMAT(OrderDate, '%m-%d-%Y') AS OrderDate, orderdetail.ProductID, productheader.Name, productheader.PictureLink1, color.ColorName, size, Qty, orderheader.StatusID, Price FROM `orderdetail`, `color`, `orderheader`, `productheader` WHERE orderheader.OrderID = "+ id +" AND orderdetail.ProductID = productheader.ProductID AND orderdetail.ColorID = color.ColorID AND orderheader.OrderID = orderdetail.OrderID ", (err,rows)=>{
+  conn.query("SELECT orderheader.OrderID, DATE_FORMAT(OrderDate, '%m-%d-%Y') AS OrderDate, orderdetail.ProductID, productheader.Name, productheader.PictureLink1, color.ColorName, size, Qty, orderheader.StatusID, Price, Subtotal, ShippingCosts, SalesTax, Total, FirstName, LastName, Address, Building, Country, ZipCode, City, ShippingMethod, Phone FROM `orderdetail`, `color`, `orderheader`, `productheader`, `shippingdetail` WHERE orderheader.OrderID = "+ id +" AND orderdetail.ProductID = productheader.ProductID AND orderdetail.ColorID = color.ColorID  AND orderheader.OrderID = orderdetail.OrderID AND orderheader.ShippingID = shippingdetail.ShippingID", (err,rows)=>{
     res.json(rows)
   })
 })
+
 
 app.get('/productdetail/:id', (req, res)=>{
   var id = req.params.id
@@ -137,10 +138,10 @@ app.put('/editproduct/:productid', (req, res)=>{
     var PictureLink1 = req.body.PictureLink1
     var PictureLink2 = req.body.PictureLink2
     var PictureLink3 = req.body.PictureLink3
-    var productid = req.params.productid 
+    var productid = req.params.productid
     var query = "UPDATE productheader SET Name = '" + Name + "', Price = " + Price + ", CategoryID = " + CategoryID + ", Description = '" + Description + "' , PictureLink1 = '" + PictureLink1 + "', PictureLink2 = '" + PictureLink2 + "', PictureLink3 = '" + PictureLink3 + "' WHERE ProductID = " + productid
 
-   
+
     conn.query(query, (err, result) =>{
         if (err)
             res.json(err)
@@ -151,7 +152,7 @@ app.put('/editproduct/:productid', (req, res)=>{
 
 // Get Data to Edit Product List
 app.get('/editproduct/:productid', (req, res)=>{
-    var productid = req.params.productid 
+    var productid = req.params.productid
     var query = "SELECT * FROM productheader WHERE ProductID = " + productid
     conn.query(query, (err, result) =>{
         if (err)
@@ -163,7 +164,7 @@ app.get('/editproduct/:productid', (req, res)=>{
 
 // Delete Product --Belum Selesai Edit Isinya
 app.delete('/editproduct/:productid', (req, res)=>{
-    var productid = req.params.productid 
+    var productid = req.params.productid
     var query = "DELETE FROM productheader WHERE ProductID = " + productid
     conn.query(query, (err, result) =>{
         if (err)
