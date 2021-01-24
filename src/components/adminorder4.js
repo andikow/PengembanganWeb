@@ -7,7 +7,11 @@ export default class Profil extends React.Component {
   constructor() {
     super();
     this.state = {
-      orderHeader: []
+      orderHeader: [],
+      PaymentLength: 0,
+      PackingLength: 0,
+      ShippingLength: 0,
+      DeliveredLength: 0
     }
   }
 
@@ -17,6 +21,33 @@ export default class Profil extends React.Component {
       .then(res => {
         this.setState({
           orderHeader: res
+        })
+        this.setState({
+          DeliveredLength: res.length
+        })
+      })
+
+      fetch ('http://localhost:8000/admin/order1')
+      .then(response => response.json())
+      .then(res => {
+        this.setState({
+          PaymentLength: res.length
+        })
+      })
+  
+      fetch('http://localhost:8000/admin/order2')
+        .then(response => response.json())
+        .then(res => {
+          this.setState({
+            PackingLength: res.length
+          })
+        })
+  
+      fetch ('http://localhost:8000/admin/order3')
+      .then(response => response.json())
+      .then(res => {
+        this.setState({
+          ShippingLength: res.length
         })
       })
   }
@@ -64,7 +95,7 @@ export default class Profil extends React.Component {
                                 <div class="col-7 col-md-8">
                                   <div class="numbers float-right">
                                     <p class="card-category">Payment</p>
-                                    <p style={{ fontSize: 30 }} class="card-title">1,205</p>
+                                    <p style={{ fontSize: 30 }} class="card-title">{this.state.PaymentLength}</p>
                                   </div>
                                 </div>
                               </div>
@@ -88,7 +119,7 @@ export default class Profil extends React.Component {
                                 <div class="col-7 col-md-8">
                                   <div class="numbers float-right">
                                     <p class="card-category">Packing</p>
-                                    <p style={{ fontSize: 30 }} class="card-title">1,205</p>
+                                    <p style={{ fontSize: 30 }} class="card-title">{this.state.PackingLength}</p>
                                   </div>
                                 </div>
                               </div>
@@ -112,7 +143,7 @@ export default class Profil extends React.Component {
                                 <div class="col-7 col-md-8">
                                   <div class="numbers float-right">
                                     <p class="card-category">Shipping</p>
-                                    <p style={{ fontSize: 30 }} class="card-title">1,205</p>
+                                    <p style={{ fontSize: 30 }} class="card-title">{this.state.ShippingLength}</p>
                                   </div>
                                 </div>
                               </div>
@@ -136,7 +167,7 @@ export default class Profil extends React.Component {
                                 <div class="col-7 col-md-8">
                                   <div class="numbers float-right">
                                     <p class="card-category text-white">Delivered</p>
-                                    <p style={{ fontSize: 30 }} class="card-title text-white">1,205</p>
+                                    <p style={{ fontSize: 30 }} class="card-title text-white">{this.state.DeliveredLength}</p>
                                   </div>
                                 </div>
                               </div>

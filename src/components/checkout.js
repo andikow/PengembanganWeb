@@ -9,12 +9,16 @@ export default class Checkout extends React.Component{
   constructor() {
     super()
     this.state={
-      cart :[]
+      cart :[],
+      subtotal:[],
+      shippingcost:45000
     }
   }
   componentDidMount() {
       this.getCart();
+      this.getSubtotal();
     }
+
   getCart() {
     fetch('http://localhost:8000/getCart/',{
       headers : {
@@ -28,6 +32,20 @@ export default class Checkout extends React.Component{
         cart : res,
       })
   })
+}
+getSubtotal(){
+  fetch('http://localhost:8000/getsubtotal/',{
+    headers : {
+      'Accept' : 'application/json',
+      'Content-Type' : 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(res => {
+    this.setState({
+      subtotal : res,
+    })
+})
 }
   render(){
     function numberWithCommas(x) {
@@ -392,7 +410,7 @@ export default class Checkout extends React.Component{
               <p style={{fontWeight:'bold'}}>Gift Wrap</p>
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="" />
-                <label>Gift wrap your order and send it with a personalized greeting card. <span style={{paddingLeft:100}}> $3.99</span></label>
+                <label>Gift wrap your order and send it with a personalized greeting card.</label>
               </div>
       </div>
 
@@ -410,22 +428,28 @@ export default class Checkout extends React.Component{
                         <h3 className="box-title">Order</h3>
                         <div class="row">
                           <div class="col">Sub-total</div>
-                          <div class="col-lg-2">$20</div>
+                          {this.state.subtotal.map((item, index)=>(
+                          <div className="col-lg-3">IDR {numberWithCommas(item.subtotal)}</div>
+                          ))}
                         </div>
                         <div class="row">
                           <div class="col">Shipping costs</div>
-                          <div class="col-lg-2">$10</div>
+                          <div class="col-lg-3">IDR {numberWithCommas(this.state.shippingcost)}</div>
                         </div>
                         <div class="row">
                           <div class="col">Sales Tax</div>
-                          <div class="col-lg-2">$0</div>
+                          {this.state.subtotal.map((item, index)=>(
+                           <div className="col-lg-3"> IDR {numberWithCommas(0.1 * item.subtotal)}</div>
+                          ))}
                         </div>
 
                         <hr />
 
                         <div class="row">
                           <div class="col" style={{fontWeight:'bold'}}>Total</div>
-                          <div class="col-lg-2">$30</div>
+                          {this.state.subtotal.map((item, index)=>(
+                           <div className="col-lg-3"> IDR {numberWithCommas(item.subtotal*0.1 + item.subtotal + this.state.shippingcost)}</div>
+                          ))}
                         </div>
 
                         <hr />
@@ -464,22 +488,28 @@ export default class Checkout extends React.Component{
 
                         <div class="row">
                           <div class="col">Sub-total</div>
-                          <div class="col-lg-2">$20</div>
+                          {this.state.subtotal.map((item, index)=>(
+                          <div className="col-lg-6">IDR {numberWithCommas(item.subtotal)}</div>
+                          ))}
                         </div>
                         <div class="row">
                           <div class="col">Shipping costs</div>
-                          <div class="col-lg-2">$10</div>
+                          <div class="col-lg-6">IDR {numberWithCommas(this.state.shippingcost)}</div>
                         </div>
                         <div class="row">
                           <div class="col">Sales Tax</div>
-                          <div class="col-lg-2">$0</div>
+                          {this.state.subtotal.map((item, index)=>(
+                           <div className="col-lg-6"> IDR {numberWithCommas(0.1 * item.subtotal)}</div>
+                          ))}
                         </div>
 
                         <hr />
 
                         <div class="row">
                           <div class="col" style={{fontWeight:'bold'}}>Total</div>
-                          <div class="col-lg-2">$30</div>
+                          {this.state.subtotal.map((item, index)=>(
+                           <div className="col-lg-6"> IDR {numberWithCommas(item.subtotal*0.1 + item.subtotal + this.state.shippingcost)}</div>
+                          ))}
                         </div>
 
                         <hr />
