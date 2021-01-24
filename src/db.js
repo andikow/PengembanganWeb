@@ -104,6 +104,16 @@ app.get('/getsubtotal', (req, res)=>{
   })
 })
 
+app.post('/checkout', (req, res)=>{
+    var data = req.body
+    conn.query("INSERT INTO shippingdetail SET ?", data, (err, result) =>{
+        if (err)
+            res.json(err)
+        else
+            res.json(result)
+    })
+})
+
 // Show order header on Admin Dashboard
 app.get('/admin', (req, res)=>{
     var query = "SELECT DISTINCT orderheader.OrderID, DATE_FORMAT(OrderDate, '%m-%d-%Y') AS OrderDate, orderheader.ShippingID, orderheader.Total, orderheader.StatusID FROM orderheader INNER JOIN orderdetail on orderheader.OrderID = orderdetail.OrderID Order BY orderheader.OrderID DESC"

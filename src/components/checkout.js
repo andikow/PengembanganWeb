@@ -11,7 +11,16 @@ export default class Checkout extends React.Component{
     this.state={
       cart :[],
       subtotal:[],
-      shippingcost:45000
+      shippingcost:45000,
+      FirstName: "",
+      LastName: "",
+      Address: "",
+      Building: "",
+      Country: "Indonesia",
+      ZipCode: "",
+      City: "",
+      ShippingMethod: "International Standard",
+      Phone: ""
     }
   }
   componentDidMount() {
@@ -33,7 +42,7 @@ export default class Checkout extends React.Component{
       })
   })
 }
-getSubtotal(){
+  getSubtotal(){
   fetch('http://localhost:8000/getsubtotal/',{
     headers : {
       'Accept' : 'application/json',
@@ -47,6 +56,34 @@ getSubtotal(){
     })
 })
 }
+  checkout(){
+    var data = {
+      ShippingID:0,
+      CustomerID: 1,
+      FirstName: this.state.FirstName,
+      LastName: this.state.LastName,
+      Address: this.state.Address,
+      Building: this.state.Building,
+      Country: this.state.Country,
+      ZipCode: this.state.ZipCode,
+      City: this.state.City,
+      ShippingMethod: this.state.ShippingMethod,
+      Phone: this.state.Phone
+    }
+    fetch(
+      'http://localhost:8000/checkout',
+      {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+
+        },
+        body: JSON.stringify(data)
+      }
+    ).then(respons => respons.json())
+      .then(alert('New product successfully added!'))
+  }
   render(){
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -67,11 +104,11 @@ getSubtotal(){
                   <div className="row">
                     <div className="col">
                       <label>First Name</label>
-                      <input type="text" className="form-control" placeholder="First name" />
+                      <input onChange={ev => this.setState({ FirstName: ev.target.value })} type="text" className="form-control" placeholder="First name" />
                     </div>
                     <div className="col">
                       <label>Last Name</label>
-                      <input type="text" className="form-control" placeholder="Last name" />
+                      <input onChange={ev => this.setState({ LastName: ev.target.value })} type="text" className="form-control" placeholder="Last name" />
                     </div>
                   </div>
                 </form>
@@ -81,7 +118,7 @@ getSubtotal(){
                 <form>
                 <div>
                   <label>Street address</label>
-                <input type="text" className="form-control" placeholder="Street address" />
+                <input onChange={ev => this.setState({ Address: ev.target.value })} type="text" className="form-control" placeholder="Street address" />
                 </div>
                 </form>
 
@@ -90,7 +127,7 @@ getSubtotal(){
                 <form>
                 <div>
                   <label>Building name, etc. (if applicable)</label>
-                <input type="text" className="form-control" placeholder="Building name, etc. (if applicable)" />
+                <input onChange={ev => this.setState({ Building: ev.target.value })} type="text" className="form-control" placeholder="Building name, etc. (if applicable)" />
                 </div>
                 </form>
 
@@ -99,7 +136,7 @@ getSubtotal(){
                 <form>
                 <div>
                   <label>Country</label>
-                <select class="browser-default custom-select">
+                <select onChange={ev => this.setState({ Country: ev.target.value })} class="browser-default custom-select">
                   <option value="Afganistan">Afghanistan</option>
                   <option value="Albania">Albania</option>
                   <option value="Algeria">Algeria</option>
@@ -362,11 +399,11 @@ getSubtotal(){
               <div className="row">
                   <div className="col">
                       <label>Zip code</label>
-                          <input type="text" className="form-control" placeholder="Zip code" />
+                          <input onChange={ev => this.setState({ ZipCode: ev.target.value })} type="text" className="form-control" placeholder="Zip code" />
                   </div>
                   <div className="col">
                       <label>City/Town</label>
-                          <input type="text" className="form-control" placeholder="City/Town" />
+                          <input onChange={ev => this.setState({ City: ev.target.value })} type="text" className="form-control" placeholder="City/Town" />
                   </div>
               </div>
               </form>
@@ -378,7 +415,7 @@ getSubtotal(){
               <p style={{fontWeight:'bold'}}>Shipping Method</p>
 
               <div className="box-shipping">
-                <input type="radio"/>
+                <input onChange={ev => this.setState({ ShippingMethod: ev.target.value })} type="radio" name="shippingmethod" value="International Standard"/>
                 <p style={{fontWeight:'bold'}}>International Standard</p>
                 <i className="fa fa-plus-circle"></i> Delivery date not guaranteed<br/>
                 <i className="fa fa-plus-circle"></i> No tracking number<br/>
@@ -386,7 +423,7 @@ getSubtotal(){
               </div>
 
               <div className="box-shipping">
-                <input type="radio"/>
+                <input onChange={ev => this.setState({ ShippingMethod: ev.target.value })} type="radio" name="shippingmethod" value="International Express"/>
                 <p style={{fontWeight:'bold'}}>International Express</p>
                 <i className="fa fa-plus-circle"></i> Delivery date guaranteed<br/>
                 <i className="fa fa-plus-circle"></i> Tracking number<br/>
@@ -399,7 +436,7 @@ getSubtotal(){
               <form>
               <div>
                 <label>Phone number</label>
-              <input type="text" className="form-control" placeholder="Phone number" />
+              <input onChange={ev => this.setState({ Phone: ev.target.value })} type="text" className="form-control" placeholder="Phone number" />
               </div>
               </form>
 
@@ -463,7 +500,7 @@ getSubtotal(){
                           </div>
                           <div class="co l-lg-3 mr-2">
                           <Link to="/myorder">
-                            <button className="btn btn-danger my-0 font-weight-bold" type="button">Buy now</button>
+                            <button onClick={() => this.checkout()}className="btn btn-danger my-0 font-weight-bold" data-toggle="modal" data-target="#modalSuccess" type="button">Buy now</button>
                             </Link>
                           </div>
 
