@@ -114,8 +114,10 @@ export default class Profil extends React.Component {
                             <label>Price</label>
                             <input onChange={ev => this.setState({ Price: ev.target.value })} type="text" className="form-control" style={{ width: 300 }} placeholder="Price" />
                           </div>
-                        </form><br />
-                        <form>
+                        </form><br />                        
+                      </div>
+                      <div class="col">
+                      <form>
                           <div>
                             <label>Category ID</label>
                             <input onChange={ev => this.setState({ CategoryID: ev.target.value })} type="text" className="form-control" style={{ width: 300 }} placeholder="Category ID 1-8" />
@@ -138,9 +140,7 @@ export default class Profil extends React.Component {
                             </div> */}
 
                           </div>
-                        </form><br />
-                      </div>
-                      <div class="col">
+                        </form><br />                        
                         <form>
                           <div>
                             <label>Description</label>
@@ -153,19 +153,6 @@ export default class Profil extends React.Component {
                             <input onChange={ev => this.setState({ PictureLink1: ev.target.value })} type="text" className="form-control" style={{ width: 300 }} placeholder="PictureLink1" />
                           </div>
                         </form><br />
-                        <form>
-                          <div>
-                            <label>PictureLink2</label>
-                            <input onChange={ev => this.setState({ PictureLink2: ev.target.value })} type="text" className="form-control" style={{ width: 300 }} placeholder="PictureLink2" />
-                          </div>
-                        </form><br />
-                        <form>
-                          <div>
-                            <label>PictureLink3</label>
-                            <input onChange={ev => this.setState({ PictureLink3: ev.target.value })} type="text" className="form-control" style={{ width: 300 }} placeholder="PictureLink3" />
-                          </div>
-                        </form>
-                        <br />
                         <br />
                         <Link to="/admin/product">
                           <button onClick={() => this.addProduct()} className="btn btn-danger my-0 font-weight-bold ml-auto mr-4 float-right" type="button">Add product</button>

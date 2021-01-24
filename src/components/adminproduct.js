@@ -54,7 +54,7 @@ export default class Profil extends React.Component{
                           <div class="row">
                           <Link to ="/admin/addproduct">
                               <button className="btn btn-danger my-0 font-weight-bold" type="button"><span><i class="fas fa-plus"></i></span>&emsp;Add new products</button>
-                              </Link>
+                          </Link>
                               <div class=" pt-4 col-md-12">
                                 <div class="card">
                                   <div class="card-body">
@@ -88,7 +88,7 @@ export default class Profil extends React.Component{
                                           this.state.productHeader.map((item, index)=>(
                                             <tr key={index}>
                                               <td><img src={item.PictureLink1} alt="Produk Example 1" style={{width: '100%', paddingRight: "2%"}}/></td>
-                                              <td>{item.ProductID}</td>
+                                              <Link to={"/admin/productdetail/" + item.ProductID} ><td type="button">{item.ProductID}</td></Link>
                                               <td>{item.Name}</td>
                                               <td>{item.Price}</td>
                                               <td>{item.CategoryID}</td>

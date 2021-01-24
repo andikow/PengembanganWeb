@@ -8,7 +8,6 @@
 -- PHP Version: 7.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -150,7 +149,6 @@ CREATE TABLE `orderheader` (
   `OrderID` int(8) NOT NULL,
   `OrderDate` date NOT NULL,
   `ShippingID` int(8) NOT NULL,
-  `SubTotal` int(12) NOT NULL,
   `ShippingCosts` int(11) NOT NULL,
   `SalesTax` double(11,2) NOT NULL,
   `Total` double(11,2) NOT NULL,
@@ -161,13 +159,13 @@ CREATE TABLE `orderheader` (
 -- Dumping data untuk tabel `orderheader`
 --
 
-INSERT INTO `orderheader` (`OrderID`, `OrderDate`, `ShippingID`, `SubTotal`, `ShippingCosts`, `SalesTax`, `Total`, `StatusID`) VALUES
-(1, '2021-01-01', 1, 116000, 46000, 1160.00, 163160.00, 4),
-(2, '2021-01-13', 2, 172000, 36000, 1720.00, 209720.00, 2),
-(3, '2021-01-13', 3, 368000, 58000, 3680.00, 429680.00, 3),
-(4, '2021-01-14', 4, 276000, 42000, 2760.00, 320760.00, 3),
-(5, '2021-01-14', 5, 326000, 32000, 3260.00, 361260.00, 1),
-(6, '2021-01-21', 6, 95000, 69000, 950.00, 164950.00, 1);
+INSERT INTO `orderheader` (`OrderID`, `OrderDate`, `ShippingID`, `ShippingCosts`, `SalesTax`, `Total`, `StatusID`) VALUES
+(1, '2021-01-01', 1, 3, 0.46, 46.46, 4),
+(2, '2021-01-13', 2, 3, 1.51, 152.51, 2),
+(3, '2021-01-13', 3, 4, 0.99, 135.99, 3),
+(4, '2021-01-14', 4, 4, 0.75, 75.75, 3),
+(5, '2021-01-14', 5, 3, 1.46, 147.46, 1),
+(6, '2021-01-21', 6, 10, 0.00, 30.00, 1);
 
 -- --------------------------------------------------------
 
@@ -178,7 +176,7 @@ INSERT INTO `orderheader` (`OrderID`, `OrderDate`, `ShippingID`, `SubTotal`, `Sh
 CREATE TABLE `orderstatusdetail` (
   `OrderID` int(8) NOT NULL,
   `StatusID` varchar(30) NOT NULL,
-  `Date` date NOT NULL
+  `Date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -186,20 +184,21 @@ CREATE TABLE `orderstatusdetail` (
 --
 
 INSERT INTO `orderstatusdetail` (`OrderID`, `StatusID`, `Date`) VALUES
-(1, '1', '2021-01-01'),
-(1, '2', '2021-01-02'),
-(1, '3', '2021-01-05'),
-(1, '4', '2021-01-09'),
-(2, '1', '2021-01-13'),
-(2, '2', '2021-01-13'),
-(3, '1', '2021-01-13'),
-(3, '2', '2021-01-13'),
-(3, '3', '2021-01-15'),
-(4, '1', '2021-01-14'),
-(4, '2', '2021-01-14'),
-(4, '3', '2021-01-16'),
-(5, '1', '2021-01-14'),
-(6, '1', '2021-01-15');
+(1, '1', '2020-12-31 17:00:00'),
+(1, '2', '2021-01-01 17:00:00'),
+(1, '3', '2021-01-04 17:00:00'),
+(1, '4', '2021-01-08 17:00:00'),
+(2, '1', '2021-01-12 17:00:00'),
+(2, '2', '2021-01-12 17:00:00'),
+(2, '3', '2021-01-23 18:09:10'),
+(3, '1', '2021-01-12 17:00:00'),
+(3, '2', '2021-01-12 17:00:00'),
+(3, '3', '2021-01-14 17:00:00'),
+(4, '1', '2021-01-13 17:00:00'),
+(4, '2', '2021-01-13 17:00:00'),
+(4, '3', '2021-01-15 17:00:00'),
+(5, '1', '2021-01-13 17:00:00'),
+(6, '1', '2021-01-14 17:00:00');
 
 -- --------------------------------------------------------
 
@@ -259,9 +258,7 @@ CREATE TABLE `productheader` (
   `Price` int(11) NOT NULL,
   `CategoryID` int(11) NOT NULL,
   `Description` varchar(1000) NOT NULL,
-  `PictureLink1` varchar(500) NOT NULL,
-  `PictureLink2` varchar(100) DEFAULT NULL,
-  `PictureLink3` varchar(100) DEFAULT NULL
+  `PictureLink1` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -411,11 +408,13 @@ ALTER TABLE `shippingdetail`
 --
 ALTER TABLE `account`
   MODIFY `CustomerID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
 --
 -- AUTO_INCREMENT for table `orderheader`
 --

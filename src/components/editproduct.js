@@ -14,8 +14,6 @@ export default class Profil extends React.Component {
       CategoryID: 0,
       Description: '',
       PictureLink1: '',
-      PictureLink2: null,
-      PictureLink3: null,      
     }
   }
 
@@ -27,12 +25,10 @@ export default class Profil extends React.Component {
       CategoryID: this.state.CategoryID,
       Description: this.state.Description,
       PictureLink1: this.state.PictureLink1,
-      PictureLink2: this.state.PictureLink2,
-      PictureLink3: this.state.Picturelink3
     }
 
     fetch(
-      'http://localhost:8000/editproduct/' + data.ProductID ,
+      'http://localhost:8000/editproduct/' + data.ProductID,
       {
         method: 'PUT',
         headers: {
@@ -42,25 +38,23 @@ export default class Profil extends React.Component {
         body: JSON.stringify(data)
       }
     ).then(response => response.json())
-      // .then(alert('New product successfully added!'))
+    // .then(alert('New product successfully added!'))
   }
 
-  getProductHeader(){
+  getProductHeader() {
     var productid = this.props.match.params.productid
-    fetch ('http://localhost:8000/editproduct/' + productid)
-    .then(response => response.json())
-    .then(res => {
-      this.setState({Name: res[0].Name })
-      this.setState({Price: res[0].Price })
-      this.setState({CategoryID: res[0].CategoryID })
-      this.setState({Description: res[0].Description})
-      this.setState({PictureLink1: res[0].PictureLink1 })
-      this.setState({PictureLink2: res[0].PictureLink2})
-      this.setState({PictureLink3: res[0].PictureLink3})
-    })   
+    fetch('http://localhost:8000/editproduct/' + productid)
+      .then(response => response.json())
+      .then(res => {
+        this.setState({ Name: res[0].Name })
+        this.setState({ Price: res[0].Price })
+        this.setState({ CategoryID: res[0].CategoryID })
+        this.setState({ Description: res[0].Description })
+        this.setState({ PictureLink1: res[0].PictureLink1 })
+      })
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.getProductHeader()
   }
 
@@ -96,58 +90,45 @@ export default class Profil extends React.Component {
                         <form>
                           <div>
                             <label>ProductID</label>
-                            <input type="text" className="form-control" style={{ width: 300 }} value={ this.props.match.params.productid} placeholder="ProductID" disabled/>
+                            <input type="text" className="form-control" style={{ width: 300 }} value={this.props.match.params.productid} placeholder="ProductID" disabled />
                           </div>
                         </form>
                         <br />
                         <form>
                           <div>
                             <label>Name</label>
-                            <input type="text" onChange={ev=> this.setState({Name: ev.target.value})} value={this.state.Name} className="form-control" style={{ width: 300 }} placeholder="Name" />
+                            <input type="text" onChange={ev => this.setState({ Name: ev.target.value })} value={this.state.Name} className="form-control" style={{ width: 300 }} placeholder="Name" />
                           </div>
                         </form><br />
                         <form>
                           <div>
                             <label>Price</label>
-                            <input type="text" onChange={ev=> this.setState({Price: ev.target.value})} value={this.state.Price} className="form-control" style={{ width: 300 }} placeholder="Price" />
-                          </div>
-                        </form><br />
-                        <form>
-                          <div>
-                            <label>Category</label>
-                            <input type="text" onChange={ev=> this.setState({CategoryID: ev.target.value})} value={this.state.CategoryID} className="form-control" style={{ width: 300 }} placeholder="Category" />
+                            <input type="text" onChange={ev => this.setState({ Price: ev.target.value })} value={this.state.Price} className="form-control" style={{ width: 300 }} placeholder="Price" />
                           </div>
                         </form><br />
                       </div>
                       <div class="col">
                         <form>
                           <div>
+                            <label>Category</label>
+                            <input type="text" onChange={ev => this.setState({ CategoryID: ev.target.value })} value={this.state.CategoryID} className="form-control" style={{ width: 300 }} placeholder="Category" />
+                          </div>
+                        </form><br />
+                        <form>
+                          <div>
                             <label>Description</label>
-                            <input type="text" onChange={ev=> this.setState({Description: ev.target.value})} value={this.state.Description} className="form-control" style={{ width: 300 }} placeholder="Description" />
+                            <input type="text" onChange={ev => this.setState({ Description: ev.target.value })} value={this.state.Description} className="form-control" style={{ width: 300 }} placeholder="Description" />
                           </div>
                         </form><br />
                         <form>
                           <div>
                             <label>PictureLink1</label>
-                            <input type="text" onChange={ev=> this.setState({PictureLink1: ev.target.value})} value={this.state.PictureLink1} className="form-control" style={{ width: 300 }} placeholder="PictureLink1" />
+                            <input type="text" onChange={ev => this.setState({ PictureLink1: ev.target.value })} value={this.state.PictureLink1} className="form-control" style={{ width: 300 }} placeholder="PictureLink1" />
                           </div>
                         </form><br />
-                        <form>
-                          <div>
-                            <label>PictureLink2</label>
-                            <input type="text" onChange={ev=> this.setState({PictureLink2: ev.target.value})} value={this.state.PictureLink2} className="form-control" style={{ width: 300 }} placeholder="PictureLink2" />
-                          </div>
-                        </form><br />
-                        <form>
-                          <div>
-                            <label>PictureLink3</label>
-                            <input type="text" onChange={ev=> this.setState({PictureLink3: ev.target.value})} value={this.state.PictureLink3} className="form-control" style={{ width: 300 }} placeholder="PictureLink3" />
-                          </div>
-                        </form>
-                        <br />
                         <br />
                         <Link to="/admin/product">
-                          <button onClick={()=>this.editProduct()} className="btn btn-danger my-0 font-weight-bold ml-auto mr-4 float-right" type="button">Save Change</button>
+                          <button onClick={() => this.editProduct()} className="btn btn-danger my-0 font-weight-bold ml-auto mr-4 float-right" type="button">Save Change</button>
                         </Link>
                       </div>
                     </div>

@@ -13,6 +13,9 @@ import AdminOrder3 from './components/adminorder3.js';
 import AdminOrder4 from './components/adminorder4.js';
 import AdminOrderDetail from './components/adminorderdetail.js';
 import AdminProduct from './components/adminproduct.js';
+import AdminProductDetail from './components/adminproductdetail.js';
+import AdminEditProductDetail from './components/admineditproductdetail.js';
+import AdminAddProductDetail from './components/adminaddproductdetail.js';
 import CardProduct from './components/cardProduct.js';
 import ChangePassword from './components/changePassword.js';
 import Checkout from './components/checkout.js';
@@ -64,6 +67,9 @@ function App() {
       <Route path="/admin/order4" component = {AdminOrder4}/>
       <Route path="/admin/adminorderdetail/:orderid" component = {AdminOrderDetail}/>
       <Route path="/admin/product" component = {AdminProduct}/>
+      <Route path="/admin/productdetail/:productid" component = {AdminProductDetail}/>
+      <Route path="/admin/editproductdetail/:productid" component = {AdminEditProductDetail} />
+      <Route path="/admin/addproductdetail/:productid" component = {AdminAddProductDetail} />
       <Route path="/cardproduct" component = {CardProduct}/>
       <Route path="/changepassword" component = {ChangePassword}/>
       <Route path="/checkout" component = {Checkout}/>
