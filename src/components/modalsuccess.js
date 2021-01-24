@@ -21,7 +21,7 @@ export default class Contact extends React.Component{
     			</div>
     			<div class="modal-body text-center">
     				<h4>Success!</h4>
-    				<p>Click to continue.</p>
+    				<p>Product successfully added to your shopping cart!</p>
     				<button class="btn btn-success" data-dismiss="modal"><span>Continue</span> <i class="far fa-long-arrow-right"></i></button>
     			</div>
     		</div>
