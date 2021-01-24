@@ -95,10 +95,31 @@ app.get('/admin', (req, res)=>{
     })
 })
 
+//Get Admin Customers
+app.get('/admintotalcustomers', (req, res)=>{
+    var query="SELECT * FROM account"
+    conn.query(query, (err, result) =>{
+        if (err)
+            res.json(err)
+        else
+            res.json(result)
+    })
+})
 
-// Show Total Order on Admin Dashboard
-app.get('/admintotalorder', (req, res)=>{
-    var query = "SELECT COUNT(*) FROM orderheader AS TotalOrder"
+//Get Admin Products
+app.get('/admintotalproducts', (req, res)=>{
+    var query="SELECT * FROM productheader"
+    conn.query(query, (err, result) =>{
+        if (err)
+            res.json(err)
+        else
+            res.json(result)
+    })
+})
+
+// Get Admin Total Revenue
+app.get('/admintotalrevenue', (req, res)=>{
+    var query="SELECT Total FROM orderheader"
     conn.query(query, (err, result) =>{
         if (err)
             res.json(err)
@@ -174,17 +195,17 @@ app.get('/editproduct/:productid', (req, res)=>{
     })
 })
 
-// Delete Product --Belum Selesai Edit Isinya
-app.delete('/editproduct/:productid', (req, res)=>{
-    var productid = req.params.productid
-    var query = "DELETE FROM productheader WHERE ProductID = " + productid
-    conn.query(query, (err, result) =>{
-        if (err)
-            res.json(err)
-        else
-            res.json(result)
-    })
-})
+// // Delete Product --Belum Selesai Edit Isinya
+// app.delete('/editproduct/:productid', (req, res)=>{
+//     var productid = req.params.productid
+//     var query = "DELETE FROM productheader WHERE ProductID = " + productid
+//     conn.query(query, (err, result) =>{
+//         if (err)
+//             res.json(err)
+//         else
+//             res.json(result)
+//     })
+// })
 
 // Show Product Detail
 app.get('/admin/productdetail/:productid', (req, res)=>{
@@ -324,9 +345,70 @@ app.get('/admin/order4', (req, res)=>{
     })
 })
 
-// Get Admin Order Detail data
-app.get('/admin/orderdetail', (req, res)=>{
-    var query = "SELECT * FROM orderheader INNER JOIN orderdetail on orderheader.OrderID = orderdetail.OrderID INNER JOIN productheader on productheader.ProductID = orderdetail.ProductID INNER JOIN shippingdetail on shippingdetail.ShippingID = orderheader.ShippingID INNER JOIN productdetail on productdetail.ProductID = productheader.ProductID INNER JOIN orderstatusdetail on orderstatusdetail.OrderID = orderheader.OrderID inner join color on color.ColorID = productdetail.ColorID WHERE orderheader.OrderID = 1"
+// Get Admin Order Detail data Order Header and Shipping
+app.get('/admin/orderdetailshipping/:orderid', (req, res)=>{
+    var orderid = req.params.orderid
+    var query="SELECT * FROM orderheader INNER JOIN shippingdetail on orderheader.ShippingID = shippingdetail.ShippingID WHERE OrderID= " + orderid
+    conn.query(query, (err, result) =>{
+        if (err)
+            res.json(err)
+        else
+            res.json(result)
+    })
+})
+
+// Get Admin Order Detail data Order Product
+app.get('/admin/orderdetailproduct/:orderid', (req, res)=>{
+    var orderid = req.params.orderid
+    var query="SELECT orderdetail.OrderID, productheader.Name, color.ColorName, orderdetail.Size, orderdetail.Qty, productheader.Price FROM orderdetail INNER JOIN productheader on orderdetail.ProductID = productheader.ProductID INNER JOIN productdetail on productheader.ProductID = productdetail.ProductID INNER JOIN color ON color.ColorID = productdetail.ColorID WHERE orderdetail.OrderID= " + orderid + " AND productdetail.ColorID = orderdetail.ColorID AND productdetail.Size = orderdetail.Size"
+    conn.query(query, (err, result) =>{
+        if (err)
+            res.json(err)
+        else
+            res.json(result)
+    })
+})
+
+// Get Admin Order Detail data Order Date
+app.get('/admin/orderdetailtrack1/:orderid', (req, res)=>{
+    var orderid = req.params.orderid
+    var query="SELECT OrderID, StatusID AS StatusID1, DATE_FORMAT(Date, '%m-%d-%Y') AS OrderDate FROM orderstatusdetail WHERE OrderID = " + orderid + " AND StatusID = 1"
+    conn.query(query, (err, result) =>{
+        if (err)
+            res.json(err)
+        else
+            res.json(result)
+    })
+})
+
+// Get Admin Order Detail data Payment Date
+app.get('/admin/orderdetailtrack2/:orderid', (req, res)=>{
+    var orderid = req.params.orderid
+    var query="SELECT OrderID, StatusID AS StatusID2, DATE_FORMAT(Date, '%m-%d-%Y') AS PaymentDate FROM orderstatusdetail WHERE OrderID = " + orderid + " AND StatusID = 2"
+    conn.query(query, (err, result) =>{
+        if (err)
+            res.json(err)
+        else
+            res.json(result)
+    })
+})
+
+// Get Admin Order Detail data Shipping Date
+app.get('/admin/orderdetailtrack3/:orderid', (req, res)=>{
+    var orderid = req.params.orderid
+    var query="SELECT OrderID, StatusID AS StatusID3, DATE_FORMAT(Date, '%m-%d-%Y') AS ShippingDate FROM orderstatusdetail WHERE OrderID = " + orderid + " AND StatusID = 3"
+    conn.query(query, (err, result) =>{
+        if (err)
+            res.json(err)
+        else
+            res.json(result)
+    })
+})
+
+// Get Admin Order Detail data Delivered Date
+app.get('/admin/orderdetailtrack4/:orderid', (req, res)=>{
+    var orderid = req.params.orderid
+    var query="SELECT OrderID, StatusID AS StatusID4, DATE_FORMAT(Date, '%m-%d-%Y') AS DeliveredDate FROM orderstatusdetail WHERE OrderID = " + orderid + " AND StatusID = 4"
     conn.query(query, (err, result) =>{
         if (err)
             res.json(err)
