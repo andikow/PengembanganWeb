@@ -99,7 +99,7 @@ app.get('/getcart', (req, res)=>{
 })
 
 app.get('/getsubtotal', (req, res)=>{
-  conn.query("SELECT SUM(productheader.Price*cart.Qty) FROM `cart`, `color`, `productheader` WHERE cart.ProductID = productheader.ProductID AND cart.ColorID = color.ColorID ",(err, rows)=>{
+  conn.query("SELECT SUM(productheader.Price*cart.Qty) AS subtotal FROM `cart`, `color`, `productheader` WHERE cart.ProductID = productheader.ProductID AND cart.ColorID = color.ColorID ",(err, rows)=>{
     res.json(rows)
   })
 })

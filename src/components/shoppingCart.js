@@ -7,7 +7,8 @@ export default class ShoppingCart extends React.Component{
     super()
     this.state={
       cart :[],
-      subtotal: 0
+      subtotal: [],
+      shippingcost : 45000
     }
   }
   componentDidMount() {
@@ -100,15 +101,21 @@ export default class ShoppingCart extends React.Component{
             <div className="m-2 p-2">
               <div className="row justify-content-between">
                 <div className="col-6">Subtotal</div>
-                <div className="col-6 text-right">IDR {numberWithCommas(this.state.subtotal)}</div>
+                {this.state.subtotal.map((item, index)=>(
+                <div className="col-6 text-right">IDR {numberWithCommas(item.subtotal)}</div>
+                ))}
               </div>
               <div className="row justify-content-between">
                 <div className="col-6">Shipping costs</div>
-                <div className="col-6 text-right">$ 10</div>
+                <div className="col-6 text-right">IDR {numberWithCommas(this.state.shippingcost)}</div>
               </div>
               <div className="row justify-content-between mt-2">
                 <div className="col-6 font-weight-bold">Total</div>
-                <div className="col-6 text-right font-weight-bold"><h4>$ 30</h4></div>
+                <div className="col-6 text-right font-weight-bold">
+                {this.state.subtotal.map((item, index)=>(
+                 <h4> IDR {numberWithCommas(item.subtotal + this.state.shippingcost)}</h4>
+                ))}
+                </div>
               </div>
             </div>
             <div className="modal-footer">
