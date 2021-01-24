@@ -57,6 +57,10 @@ export default class Profil extends React.Component{
       }
     }
 
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+
     return(
     <>
     <Loading/>
@@ -204,7 +208,7 @@ export default class Profil extends React.Component{
                                               <Link to={"/admin/adminorderdetail/" + item.OrderID} ><td type="button">{item.OrderID}</td></Link>
                                               <td>{item.OrderDate}</td>
                                               <td>{item.ShippingID}</td>
-                                              <td>{item.Total}</td>
+                                              <td>IDR {numberWithCommas(item.Total)}</td>
                                               <td>{StatusDesc(item.StatusID)}</td>
                                             </tr>
                                           ))
