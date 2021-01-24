@@ -26,11 +26,6 @@ const conn = mysql.createConnection({
     database : 'binco'
 })
 
-app.get('/', (req, res)=>{
-  res.write('Hello World')
-  res.end()
-})
-
 app.post('/login/', (req, res)=>{
   var email = req.body.email;
   var pass = req.body.pass;
@@ -68,20 +63,44 @@ app.get('/orderdetail/:id', (req, res)=>{
 
 app.get('/productdetail/:id', (req, res)=>{
   var id = req.params.id
-  conn.query("SELECT productdetail.ProductID, productheader.Name, productheader.Price, productheader.Description, productheader.PictureLink1, productdetail.ColorID, productdetail.Size, productdetail.Qty from productdetail, productheader WHERE productheader.ProductID = '" + id + "' AND productheader.ProductID = productdetail.ProductID", (err,rows)=>{
+  conn.query("SELECT productdetail.ProductID, productheader.Name, productheader.Price, productheader.Description, productheader.PictureLink1, productdetail.Size, productdetail.Qty from productdetail, productheader WHERE productheader.ProductID = '" + id + "' AND productheader.ProductID = productdetail.ProductID", (err, rows)=>{
     res.json(rows)
   })
 })
 
-app.post('/pegawai', (req, res)=>{
-    var data = req.body
-
-    conn.query("INSERT INTO tbl_pegawai SET ?", data, (err, result)=>{
-        if(err) res.status(400).json(err)
-        else res.json(result)
-    })
+app.get('/getcolor/:id', (req, res)=>{
+  var id = req.params.id
+  conn.query("SELECT DISTINCT productdetail.ColorID, ColorName FROM productdetail, color WHERE ProductID = " + id + " AND productdetail.ColorID = color.ColorID",(err, rows)=>{
+    res.json(rows)
+  })
 })
 
+app.get('/getsize/:id', (req, res)=>{
+  var id = req.params.id
+  conn.query("SELECT DISTINCT Size FROM `productdetail` WHERE ProductID = '" + id + "'",(err, rows)=>{
+    res.json(rows)
+  })
+})
+
+app.post('/cart', (req, res)=>{
+  var data = req.body
+  conn.query("INSERT INTO cart VALUES (" + data.ProductID + ", '"+ data.Size + "', '"+ data.ColorID + "', 1) ON DUPLICATE KEY UPDATE Qty = Qty + 1 ", (err, result)=>{
+      if(err) res.status(400).json(err)
+      else res.json(result)
+  })
+})
+
+app.get('/getcart', (req, res)=>{
+  conn.query("SELECT *, productheader.Price*cart.Qty AS Subtotal FROM `cart`, `color`, `productheader` WHERE cart.ProductID = productheader.ProductID AND cart.ColorID = color.ColorID ",(err, rows)=>{
+    res.json(rows)
+  })
+})
+
+app.get('/getsubtotal', (req, res)=>{
+  conn.query("SELECT SUM(productheader.Price*cart.Qty) FROM `cart`, `color`, `productheader` WHERE cart.ProductID = productheader.ProductID AND cart.ColorID = color.ColorID ",(err, rows)=>{
+    res.json(rows)
+  })
+})
 
 // Show order header on Admin Dashboard
 app.get('/admin', (req, res)=>{

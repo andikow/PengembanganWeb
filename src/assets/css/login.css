@@ -28,3 +28,8 @@
 .or span{
     background: white;
 }
+
+.showhidebutton:hover {
+  cursor: pointer;
+  color: #63bcc9;
+}

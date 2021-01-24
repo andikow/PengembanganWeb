@@ -9,7 +9,8 @@ export default class Header extends React.Component{
   constructor(props) {
     super(props)
     this.state={
-      isLogin: false
+      isLogin: false,
+      showCart: false
     }
 
   }
@@ -19,12 +20,16 @@ export default class Header extends React.Component{
   componentDidMount() {
     loadMyScript();
   }
+  showCart(){
+    this.setState({
+      showCart:true
+    })
+  }
   render(){
-    const {data} = this.state;
     return(
     <>
-    <Login parenthandler={this.handler}/> {data}
-    <ShoppingCart />
+    {this.state.showCart ? <ShoppingCart /> :null}
+    <Login parenthandler={this.handler}/>
           <div className="row no-gutters d-flex align-content-center flex-wrap bg-primary">
             <div className="col-lg-5 d-flex flex-wrap">
               <button type="button" className="col-lg-12 no-gutters btn btn-danger" data-toggle="tooltip" data-placement="right" title="Tooltip on right">
@@ -47,7 +52,7 @@ export default class Header extends React.Component{
                     </Link>
                   </li>
                   <li class="nav-item">
-                    <Link to={this.state.isLogin ? "/profil" : "/login"}>
+                    <Link to={this.state.isLogin ? "/profil" : "/"}>
                     <button type="button" className="btn btn-sm px-2" data-toggle={this.state.isLogin ? "" : "modal"} data-target="#modalLogin">
                       <a className = "nav-link p-0">
                         <i className = "fal fa-user fa-fw"></i>
@@ -58,14 +63,12 @@ export default class Header extends React.Component{
                     </Link>
                   </li>
                   <li class="nav-item">
-                    <Link to="/shoppingcart">
-                    <button type="button" className="btn btn-sm px-2" data-toggle="modal" data-target="#modalCart">
+                    <button onClick={() => this.showCart()} type="button" className="btn btn-sm px-2" data-toggle="modal" data-target="#modalCart">
                       <a className="nav-link p-0">
                         <i className = "fal fa-shopping-cart fa-fw mr-1"></i>
                       <span style ={{fontSize: '0.8rem'}}>Cart</span>
                     </a>
                     </button>
-                    </Link>
                   </li>
                 </ul>
               </div>

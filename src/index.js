@@ -13,10 +13,15 @@ $(function () {
   $(".closeModal").on('click', function() {
         $('.modal').modal('hide');
     });
-  $('#modalCart').on('show.bs.modal', function () {
+  $(".size").on("click", function(){
+     $(this).addClass("active");
+  });
+
+  $('#modalCart').on('click', function () {
     $('#modalCart').css("margin-left", $(window).width() - $('.modal-content').width() - 6/8*$(window).width());
     });
-    $(document).ready( function() {
+
+  $(document).ready( function() {
     	$(document).on('change', '.btn-file :file', function() {
 		var input = $(this),
 			label = input.val().replace(/\\/g, '/').replace(/.*\//, '');

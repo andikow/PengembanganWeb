@@ -6,27 +6,43 @@ import Produk1 from '../assets/img/cart1.jpg';
 import {Link} from 'react-router-dom';
 
 export default class Checkout extends React.Component{
-
+  constructor() {
+    super()
+    this.state={
+      cart :[]
+    }
+  }
+  componentDidMount() {
+      this.getCart();
+    }
+  getCart() {
+    fetch('http://localhost:8000/getCart/',{
+      headers : {
+        'Accept' : 'application/json',
+        'Content-Type' : 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(res => {
+      this.setState({
+        cart : res,
+      })
+  })
+}
   render(){
-
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
     return(
     <>
     <div className="contents">
-    <div className="container">
+    <div className="container pt-4">
       <h1>Checkout</h1>
 	  <div className="row">
     <div className="col-lg-8 col-md-8 col-sm-7 col-xs-12">
       <div className="box">
           <h3 className="box-title">Shipping</h3>
             <p style={{fontWeight:'bold'}}>Send my order to</p>
-            <form>
-                <div>
-                    <input type="radio" value="Mr." /> Mr. &emsp;
-                    <input type="radio" value="Ms." /> Ms. &emsp;
-                    <input type="radio" value="Company" /> Company
-                </div>
-                </form>
-
                 <br/>
 
                 <form>
@@ -468,27 +484,21 @@ export default class Checkout extends React.Component{
 
                         <hr />
 
-                        <p style={{fontWeight:'bold'}}>Nama baju</p>
-                        <div class="row">
-                          <div class="col">
-                            <img src={Produk1} alt=""  width="120px"  />
+                        <p style={{fontWeight:'bold'}}>Item(s)</p>
+                        {this.state.cart.map((item, index)=>(
+                          <div className="row border-bottom border-primary mx-1">
+                            <div className="col-6 mt-1">
+                              <img className="card-img-top" src={item.PictureLink1} alt="ProductLink" />
+                            </div>
+                            <div className="col-6 text-left">
+                              <h5>{item.Name}</h5>
+                              <p>Color: {item.ColorName}</p>
+                              <p>Size: {item.Size}</p>
+                              <p>Qty: {item.Qty}</p>
+                              <h6>IDR {numberWithCommas(item.Price)}</h6>
+                            </div>
                           </div>
-                          <div class="col">
-                            <label>Size :</label>
-                            <select class="browser-default custom-select">
-                              <option value="S">S</option>
-                              <option value="M">M</option>
-                              <option value="L">L</option>
-                              <option value="XL">XL</option>
-                              <option value="2XL">2XL</option>
-                            </select>
-
-                            <br/><br/>
-                            <label>Qty :</label>
-                            <InputNumeric/>
-
-                          </div>
-                        </div>
+                        ))}
 
 
                     </div>

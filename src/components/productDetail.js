@@ -9,12 +9,17 @@ export default class ProductDetail extends React.Component{
         super(props)
         this.state={
           productDetail : [],
-          productheader : [],
+          color : [],
+          size : [],
           ProductID : this.props.match.params.id,
           ProdDet: true, SizeChart: false, Reviews: false,
+          selectedSize : "",
+          selectedColor : ""
         }
         var id = this.props.match.params.id;
         this.getProductDetail(id)
+        this.getColor(id)
+        this.getSize(id)
       }
 
       getProductDetail(id) {
@@ -32,12 +37,70 @@ export default class ProductDetail extends React.Component{
       })
     }
 
-    addCart(id) {
-      console.log(id);
-    }
+      getColor(id){
+        fetch('http://localhost:8000/getcolor/' + id,{
+          headers : {
+            'Accept' : 'application/json',
+            'Content-Type' : 'application/json'
+          }
+        })
+        .then(response => response.json())
+        .then(res => {
+          this.setState({
+            color : res,
+          })
+      })
+      }
 
+      getSize(id){
+        fetch('http://localhost:8000/getsize/' + id,{
+          headers : {
+            'Accept' : 'application/json',
+            'Content-Type' : 'application/json'
+          }
+        })
+        .then(response => response.json())
+        .then(res => {
+          this.setState({
+            size : res,
+          })
+      })
+      }
+
+      addCart(id) {
+      if(this.state.selectedColor === ""){
+          alert("Please choose a color")
+      }
+      else if(this.state.selectedSize === ""){
+        alert("Please choose a size")
+      }
+      else{
+        var data = {
+          ProductID : id,
+          Size : this.state.selectedSize,
+          ColorID : this.state.selectedColor
+        }
+
+        fetch('http://localhost:8000/cart',
+        {
+          method : 'POST',
+          headers : {
+            'Accept' : 'application/json',
+            'Content-Type' : 'application/json'
+          },
+          body : JSON.stringify(data)
+        }
+      ).then(response=> response.json())
+      .then(res=>{
+        alert('Add to cart completed')
+      })
+    }
+      }
 
   render(){
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
 
     return(
     <>
@@ -66,24 +129,33 @@ export default class ProductDetail extends React.Component{
                 <i className="fas fa-star mr-2"></i>
                 (438 reviews)
                 </p>
-                <h1 className="mt-3">$ {item.Price}</h1>
+                <h1 className="mt-3">IDR {numberWithCommas(item.Price)}</h1>
                 <small>Plus shipping</small>
                 </>
                 ))
               }
               <p className="mt-3"><b>Color: </b></p>
+              <div class="btn-group btn-group-toggle" data-toggle="buttons">
               {
-                this.state.productDetail.map((item, index)=>(
-                    <button className="btn border border-primary rounded-circle m-1 px-4 py-4" style={{backgroundColor: item.ColorID}}></button>
+                this.state.color.map((item, index)=>(
+                  <label onClick={() => this.setState({selectedColor: item.ColorID})} className="btn-block btn btn-info border mr-2 rounded-circle m-1 px-4 py-4" style={{backgroundColor: item.ColorID}}>
+                    <input type="radio" name="color"/>
+                  </label>
                 ))
               }
+              </div>
               <p><b>Choose a size</b></p>
+              <div class="btn-group btn-group-toggle" data-toggle="buttons">
               {
-                this.state.productDetail.map((item, index)=>(
-                    <button className="btn border border-dark mr-2">{item.Size}</button>
+                this.state.size.map((item, index)=>(
+                  <label onClick={() => this.setState({selectedSize: item.Size})} className={"btn btn-secondary border mr-2 " + this.state.size}>
+                    <input type="radio" name="size"/> {item.Size}
+                  </label>
                 ))
               }
-              <button onClick={()=>this.addCart(this.state.ProductID)} className="btn btn-primary text-center mt-2 w-75"><i className="fas fa-shopping-cart mr-2"></i> Add to cart</button>
+              </div>
+
+              <button onClick={()=>this.addCart(this.state.ProductID)} className="btn btn-block btn-primary text-center mt-2 w-75"><i className="fas fa-shopping-cart mr-2"></i> Add to cart</button>
               <button className="btn border border-primary text-primary text-center w-75 mt-2"><i className="far fa-heart mr-2"></i> Add to favorite</button>
                 </div>
             </div>
@@ -97,9 +169,9 @@ export default class ProductDetail extends React.Component{
                 </div>
                 <div className="col-12 text-center">
                     <p>
-                        <button className="btn border border-dark mr-2">Polo Shirt<br/> $ 12</button>
-                        <button className="btn border border-dark mr-2">Tank Top<br/> $ 57</button>
-                        <button className="btn border border-dark mr-2">Hoodie<br/> $ 64</button>
+                        <button className="btn border border-dark mr-2">Polo Shirt<br/>IDR 87000</button>
+                        <button className="btn border border-dark mr-2">Tank Top<br/>IDR 54000</button>
+                        <button className="btn border border-dark mr-2">Hoodie<br/>IDR 146000</button>
                     </p>
                 </div>
                 <div className="col-12 mt-3">
