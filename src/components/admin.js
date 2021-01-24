@@ -32,7 +32,7 @@ export default class Profil extends React.Component{
     .then(response => response.json())
     .then(res => {
       this.setState({
-        totalCustomers: res.length    
+        totalCustomers: res.length
       })
     })
 
@@ -40,7 +40,7 @@ export default class Profil extends React.Component{
     .then(response => response.json())
     .then(res => {
       this.setState({
-        totalProducts: res.length    
+        totalProducts: res.length
       })
     })
 
@@ -48,7 +48,7 @@ export default class Profil extends React.Component{
     .then(response => response.json())
     .then(res => {
       this.setState({
-        totalRevenue: res     
+        totalRevenue: res
       })
       console.log(res)
     })
@@ -164,7 +164,7 @@ export default class Profil extends React.Component{
                                       <div class="col-7 col-md-8">
                                         <div class="numbers float-right">
                                           <p class="card-category">Revenue</p>
-                                          <p style={{fontSize:30}} class="card-title">
+                                          <p style={{fontSize:30}} class="card-title">111.000
                                             {/* {
                                               this.state.map((totalRevenue) => {
                                                 return <h1>{totalRevenue.Total}</h1>
