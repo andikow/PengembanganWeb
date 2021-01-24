@@ -1,6 +1,7 @@
 import React from 'react';
 import './../assets/css/myorder.css'
 import {Link} from 'react-router-dom';
+import Loading from './loading.js';
 
 export default class MyOrder extends React.Component{
   constructor() {
@@ -54,6 +55,7 @@ export default class MyOrder extends React.Component{
 
     return(
     <>
+    <Loading/>
     <div className="content">
       <div className="container">
 

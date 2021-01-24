@@ -26,6 +26,7 @@ import ForgotPassword from './components/forgotPassword.js';
 import Header from './components/header.js';
 import Help from './components/help.js';
 import Home from './components/home.js';
+import Loading from './components/loading.js';
 import ModalSuccess from './components/modalsuccess.js';
 import MyOrder from './components/myorder.js';
 import Order1 from './components/order1.js';
@@ -75,6 +76,7 @@ function App() {
       <Route path="/forgotpassword" component = {ForgotPassword}/>
       <Route path="/header" component = {Header}/>
       <Route path="/help" component = {Help}/>
+      <Route path="/loading" component = {Loading}/>
       <Route path="/modalsuccess" component = {ModalSuccess}/>
       <Route path="/myorder" component = {MyOrder}/>
       <Route path="/order1" component = {Order1}/>

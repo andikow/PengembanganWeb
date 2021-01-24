@@ -1,0 +1,10 @@
+.parentDisable{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #FEFEFE;
+  opacity: 0.8;
+  z-index: 998;
+  height: 100%;
+  width: 100%;
+}
