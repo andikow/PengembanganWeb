@@ -5,6 +5,59 @@ import { Link } from 'react-router-dom';
 
 export default class Profil extends React.Component {
 
+  constructor() {
+    super();
+    this.state = {
+      ProductID: 0,
+      Name: '',
+      Price: 0,
+      CategoryID: 0,
+      Description: '',
+      PictureLink1: '',
+    }
+  }
+
+  editProduct() {
+    var data = {
+      ProductID: this.props.match.params.productid,
+      Name: this.state.Name,
+      Price: this.state.Price,
+      CategoryID: this.state.CategoryID,
+      Description: this.state.Description,
+      PictureLink1: this.state.PictureLink1,
+    }
+
+    fetch(
+      'http://localhost:8000/editproduct/' + data.ProductID,
+      {
+        method: 'PUT',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      }
+    ).then(response => response.json())
+    // .then(alert('New product successfully added!'))
+  }
+
+  getProductHeader() {
+    var productid = this.props.match.params.productid
+    fetch('http://localhost:8000/editproduct/' + productid)
+      .then(response => response.json())
+      .then(res => {
+        this.setState({ Name: res[0].Name })
+        this.setState({ Price: res[0].Price })
+        this.setState({ CategoryID: res[0].CategoryID })
+        this.setState({ Description: res[0].Description })
+        this.setState({ PictureLink1: res[0].PictureLink1 })
+      })
+  }
+
+  componentDidMount() {
+    this.getProductHeader()
+  }
+
   render() {
 
     return (
@@ -37,63 +90,48 @@ export default class Profil extends React.Component {
                         <form>
                           <div>
                             <label>ProductID</label>
-                            <input type="text" className="form-control" style={{ width: 300 }} placeholder="ProductID" />
+                            <input type="text" className="form-control" style={{ width: 300 }} value={this.props.match.params.productid} placeholder="ProductID" disabled />
                           </div>
                         </form>
                         <br />
                         <form>
                           <div>
                             <label>Name</label>
-                            <input type="text" className="form-control" style={{ width: 300 }} placeholder="Name" />
+                            <input type="text" onChange={ev => this.setState({ Name: ev.target.value })} value={this.state.Name} className="form-control" style={{ width: 300 }} placeholder="Name" />
                           </div>
                         </form><br />
                         <form>
                           <div>
                             <label>Price</label>
-                            <input type="text" className="form-control" style={{ width: 300 }} placeholder="Price" />
-                          </div>
-                        </form><br />
-                        <form>
-                          <div>
-                            <label>Category</label>
-                            <input type="text" className="form-control" style={{ width: 300 }} placeholder="Category" />
+                            <input type="text" onChange={ev => this.setState({ Price: ev.target.value })} value={this.state.Price} className="form-control" style={{ width: 300 }} placeholder="Price" />
                           </div>
                         </form><br />
                       </div>
                       <div class="col">
                         <form>
                           <div>
+                            <label>Category</label>
+                            <input type="text" onChange={ev => this.setState({ CategoryID: ev.target.value })} value={this.state.CategoryID} className="form-control" style={{ width: 300 }} placeholder="Category" />
+                          </div>
+                        </form><br />
+                        <form>
+                          <div>
                             <label>Description</label>
-                            <input type="text" className="form-control" style={{ width: 300 }} placeholder="Description" />
+                            <input type="text" onChange={ev => this.setState({ Description: ev.target.value })} value={this.state.Description} className="form-control" style={{ width: 300 }} placeholder="Description" />
                           </div>
                         </form><br />
                         <form>
                           <div>
                             <label>PictureLink1</label>
-                            <input type="text" className="form-control" style={{ width: 300 }} placeholder="PictureLink1" />
+                            <input type="text" onChange={ev => this.setState({ PictureLink1: ev.target.value })} value={this.state.PictureLink1} className="form-control" style={{ width: 300 }} placeholder="PictureLink1" />
                           </div>
                         </form><br />
-                        <form>
-                          <div>
-                            <label>PictureLink2</label>
-                            <input type="text" className="form-control" style={{ width: 300 }} placeholder="PictureLink2" />
-                          </div>
-                        </form><br />
-                        <form>
-                          <div>
-                            <label>PictureLink3</label>
-                            <input type="text" className="form-control" style={{ width: 300 }} placeholder="PictureLink3" />
-                          </div>
-                        </form>
-                        <br />
                         <br />
                         <Link to="/admin/product">
-                          <button className="btn btn-danger my-0 font-weight-bold ml-auto mr-4 float-right" type="button">Save Change</button>
+                          <button onClick={() => this.editProduct()} className="btn btn-danger my-0 font-weight-bold ml-auto mr-4 float-right" type="button">Save Change</button>
                         </Link>
                       </div>
                     </div>
-
-
                   </div>
                 </div>
               </div>

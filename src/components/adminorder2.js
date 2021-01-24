@@ -11,6 +11,39 @@ export default class Profil extends React.Component {
     }
   }
 
+  addOrderStatusDetail(data) {
+
+  }
+
+  updateStatusID(data) {
+
+    fetch(
+      'http://localhost:8000/admin/order2',
+      {
+        method: 'PUT',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      }
+    ).then(response => response.json())
+
+    fetch(
+      'http://localhost:8000/admin/order2',
+      {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+
+        },
+        body: JSON.stringify(data)
+      }
+    ).then(respons => respons.json())
+    .then(alert('Order has been packed!'))
+  }
+
   getOrderHeader() {
     fetch('http://localhost:8000/admin/order2')
       .then(response => response.json())
@@ -155,20 +188,23 @@ export default class Profil extends React.Component {
                           </div>
                           <div class="card-body">
                             <div class="table-responsive">
-                              <table class="table">                        
+                              <table class="table">
                                 <thead class="text-center text-primary">
                                   <th>
                                     OrderID
-                                          </th>
+                                  </th>
                                   <th>
                                     OrderDate
-                                          </th>
+                                  </th>
                                   <th>
                                     ShippingID
-                                          </th>
+                                  </th>
                                   <th>
                                     Action
-                                          </th>
+                                  </th>
+                                  <th>
+                                    Action
+                                  </th>
                                 </thead>
                                 <tbody class="text-center">
                                   {
@@ -177,9 +213,10 @@ export default class Profil extends React.Component {
                                         <Link to={"/admin/adminorderdetail/" + item.OrderID} ><td type="button">{item.OrderID}</td></Link>
                                         <td>{item.OrderDate}</td>
                                         <td>{item.ShippingID}</td>
+                                        <td>{item.StatusID}</td>
                                         <td>
                                           <Link to="/admin/order3">
-                                            <button className="btn btn-success" type="button"><i class="fas fa-check"></i></button>
+                                            <button onClick={() => this.updateStatusID(item)} className="btn btn-success" type="button"><i class="fas fa-check"></i></button>
                                           </Link>
                                         </td>
 
@@ -192,12 +229,7 @@ export default class Profil extends React.Component {
                           </div>
                         </div>
                       </div>
-
                     </div>
-
-
-
-
                   </div>
                 </div>
               </div>

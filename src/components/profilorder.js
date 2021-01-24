@@ -3,6 +3,7 @@ import './../assets/css/profil.css'
 import profil from './../assets/img/profil.PNG';
 import MyOrder from './myorder.js';
 import {Link} from 'react-router-dom';
+import Loading from './loading.js';
 
 export default class Profil extends React.Component{
 
@@ -10,6 +11,7 @@ export default class Profil extends React.Component{
 
     return(
     <>
+    <Loading/>
     <div className="content px-0">
         <div className="view-account">
             <section className="module">

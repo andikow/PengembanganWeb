@@ -1,6 +1,7 @@
 import React from 'react';
 import './../assets/css/orderdetail.css'
 import {Link} from 'react-router-dom';
+import Loading from './loading.js';
 
 export default class OrderDetail extends React.Component{
   constructor(props) {
@@ -51,6 +52,7 @@ export default class OrderDetail extends React.Component{
   render(){
     return(
     <>
+    <Loading/>
     <div className="content">
       <div className="container">
 
@@ -113,7 +115,9 @@ export default class OrderDetail extends React.Component{
       </div>
 
       {
+
         this.state.orderDetail.map((item, index)=>(
+          <>
           <div class="row">
           <div class="col-lg-2">
           <img src={item.PictureLink1}  alt="" height="200px" width="180px"  />
@@ -122,14 +126,12 @@ export default class OrderDetail extends React.Component{
           <div class="col pl-4">
           <h3>{item.Name}</h3>
           <p>Size: {item.size}</p>
-          <p>Color: {item.colorName}</p>
+          <p>Color: {item.ColorName}</p>
           <p>Quantity: {item.Qty}</p>
           <p>Price: IDR {item.Price}</p>
 
           </div>
           </div>
-        ))
-      }
 
       <br/>
 
@@ -139,21 +141,57 @@ export default class OrderDetail extends React.Component{
             <h2><i className="fa fa-shipping-fast"></i> Shipping: International Standard</h2>
             <br/>
                 <h5>Shipping Address</h5>
+                <div class="row">
+                  <div class="col-lg-3">
+                    <p>Name</p>
+                    <p>Street Address</p>
+                    <p>Building Name</p>
+                    <p>Country</p>
+                    <p>Zip Code</p>
+                    <p>City / Town</p>
+                  </div>
+                  <div class="col">
+                    <p>: {item.FirstName} {item.LastName}</p>
+                    <p>: {item.Address}</p>
+                    <p>: {item.Building}</p>
+                    <p>: {item.Country}</p>
+                    <p>: {item.ZipCode}</p>
+                    <p>: {item.City}</p>
+                  </div>
+                </div>
+
 
           </div>
           <div class="col-xl-4">
-            <h2>Total </h2>
-            <br/><br/>
-            <h5>Order Overview</h5>
-            <p>Subtotal </p>
-            <p>Packing & shipping </p>
+            <h2>Total : IDR {item.Total} </h2>
             <br/>
-            <p>Payment Method: <span style={{fontWeight:'bold', fontSize:17}}>Paypal</span></p>
+            <h5>Order Overview</h5>
+            <div class="row">
+              <div class="col-lg-4">
+                <p>Subtotal</p>
+                <p>Shipping</p>
+                <p>Sales Tax</p>
+                <br/>
+                <p>Payment</p>
+              </div>
+              <div class="col">
+                <p>: IDR {item.Subtotal} </p>
+                <p>: IDR {item.ShippingCosts} </p>
+                <p>: IDR {item.SalesTax}</p>
+                <br/>
+                <p>: <span style={{fontWeight:'bold', fontSize:17}}>Paypal</span></p>
+              </div>
+            </div>
+
           </div>
         </div>
 
-      </div>
 
+
+      </div>
+      </>
+      ))
+    }
 
       </div>
     </div>

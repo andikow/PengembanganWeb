@@ -2,6 +2,7 @@ import React from 'react';
 import photo from './../assets/img/productex1.jpg';
 import './../assets/css/admin.css'
 import {Link} from 'react-router-dom';
+import Loading from './loading.js';
 
 export default class Profil extends React.Component{
 
@@ -30,6 +31,7 @@ export default class Profil extends React.Component{
 
     return(
     <>
+    <Loading/>
     <div className="content px-0">
         <div className="view-account">
             <section className="module">
@@ -54,7 +56,7 @@ export default class Profil extends React.Component{
                           <div class="row">
                           <Link to ="/admin/addproduct">
                               <button className="btn btn-danger my-0 font-weight-bold" type="button"><span><i class="fas fa-plus"></i></span>&emsp;Add new products</button>
-                              </Link>
+                          </Link>
                               <div class=" pt-4 col-md-12">
                                 <div class="card">
                                   <div class="card-body">
@@ -78,7 +80,7 @@ export default class Profil extends React.Component{
                                           </th>
                                           <th>
                                             Description
-                                          </th>                                          
+                                          </th>
                                           <th>
                                             Action
                                           </th>
@@ -88,12 +90,12 @@ export default class Profil extends React.Component{
                                           this.state.productHeader.map((item, index)=>(
                                             <tr key={index}>
                                               <td><img src={item.PictureLink1} alt="Produk Example 1" style={{width: '100%', paddingRight: "2%"}}/></td>
-                                              <td>{item.ProductID}</td>
+                                              <Link to={"/admin/productdetail/" + item.ProductID} ><td type="button">{item.ProductID}</td></Link>
                                               <td>{item.Name}</td>
                                               <td>{item.Price}</td>
                                               <td>{item.CategoryID}</td>
                                               <td className="text-left">{item.Description}</td>
-                                              <td><Link to ="/admin/editproduct">
+                                              <td><Link to ={"/admin/editproduct/" + item.ProductID}>
                                               <p class="font-weight-bold" style={{color:'#63BCC9', width:50}}><i class="fas fa-edit"></i> Edit</p>
                                               </Link></td>
                                             </tr>
