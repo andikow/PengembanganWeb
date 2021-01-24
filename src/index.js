@@ -23,10 +23,6 @@ $(function () {
 		input.trigger('fileselect', [label]);
 		});
 
-    setTimeout(function() {
-        $('.parentDisable').fadeOut('fast');
-    }, 2000);
-
 		$('.btn-file :file').on('fileselect', function(event, label) {
 
 		    var input = $(this).parents('.input-group').find(':text'),

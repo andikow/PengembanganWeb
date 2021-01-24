@@ -2,6 +2,7 @@ import React from 'react';
 import Produk1 from '../assets/img/productex1.jpg'
 import '../assets/css/productDetail.css'
 import {Link} from 'react-router-dom';
+import Loading from './loading.js';
 
 export default class ProductDetail extends React.Component{
 
@@ -41,6 +42,7 @@ export default class ProductDetail extends React.Component{
 
     return(
     <>
+    <Loading/>
         <div className="container">
             <div className="row mt-4">
                 <div className="col-md-6 col-12">

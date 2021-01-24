@@ -1,6 +1,7 @@
 import React from 'react';
 import './../assets/css/orderdetail.css'
 import {Link} from 'react-router-dom';
+import Loading from './loading.js';
 
 export default class OrderDetail extends React.Component{
   constructor(props) {
@@ -51,6 +52,7 @@ export default class OrderDetail extends React.Component{
   render(){
     return(
     <>
+    <Loading/>
     <div className="content">
       <div className="container">
 

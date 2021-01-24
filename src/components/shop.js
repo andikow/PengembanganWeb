@@ -3,11 +3,13 @@ import FilterProduct from './filterProduct.js';
 import SortBy from './sortBy.js';
 import CardProduct from './cardProduct.js';
 import {Link} from 'react-router-dom';
+import Loading from './loading.js';
 
 export default class Shop extends React.Component{
     render(){
       return(
         <>
+        <Loading/>
         <div class="container py-4">
           <div class="row py-4">
             <div class="col-lg-3 pl-0">
