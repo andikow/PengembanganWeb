@@ -10,6 +10,7 @@ import banner_right1 from './../assets/img/905x332_big_tile_stickers.jpg';
 import banner_right2 from './../assets/img/HarryPotter_Startpage.jpg';
 import './../assets/css/header.css';
 import {Link} from 'react-router-dom';
+import Loading from './loading.js';
 
 export default class Home extends React.Component{
 
@@ -17,6 +18,7 @@ export default class Home extends React.Component{
 
     return(
     <>
+    <Loading/>
         <div className="row no-gutters headline">
           <div className="col-lg-5 bg-success">
             <div className="row no-gutters">

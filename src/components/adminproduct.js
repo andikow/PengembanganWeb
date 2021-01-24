@@ -2,6 +2,7 @@ import React from 'react';
 import photo from './../assets/img/productex1.jpg';
 import './../assets/css/admin.css'
 import {Link} from 'react-router-dom';
+import Loading from './loading.js';
 
 export default class Profil extends React.Component{
 
@@ -27,9 +28,13 @@ export default class Profil extends React.Component{
   }
 
   render(){
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
 
     return(
     <>
+    <Loading/>
     <div className="content px-0">
         <div className="view-account">
             <section className="module">
@@ -78,7 +83,7 @@ export default class Profil extends React.Component{
                                           </th>
                                           <th>
                                             Description
-                                          </th>                                          
+                                          </th>
                                           <th>
                                             Action
                                           </th>
@@ -90,7 +95,7 @@ export default class Profil extends React.Component{
                                               <td><img src={item.PictureLink1} alt="Produk Example 1" style={{width: '100%', paddingRight: "2%"}}/></td>
                                               <Link to={"/admin/productdetail/" + item.ProductID} ><td type="button">{item.ProductID}</td></Link>
                                               <td>{item.Name}</td>
-                                              <td>{item.Price}</td>
+                                              <td>IDR {numberWithCommas(item.Price)}</td>
                                               <td>{item.CategoryID}</td>
                                               <td className="text-left">{item.Description}</td>
                                               <td><Link to ={"/admin/editproduct/" + item.ProductID}>

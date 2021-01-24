@@ -47,7 +47,7 @@ export default class Login extends React.Component{
           })
       }
       show() {
-        if(this.state.isShow){
+        if(!this.state.isShow){
           this.setState({
             show : "text",
             isShow : true
@@ -55,7 +55,11 @@ export default class Login extends React.Component{
           })
         }
         else{
-          
+          this.setState({
+            show : "password",
+            isShow : false
+
+          })
         }
       }
 
@@ -76,14 +80,12 @@ export default class Login extends React.Component{
               <div className="modal-body">
                 <form>
                   <p>Want to shop?
-                  <Link to="/register">
                     <span type="button" className="text-primary closeModal" data-toggle="modal" data-target="#modalRegister"><i className="fa fa-user ml-2 mr-2" />Register now</span>
-                    </Link>
                   </p>
                   <input type="email" value={this.state.email} onChange={ev=> this.setState({email : ev.target.value})} className="form-control w-100" aria-describedby="emailHelp" placeholder="Email or Username"/>
                   <p className="mt-2 mr-3 text-right w-100">
-                  <input type={this.state.show} value={this.state.password} onChange={ev=> this.setState({password : ev.target.value})} className="form-control" placeholder="Password"/>
-                    <i onClick = {()=>this.show()} className="fas fa-eye mr-2"/>{this.state.isShow?"Hide":"Show"}
+                  <input type={this.state.show} value={this.state.password} onChange={ev=> this.setState({password : ev.target.value})} className="form-control mb-1" placeholder="Password"/>
+                    <span class="showhidebutton" onClick = {()=>this.show()}><i className="fas fa-eye mr-2"/>{this.state.isShow?"Hide":"Show"}</span>
                   </p>
                   <p>
                     <span className="ml-4">

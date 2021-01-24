@@ -1,6 +1,7 @@
 import React from 'react';
 import './../assets/css/orderdetail.css'
 import {Link} from 'react-router-dom';
+import Loading from './loading.js';
 
 export default class OrderDetail extends React.Component{
   constructor(props) {
@@ -49,8 +50,12 @@ export default class OrderDetail extends React.Component{
     })
   }
   render(){
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
     return(
     <>
+    <Loading/>
     <div className="content">
       <div className="container">
 
@@ -126,7 +131,7 @@ export default class OrderDetail extends React.Component{
           <p>Size: {item.size}</p>
           <p>Color: {item.ColorName}</p>
           <p>Quantity: {item.Qty}</p>
-          <p>Price: IDR {item.Price}</p>
+          <p>Price: IDR {numberWithCommas(item.Price)}</p>
 
           </div>
           </div>
@@ -161,7 +166,7 @@ export default class OrderDetail extends React.Component{
 
           </div>
           <div class="col-xl-4">
-            <h2>Total : IDR {item.Total} </h2>
+            <h2>Total : IDR {numberWithCommas(item.Total)} </h2>
             <br/>
             <h5>Order Overview</h5>
             <div class="row">
@@ -173,9 +178,9 @@ export default class OrderDetail extends React.Component{
                 <p>Payment</p>
               </div>
               <div class="col">
-                <p>: IDR {item.Subtotal} </p>
-                <p>: IDR {item.ShippingCosts} </p>
-                <p>: IDR {item.SalesTax}</p>
+                <p>: IDR {numberWithCommas(item.Subtotal)} </p>
+                <p>: IDR {numberWithCommas(item.ShippingCosts)} </p>
+                <p>: IDR {numberWithCommas(item.SalesTax)}</p>
                 <br/>
                 <p>: <span style={{fontWeight:'bold', fontSize:17}}>Paypal</span></p>
               </div>

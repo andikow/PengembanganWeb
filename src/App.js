@@ -29,6 +29,7 @@ import ForgotPassword from './components/forgotPassword.js';
 import Header from './components/header.js';
 import Help from './components/help.js';
 import Home from './components/home.js';
+import Loading from './components/loading.js';
 import ModalSuccess from './components/modalsuccess.js';
 import MyOrder from './components/myorder.js';
 import Order1 from './components/order1.js';
@@ -47,7 +48,6 @@ import Register from './components/register.js';
 import Shipping1 from './components/shipping1.js';
 import Shipping2 from './components/shipping2.js';
 import Shop from './components/shop.js';
-import ShoppingCart from './components/shoppingCart.js';
 import SortBy from './components/sortBy.js';
 import Term from './components/term.js';
 
@@ -81,6 +81,7 @@ function App() {
       <Route path="/forgotpassword" component = {ForgotPassword}/>
       <Route path="/header" component = {Header}/>
       <Route path="/help" component = {Help}/>
+      <Route path="/loading" component = {Loading}/>
       <Route path="/modalsuccess" component = {ModalSuccess}/>
       <Route path="/myorder" component = {MyOrder}/>
       <Route path="/order1" component = {Order1}/>
@@ -99,7 +100,6 @@ function App() {
       <Route path="/shipping1" component = {Shipping1}/>
       <Route path="/shipping2" component = {Shipping2}/>
       <Route path="/shop" component = {Shop}/>
-      <Route path="/shoppingcart" component = {ShoppingCart}/>
       <Route path="/sortby" component = {SortBy}/>
       <Route path="/term" component = {Term}/>
       <Footer />

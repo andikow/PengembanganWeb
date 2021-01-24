@@ -1,6 +1,7 @@
 import React from 'react';
 import './../assets/css/admin.css'
 import {Link} from 'react-router-dom';
+import Loading from './loading.js';
 
 export default class Profil extends React.Component{
 
@@ -95,6 +96,7 @@ export default class Profil extends React.Component{
 
     return(
     <>
+    <Loading/>
     <div className="content px-0">
         <div className="view-account">
             <section className="module">
@@ -245,7 +247,7 @@ export default class Profil extends React.Component{
                                               <td>{item.ShippingID}</td>
                                               {PaymentSign(item.StatusID)}
                                             </tr>
-                                          ))     
+                                          ))
                                           }
                                         </tbody>
                                       </table>

@@ -3,8 +3,11 @@ import "./../assets/css/qtycheckout.css";
 import {Link} from 'react-router-dom';
 
 export default class InputNumeric extends Component {
-  state = {
-    value: 0
+  constructor(props){
+    super(props)
+    this.state = {
+      value: this.props.value
+    }
   }
 
   decrease = () => {

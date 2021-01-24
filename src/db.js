@@ -27,11 +27,6 @@ const conn = mysql.createConnection({
     database : 'binco'
 })
 
-app.get('/', (req, res)=>{
-  res.write('Hello World')
-  res.end()
-})
-
 app.post('/login/', (req, res)=>{
   var email = req.body.email;
   var pass = req.body.pass;
@@ -70,18 +65,43 @@ app.get('/orderdetail/:id', (req, res)=>{
 
 app.get('/productdetail/:id', (req, res)=>{
   var id = req.params.id
-  conn.query("SELECT productdetail.ProductID, productheader.Name, productheader.Price, productheader.Description, productheader.PictureLink1, productdetail.ColorID, productdetail.Size, productdetail.Qty from productdetail, productheader WHERE productheader.ProductID = '" + id + "' AND productheader.ProductID = productdetail.ProductID", (err,rows)=>{
+  conn.query("SELECT productdetail.ProductID, productheader.Name, productheader.Price, productheader.Description, productheader.PictureLink1, productdetail.Size, productdetail.Qty from productdetail, productheader WHERE productheader.ProductID = '" + id + "' AND productheader.ProductID = productdetail.ProductID", (err, rows)=>{
     res.json(rows)
   })
 })
 
-app.post('/pegawai', (req, res)=>{
-    var data = req.body
+app.get('/getcolor/:id', (req, res)=>{
+  var id = req.params.id
+  conn.query("SELECT DISTINCT productdetail.ColorID, ColorName FROM productdetail, color WHERE ProductID = " + id + " AND productdetail.ColorID = color.ColorID",(err, rows)=>{
+    res.json(rows)
+  })
+})
 
-    conn.query("INSERT INTO tbl_pegawai SET ?", data, (err, result)=>{
-        if(err) res.status(400).json(err)
-        else res.json(result)
-    })
+app.get('/getsize/:id', (req, res)=>{
+  var id = req.params.id
+  conn.query("SELECT DISTINCT Size FROM `productdetail` WHERE ProductID = '" + id + "'",(err, rows)=>{
+    res.json(rows)
+  })
+})
+
+app.post('/cart', (req, res)=>{
+  var data = req.body
+  conn.query("INSERT INTO cart VALUES (" + data.ProductID + ", '"+ data.Size + "', '"+ data.ColorID + "', 1) ON DUPLICATE KEY UPDATE Qty = Qty + 1 ", (err, result)=>{
+      if(err) res.status(400).json(err)
+      else res.json(result)
+  })
+})
+
+app.get('/getcart', (req, res)=>{
+  conn.query("SELECT *, productheader.Price*cart.Qty AS Subtotal FROM `cart`, `color`, `productheader` WHERE cart.ProductID = productheader.ProductID AND cart.ColorID = color.ColorID ",(err, rows)=>{
+    res.json(rows)
+  })
+})
+
+app.get('/getsubtotal', (req, res)=>{
+  conn.query("SELECT SUM(productheader.Price*cart.Qty) AS subtotal FROM `cart`, `color`, `productheader` WHERE cart.ProductID = productheader.ProductID AND cart.ColorID = color.ColorID ",(err, rows)=>{
+    res.json(rows)
+  })
 })
 
 // Show order header on Admin Dashboard
@@ -209,7 +229,7 @@ app.get('/editproduct/:productid', (req, res)=>{
 
 // Show Product Detail
 app.get('/admin/productdetail/:productid', (req, res)=>{
-    var productid = req.params.productid 
+    var productid = req.params.productid
     var query = "SELECT ColorName, Size, Qty FROM productdetail INNER JOIN color ON productdetail.ColorID = color.ColorID WHERE productdetail.ProductID = " + productid
     conn.query(query, (err, result) =>{
         if (err)
@@ -224,8 +244,8 @@ app.put('/admin/editproductdetail/:productid', (req, res)=>{
     var ColorID = req.body.ColorID
     var Size = req.body.Size
     var Qty = req.body.Qty
-    var productid = req.params.productid 
-    var query = "UPDATE productdetail SET Qty = " + Qty + " WHERE ProductID = " + productid + " AND ColorID ='" + ColorID + "' AND Size = '" + Size + "'"  
+    var productid = req.params.productid
+    var query = "UPDATE productdetail SET Qty = " + Qty + " WHERE ProductID = " + productid + " AND ColorID ='" + ColorID + "' AND Size = '" + Size + "'"
     console.log(query)
     conn.query(query, (err, result) =>{
         if (err)
@@ -237,7 +257,7 @@ app.put('/admin/editproductdetail/:productid', (req, res)=>{
 
 // Get Data to Edit Product Detail
 app.get('/admin/editproductdetail/:productid', (req, res)=>{
-    var productid = req.params.productid 
+    var productid = req.params.productid
     var query = "SELECT * FROM productdetail WHERE ProductID = " + productid
     conn.query(query, (err, result) =>{
         if (err)
@@ -300,7 +320,7 @@ app.get('/admin/order2', (req, res)=>{
 // Update order header on Admin Order Packing
 app.put('/admin/order2', (req, res)=>{
     var OrderID = req.body.OrderID
-    var query = "UPDATE orderheader SET StatusID = 3 WHERE OrderID = " + OrderID 
+    var query = "UPDATE orderheader SET StatusID = 3 WHERE OrderID = " + OrderID
     console.log(query)
     conn.query(query, (err, result) =>{
         if (err)

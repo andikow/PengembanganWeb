@@ -31,6 +31,9 @@ export default class CardProduct extends React.Component{
       })
   }
   render(){
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
 
     return(
     <>
@@ -45,7 +48,7 @@ export default class CardProduct extends React.Component{
               </span>
               <div className="card-body">
                 <h5 class="card-title text-truncate">{item.Name}</h5>
-                <p class="card-text text-primary font-weight-bold">IDR {item.Price}</p>
+                <p class="card-text text-primary font-weight-bold">IDR {numberWithCommas(item.Price)}</p>
               </div>
             </div>
             </Link>

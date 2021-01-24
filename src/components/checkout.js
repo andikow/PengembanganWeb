@@ -6,27 +6,61 @@ import Produk1 from '../assets/img/cart1.jpg';
 import {Link} from 'react-router-dom';
 
 export default class Checkout extends React.Component{
+  constructor() {
+    super()
+    this.state={
+      cart :[],
+      subtotal:[],
+      shippingcost:45000
+    }
+  }
+  componentDidMount() {
+      this.getCart();
+      this.getSubtotal();
+    }
 
+  getCart() {
+    fetch('http://localhost:8000/getCart/',{
+      headers : {
+        'Accept' : 'application/json',
+        'Content-Type' : 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(res => {
+      this.setState({
+        cart : res,
+      })
+  })
+}
+getSubtotal(){
+  fetch('http://localhost:8000/getsubtotal/',{
+    headers : {
+      'Accept' : 'application/json',
+      'Content-Type' : 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(res => {
+    this.setState({
+      subtotal : res,
+    })
+})
+}
   render(){
-
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
     return(
     <>
     <div className="contents">
-    <div className="container">
+    <div className="container pt-4">
       <h1>Checkout</h1>
 	  <div className="row">
     <div className="col-lg-8 col-md-8 col-sm-7 col-xs-12">
       <div className="box">
           <h3 className="box-title">Shipping</h3>
             <p style={{fontWeight:'bold'}}>Send my order to</p>
-            <form>
-                <div>
-                    <input type="radio" value="Mr." /> Mr. &emsp;
-                    <input type="radio" value="Ms." /> Ms. &emsp;
-                    <input type="radio" value="Company" /> Company
-                </div>
-                </form>
-
                 <br/>
 
                 <form>
@@ -376,7 +410,7 @@ export default class Checkout extends React.Component{
               <p style={{fontWeight:'bold'}}>Gift Wrap</p>
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="" />
-                <label>Gift wrap your order and send it with a personalized greeting card. <span style={{paddingLeft:100}}> $3.99</span></label>
+                <label>Gift wrap your order and send it with a personalized greeting card.</label>
               </div>
       </div>
 
@@ -394,22 +428,28 @@ export default class Checkout extends React.Component{
                         <h3 className="box-title">Order</h3>
                         <div class="row">
                           <div class="col">Sub-total</div>
-                          <div class="col-lg-2">$20</div>
+                          {this.state.subtotal.map((item, index)=>(
+                          <div className="col-lg-3">IDR {numberWithCommas(item.subtotal)}</div>
+                          ))}
                         </div>
                         <div class="row">
                           <div class="col">Shipping costs</div>
-                          <div class="col-lg-2">$10</div>
+                          <div class="col-lg-3">IDR {numberWithCommas(this.state.shippingcost)}</div>
                         </div>
                         <div class="row">
                           <div class="col">Sales Tax</div>
-                          <div class="col-lg-2">$0</div>
+                          {this.state.subtotal.map((item, index)=>(
+                           <div className="col-lg-3"> IDR {numberWithCommas(0.1 * item.subtotal)}</div>
+                          ))}
                         </div>
 
                         <hr />
 
                         <div class="row">
                           <div class="col" style={{fontWeight:'bold'}}>Total</div>
-                          <div class="col-lg-2">$30</div>
+                          {this.state.subtotal.map((item, index)=>(
+                           <div className="col-lg-3"> IDR {numberWithCommas(item.subtotal*0.1 + item.subtotal + this.state.shippingcost)}</div>
+                          ))}
                         </div>
 
                         <hr />
@@ -448,47 +488,47 @@ export default class Checkout extends React.Component{
 
                         <div class="row">
                           <div class="col">Sub-total</div>
-                          <div class="col-lg-2">$20</div>
+                          {this.state.subtotal.map((item, index)=>(
+                          <div className="col-lg-6">IDR {numberWithCommas(item.subtotal)}</div>
+                          ))}
                         </div>
                         <div class="row">
                           <div class="col">Shipping costs</div>
-                          <div class="col-lg-2">$10</div>
+                          <div class="col-lg-6">IDR {numberWithCommas(this.state.shippingcost)}</div>
                         </div>
                         <div class="row">
                           <div class="col">Sales Tax</div>
-                          <div class="col-lg-2">$0</div>
+                          {this.state.subtotal.map((item, index)=>(
+                           <div className="col-lg-6"> IDR {numberWithCommas(0.1 * item.subtotal)}</div>
+                          ))}
                         </div>
 
                         <hr />
 
                         <div class="row">
                           <div class="col" style={{fontWeight:'bold'}}>Total</div>
-                          <div class="col-lg-2">$30</div>
+                          {this.state.subtotal.map((item, index)=>(
+                           <div className="col-lg-6"> IDR {numberWithCommas(item.subtotal*0.1 + item.subtotal + this.state.shippingcost)}</div>
+                          ))}
                         </div>
 
                         <hr />
 
-                        <p style={{fontWeight:'bold'}}>Nama baju</p>
-                        <div class="row">
-                          <div class="col">
-                            <img src={Produk1} alt=""  width="120px"  />
+                        <p style={{fontWeight:'bold'}}>Item(s)</p>
+                        {this.state.cart.map((item, index)=>(
+                          <div className="row border-bottom border-primary mx-1">
+                            <div className="col-6 mt-1">
+                              <img className="card-img-top" src={item.PictureLink1} alt="ProductLink" />
+                            </div>
+                            <div className="col-6 text-left">
+                              <h5>{item.Name}</h5>
+                              <p>Color: {item.ColorName}</p>
+                              <p>Size: {item.Size}</p>
+                              <p>Qty: {item.Qty}</p>
+                              <h6>IDR {numberWithCommas(item.Price)}</h6>
+                            </div>
                           </div>
-                          <div class="col">
-                            <label>Size :</label>
-                            <select class="browser-default custom-select">
-                              <option value="S">S</option>
-                              <option value="M">M</option>
-                              <option value="L">L</option>
-                              <option value="XL">XL</option>
-                              <option value="2XL">2XL</option>
-                            </select>
-
-                            <br/><br/>
-                            <label>Qty :</label>
-                            <InputNumeric/>
-
-                          </div>
-                        </div>
+                        ))}
 
 
                     </div>
