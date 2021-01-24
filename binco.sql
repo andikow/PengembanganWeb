@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2021 at 11:05 AM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.7
+-- Generation Time: 24 Jan 2021 pada 11.24
+-- Versi Server: 10.1.24-MariaDB
+-- PHP Version: 7.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `account`
+-- Struktur dari tabel `account`
 --
 
 CREATE TABLE `account` (
@@ -35,7 +35,7 @@ CREATE TABLE `account` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `account`
+-- Dumping data untuk tabel `account`
 --
 
 INSERT INTO `account` (`CustomerID`, `Email`, `Password`) VALUES
@@ -53,7 +53,7 @@ INSERT INTO `account` (`CustomerID`, `Email`, `Password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cart`
+-- Struktur dari tabel `cart`
 --
 
 CREATE TABLE `cart` (
@@ -64,7 +64,7 @@ CREATE TABLE `cart` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `cart`
+-- Dumping data untuk tabel `cart`
 --
 
 INSERT INTO `cart` (`ProductID`, `Size`, `ColorID`, `Qty`) VALUES
@@ -76,7 +76,7 @@ INSERT INTO `cart` (`ProductID`, `Size`, `ColorID`, `Qty`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Struktur dari tabel `category`
 --
 
 CREATE TABLE `category` (
@@ -85,7 +85,7 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `category`
+-- Dumping data untuk tabel `category`
 --
 
 INSERT INTO `category` (`CategoryID`, `Description`) VALUES
@@ -101,7 +101,7 @@ INSERT INTO `category` (`CategoryID`, `Description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `color`
+-- Struktur dari tabel `color`
 --
 
 CREATE TABLE `color` (
@@ -110,7 +110,7 @@ CREATE TABLE `color` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `color`
+-- Dumping data untuk tabel `color`
 --
 
 INSERT INTO `color` (`ColorID`, `ColorName`) VALUES
@@ -133,7 +133,7 @@ INSERT INTO `color` (`ColorID`, `ColorName`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orderdetail`
+-- Struktur dari tabel `orderdetail`
 --
 
 CREATE TABLE `orderdetail` (
@@ -145,7 +145,7 @@ CREATE TABLE `orderdetail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `orderdetail`
+-- Dumping data untuk tabel `orderdetail`
 --
 
 INSERT INTO `orderdetail` (`OrderID`, `ProductID`, `ColorID`, `Size`, `Qty`) VALUES
@@ -166,7 +166,7 @@ INSERT INTO `orderdetail` (`OrderID`, `ProductID`, `ColorID`, `Size`, `Qty`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orderheader`
+-- Struktur dari tabel `orderheader`
 --
 
 CREATE TABLE `orderheader` (
@@ -181,7 +181,7 @@ CREATE TABLE `orderheader` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `orderheader`
+-- Dumping data untuk tabel `orderheader`
 --
 
 INSERT INTO `orderheader` (`OrderID`, `OrderDate`, `ShippingID`, `SubTotal`, `ShippingCosts`, `SalesTax`, `Total`, `StatusID`) VALUES
@@ -195,7 +195,7 @@ INSERT INTO `orderheader` (`OrderID`, `OrderDate`, `ShippingID`, `SubTotal`, `Sh
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orderstatusdetail`
+-- Struktur dari tabel `orderstatusdetail`
 --
 
 CREATE TABLE `orderstatusdetail` (
@@ -205,7 +205,7 @@ CREATE TABLE `orderstatusdetail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `orderstatusdetail`
+-- Dumping data untuk tabel `orderstatusdetail`
 --
 
 INSERT INTO `orderstatusdetail` (`OrderID`, `StatusID`, `Date`) VALUES
@@ -227,7 +227,7 @@ INSERT INTO `orderstatusdetail` (`OrderID`, `StatusID`, `Date`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `productdetail`
+-- Struktur dari tabel `productdetail`
 --
 
 CREATE TABLE `productdetail` (
@@ -238,7 +238,7 @@ CREATE TABLE `productdetail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `productdetail`
+-- Dumping data untuk tabel `productdetail`
 --
 
 INSERT INTO `productdetail` (`ProductID`, `ColorID`, `Size`, `Qty`) VALUES
@@ -273,7 +273,7 @@ INSERT INTO `productdetail` (`ProductID`, `ColorID`, `Size`, `Qty`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `productheader`
+-- Struktur dari tabel `productheader`
 --
 
 CREATE TABLE `productheader` (
@@ -288,7 +288,7 @@ CREATE TABLE `productheader` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `productheader`
+-- Dumping data untuk tabel `productheader`
 --
 
 INSERT INTO `productheader` (`ProductID`, `Name`, `Price`, `CategoryID`, `Description`, `PictureLink1`, `PictureLink2`, `PictureLink3`) VALUES
@@ -298,7 +298,7 @@ INSERT INTO `productheader` (`ProductID`, `Name`, `Price`, `CategoryID`, `Descri
 (4, 'Swag V Neck Sweatshirt', 82000, 4, 'This V neck sweatshirt is perfect as an outer, under or single layer. Soft and comfortable, this stand-by is a must.\r\n\r\nUnisex\r\n50% preshrunk cotton/50% polyester \r\nFabric Weight: 7.75 oz (midweight)\r\nPill-resistant\r\n1X1 Lycra® spandex ribbed collar, cuffs and waist\r\nFully double-stitched', 'https://images-na.ssl-images-amazon.com/images/I/51u1Gtl7tqL._UL1250_.jpg', NULL, NULL),
 (5, 'Red Heart Polo Shirt', 116000, 5, 'A timeless, perfect companion for the office, the golf course, or everyday wear.\r\n\r\nUnisex\r\n100% cotton \r\nHeavyweight fabric (6 oz)\r\nThree-button closure\r\nTopstitching for a crisp finish throughout', 'https://www.hervia.com/uploads/images/products/verylarge/hervia.com-comme-des-gar-ons-play-t006-red-heart-polo-shirt-white-1592319408ggg.png', NULL, NULL),
 (6, 'Keep Going V Neck T-Shirt', 86000, 6, 'A little V in the neckline can make a T-shirt look classier. Nice enough to wear to the club and casual enough to wear around the house, this super soft jersey cotton V-neck is versatility at its finest.\r\n\r\nUnisex\r\n100% cotton (deep heather is 52% cotton/48% polyester and marble colors are 91% polyester/9% cotton)\r\nFabric weight: 4.2 oz (lightweight)\r\nReinforced shoulder and side seam construction retains shape and elasticity, comfort and support\r\nDouble-stitched sleeves and waist\r\nRibbed v-neck collar', 'https://cdn.shopify.com/s/files/1/2362/6981/products/spod-1052415273-4-1_1000x.png?v=1596489982', NULL, NULL),
-(7, 'Peace Tank Top', 82000, 7, 'The premium tank is ideal for anything from yoga and Pilates or gym. Our entire collection is optimized for vibrant print results.\r\n\r\nUnisex\r\n100% cotton (heather gray is 95% cotton/5% viscose. charcoal gray is 80% cotton/20% polyester)\r\nFabric Weight: 4.42 oz (lightweight)\r\nFairly produced, certified and triple audited', 'https://cdn.shopify.com/s/files/1/2309/3869/products/170658--Together-TankTopMen-front_1401x1400.jpg?v=1603886914', NULL, NULL),
+(7, 'Peace Tank Top', 82000, 7, 'The premium tank is ideal for anything from yoga and Pilates or gym. Our entire collection is optimized for vibrant print results.\r\n\r\nUnisex\r\n100% cotton (heather gray is 95% cotton/5% viscose. charcoal gray is 80% cotton/20% polyester)\r\nFabric Weight: 4.42 oz (lightweight)\r\nFairly produced, certified and triple audited', 'https://m.media-amazon.com/images/I/A1PDlPmN9wL._AC_CLa%7C2140%2C2000%7C51XLr930ylL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_UL1500_.png', NULL, NULL),
 (8, 'Cute Cat Long Sleeve Shirt', 148000, 8, 'This premium long sleeve t-shirt is as close to perfect as can be. Soft, comfortable and durable.\r\n\r\n100% cotton (heather gray and heather ice blue are 95%/5% viscose. charcoal gray is 80% cotton/20% polyester. heather burgundy is 60% cotton/40% polyester)\r\nFabric Weight: 4.42 oz (heavyweight)\r\nFairly produced, certified and triple audited.\r\nDouble stitched, reinforced seams at shoulder, sleeve, collar and waist\r\nOptimized for beautiful brilliance across all printing methods', 'https://dpegb9ebondhq.cloudfront.net/product_photos/45620150/QQ_E6_88_AA_E5_9B_BE20161103175319_original.png', NULL, NULL),
 (9, 'Milk Mocha Bear T-Shirt', 68000, 1, 'Premium T-Shirt with Milk Mocha Bear Design\r\n\r\nUnisex\r\nMaterial: Cotton\r\nFabric weight: 4.42 oz (lightweight)', 'https://m.media-amazon.com/images/I/A13usaonutL._AC_CLa%7C2140%2C2000%7C71C7oOdolYL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_UL1500_.png', NULL, NULL),
 (10, 'Calm Hoodie', 138000, 2, 'This Calm Design Hoodie is a comfortable classic. The hooded sweatshirt has become a staple in any wardrobe. Kangaroo-style front pocket is perfect for your phone, keys or anything else you want to stash.\r\n\r\nUnisex\r\n50% cotton/50% polyester | Fabric Weight: 7.8 oz (midweight)\r\nRibbed cuffs and waist hem\r\nAdjustable drawstring hood', 'https://cdn2.bigcommerce.com/server2100/da4a7/products/692/images/652/KEEP_CALM_AND_CARRY_ON_CUSTOMISED_HOODED_TOP__79457.1449594496.1280.1280.jpg', NULL, NULL);
@@ -306,7 +306,7 @@ INSERT INTO `productheader` (`ProductID`, `Name`, `Price`, `CategoryID`, `Descri
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reviews`
+-- Struktur dari tabel `reviews`
 --
 
 CREATE TABLE `reviews` (
@@ -317,7 +317,7 @@ CREATE TABLE `reviews` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `reviews`
+-- Dumping data untuk tabel `reviews`
 --
 
 INSERT INTO `reviews` (`CustomerID`, `OrderID`, `Review`, `Stars`) VALUES
@@ -326,7 +326,7 @@ INSERT INTO `reviews` (`CustomerID`, `OrderID`, `Review`, `Stars`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `shippingdetail`
+-- Struktur dari tabel `shippingdetail`
 --
 
 CREATE TABLE `shippingdetail` (
@@ -344,7 +344,7 @@ CREATE TABLE `shippingdetail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `shippingdetail`
+-- Dumping data untuk tabel `shippingdetail`
 --
 
 INSERT INTO `shippingdetail` (`ShippingID`, `CustomerID`, `FirstName`, `LastName`, `Address`, `Building`, `Country`, `ZipCode`, `City`, `ShippingMethod`, `Phone`) VALUES
@@ -440,76 +440,71 @@ ALTER TABLE `shippingdetail`
 --
 ALTER TABLE `account`
   MODIFY `CustomerID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
 --
 -- AUTO_INCREMENT for table `orderheader`
 --
 ALTER TABLE `orderheader`
   MODIFY `OrderID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
 --
 -- AUTO_INCREMENT for table `productheader`
 --
 ALTER TABLE `productheader`
   MODIFY `ProductID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
 --
 -- AUTO_INCREMENT for table `shippingdetail`
 --
 ALTER TABLE `shippingdetail`
   MODIFY `ShippingID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
 
 --
--- Constraints for dumped tables
---
-
---
--- Constraints for table `orderdetail`
+-- Ketidakleluasaan untuk tabel `orderdetail`
 --
 ALTER TABLE `orderdetail`
   ADD CONSTRAINT `FK3_OrderID` FOREIGN KEY (`OrderID`) REFERENCES `orderheader` (`OrderID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_ProductDetail` FOREIGN KEY (`ProductID`,`ColorID`,`Size`) REFERENCES `productdetail` (`ProductID`, `ColorID`, `Size`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `orderheader`
+-- Ketidakleluasaan untuk tabel `orderheader`
 --
 ALTER TABLE `orderheader`
   ADD CONSTRAINT `FK_ShippingID` FOREIGN KEY (`ShippingID`) REFERENCES `shippingdetail` (`ShippingID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `orderstatusdetail`
+-- Ketidakleluasaan untuk tabel `orderstatusdetail`
 --
 ALTER TABLE `orderstatusdetail`
   ADD CONSTRAINT `FK_OrderID` FOREIGN KEY (`OrderID`) REFERENCES `orderheader` (`OrderID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `productdetail`
+-- Ketidakleluasaan untuk tabel `productdetail`
 --
 ALTER TABLE `productdetail`
   ADD CONSTRAINT `FK2_ProductID` FOREIGN KEY (`ProductID`) REFERENCES `productheader` (`ProductID`),
   ADD CONSTRAINT `FK_ColorID` FOREIGN KEY (`ColorID`) REFERENCES `color` (`ColorID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `productheader`
+-- Ketidakleluasaan untuk tabel `productheader`
 --
 ALTER TABLE `productheader`
   ADD CONSTRAINT `FK_CategoryID` FOREIGN KEY (`CategoryID`) REFERENCES `category` (`CategoryID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `reviews`
+-- Ketidakleluasaan untuk tabel `reviews`
 --
 ALTER TABLE `reviews`
   ADD CONSTRAINT `FK2_OrderID` FOREIGN KEY (`OrderID`) REFERENCES `orderheader` (`OrderID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK3_CustomerID` FOREIGN KEY (`CustomerID`) REFERENCES `account` (`CustomerID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `shippingdetail`
+-- Ketidakleluasaan untuk tabel `shippingdetail`
 --
 ALTER TABLE `shippingdetail`
   ADD CONSTRAINT `FK_CustomerID` FOREIGN KEY (`CustomerID`) REFERENCES `account` (`CustomerID`) ON DELETE CASCADE ON UPDATE CASCADE;
