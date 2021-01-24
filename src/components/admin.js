@@ -9,7 +9,10 @@ export default class Profil extends React.Component{
     super();
     this.state = {
       orderHeader : [],
-      TotalOrder: 0
+      totalOrder: 0,
+      totalRevenue: [],
+      totalCustomers: 0,
+      totalProducts: 0
     }
   }
 
@@ -20,21 +23,40 @@ export default class Profil extends React.Component{
       this.setState({
         orderHeader: res
       })
+      this.setState({
+        totalOrder: res.length
+      })
     })
-  }
 
-  getTotalOrder(){
-    fetch ('http://localhost:8000/admintotalorder')
+    fetch ('http://localhost:8000/admintotalcustomers')
     .then(response => response.json())
     .then(res => {
-      this.setState({ TotalOrder: res })
+      this.setState({
+        totalCustomers: res.length    
+      })
+    })
+
+    fetch ('http://localhost:8000/admintotalproducts')
+    .then(response => response.json())
+    .then(res => {
+      this.setState({
+        totalProducts: res.length    
+      })
+    })
+
+    fetch ('http://localhost:8000/admintotalrevenue')
+    .then(response => response.json())
+    .then(res => {
+      this.setState({
+        totalRevenue: res     
+      })
+      console.log(res)
     })
   }
 
 
   componentDidMount(){
     this.getOrderHeader()
-    this.getTotalOrder()
   }
 
   render(){
@@ -98,7 +120,7 @@ export default class Profil extends React.Component{
                                       <div class="col-7 col-md-8">
                                         <div class="numbers float-right">
                                           <p class="card-category">Customers</p>
-                                          <p style={{fontSize:30}} class="card-title">1,205</p>
+                                          <p style={{fontSize:30}} class="card-title">{this.state.totalCustomers}</p>
                                         </div>
                                       </div>
                                     </div>
@@ -120,7 +142,7 @@ export default class Profil extends React.Component{
                                       <div class="col-7 col-md-8">
                                         <div class="numbers float-right">
                                           <p class="card-category">Orders</p>
-                                          <p style={{fontSize:30}} class="card-title">1,205</p>
+                                          <p style={{fontSize:30}} class="card-title">{this.state.totalOrder}</p>
                                         </div>
                                       </div>
                                     </div>
@@ -142,7 +164,13 @@ export default class Profil extends React.Component{
                                       <div class="col-7 col-md-8">
                                         <div class="numbers float-right">
                                           <p class="card-category">Revenue</p>
-                                          <p style={{fontSize:30}} class="card-title">1,205</p>
+                                          <p style={{fontSize:30}} class="card-title">
+                                            {/* {
+                                              this.state.map((totalRevenue) => {
+                                                return <h1>{totalRevenue.Total}</h1>
+                                              })
+                                            } */}
+                                          </p>
                                         </div>
                                       </div>
                                     </div>
@@ -164,7 +192,7 @@ export default class Profil extends React.Component{
                                       <div class="col-7 col-md-8">
                                         <div class="numbers float-right">
                                           <p class="card-category">Products</p>
-                                          <p style={{fontSize:30}} class="card-title">1,205</p>
+                                          <p style={{fontSize:30}} class="card-title">{this.state.totalProducts}</p>
                                         </div>
                                       </div>
                                     </div>
@@ -199,7 +227,6 @@ export default class Profil extends React.Component{
                                           <th>
                                             Status ID
                                           </th>
-
                                         </thead>
                                         <tbody class="text-center">
                                           {

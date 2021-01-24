@@ -126,7 +126,7 @@ export default class Profil extends React.Component {
                                                 <div class=" pt-4 col-md-12">
                                                     <div class="card">
                                                         <div class="card-header bg-color-transparent">
-                                                            <h5 class="card-title">Product Detail</h5>
+                                                            <h5 class="card-title">Color List</h5>
                                                         </div>
                                                         <div class="card-body">
                                                             <div class="table-responsive">
